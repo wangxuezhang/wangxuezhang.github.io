@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>王学长</title>
+  
+  <subtitle>最喜欢我的小胖了</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.wangxuezhang.xin/"/>
+  <updated>2017-12-27T15:34:04.706Z</updated>
+  <id>http://www.wangxuezhang.xin/</id>
+  
+  <author>
+    <name>王学长</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>智动大闯关</title>
+    <link href="http://www.wangxuezhang.xin/2017/12/27/%E6%99%BA%E5%8A%A8%E5%A4%A7%E9%97%AF%E5%85%B3/"/>
+    <id>http://www.wangxuezhang.xin/2017/12/27/智动大闯关/</id>
+    <published>2017-12-27T15:25:12.000Z</published>
+    <updated>2017-12-27T15:34:04.706Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="智动大闯关第22关"><a href="#智动大闯关第22关" class="headerlink" title="智动大闯关第22关"></a>智动大闯关第22关</h2><p><img src="/images/pasted-1.png" alt="upload successful"><br>firebug 查看源码发现</p><p><img src="/images/pasted-3.png" alt="upload successful"><br>其中content里面的就是密码，直接提交进入第23关</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;智动大闯关第22关&quot;&gt;&lt;a href=&quot;#智动大闯关第22关&quot; class=&quot;headerlink&quot; title=&quot;智动大闯关第22关&quot;&gt;&lt;/a&gt;智动大闯关第22关&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/pasted-1.png&quot; alt=&quot;uploa
+      
+    
+    </summary>
+    
+      <category term="智动大闯关" scheme="http://www.wangxuezhang.xin/categories/%E6%99%BA%E5%8A%A8%E5%A4%A7%E9%97%AF%E5%85%B3/"/>
+    
+    
+      <category term="ctf" scheme="http://www.wangxuezhang.xin/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云ubuntu服务器搭建博客中遇到的问题</title>
+    <link href="http://www.wangxuezhang.xin/2017/12/27/hello-world/"/>
+    <id>http://www.wangxuezhang.xin/2017/12/27/hello-world/</id>
+    <published>2017-12-27T09:28:00.000Z</published>
+    <updated>2017-12-27T15:15:20.529Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考网上各位大佬的经验以及官方文档终于把这个博客搭建出来了，现在来记录一下在搭建过程中遇到的问题<br>环境：Ubuntu16.04 阿里云服务器<br>安装前提：<br>Git, Node.js<br>apt-get install git<br>apt-get install node.js<br>Hexo安装：<br>npm install -g hexo<br>创建博客文件夹<br>hexo init myblog(博客文件夹的名称)<br>cd myblog<br>npm install (安装依赖)<br>Github<br>注册一个github账号，然后在github上新建一个仓库 username.github.io，进行git ssh认证<br>git认证后<br>git config –global user.name “<strong><em>“ (</em></strong>为github名)<br>github config –global user.email “<em>*</em>“ (邮箱)<br>git remote add origin git://github.com…  //关联远程仓库, git.github.com..要根据你在github上建立出来的仓库为准</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;参考网上各位大佬的经验以及官方文档终于把这个博客搭建出来了，现在来记录一下在搭建过程中遇到的问题&lt;br&gt;环境：Ubuntu16.04 阿里云服务器&lt;br&gt;安装前提：&lt;br&gt;Git, Node.js&lt;br&gt;apt-get install git&lt;br&gt;apt-get inst
+      
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://www.wangxuezhang.xin/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://www.wangxuezhang.xin/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
