@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="参考网上各位大佬的经验以及官方文档终于把这个博客搭建出来了，现在来记录一下在搭建过程中遇到的问题环境：Ubuntu16.04 阿里云服务器安装前提：Git, Node.jsapt-get install gitapt-get install node.jsHexo安装：npm install -g hexo创建博客文件夹hexo init myblog(博客文件夹的名称)cd myblognpm">
+<meta name="description" content="搭建的环境:阿里云的Ubuntu16.04 服务器 搭建的流程:">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云ubuntu服务器搭建博客中遇到的问题">
+<meta property="og:title" content="阿里云ubuntu服务器搭建Hexo博客中遇到的问题">
 <meta property="og:url" content="http://www.wangxuezhang.xin/2017/12/27/hello-world/index.html">
 <meta property="og:site_name" content="王学长">
-<meta property="og:description" content="参考网上各位大佬的经验以及官方文档终于把这个博客搭建出来了，现在来记录一下在搭建过程中遇到的问题环境：Ubuntu16.04 阿里云服务器安装前提：Git, Node.jsapt-get install gitapt-get install node.jsHexo安装：npm install -g hexo创建博客文件夹hexo init myblog(博客文件夹的名称)cd myblognpm">
+<meta property="og:description" content="搭建的环境:阿里云的Ubuntu16.04 服务器 搭建的流程:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-27T15:15:20.529Z">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-4.png">
+<meta property="og:updated_time" content="2017-12-28T07:33:36.203Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里云ubuntu服务器搭建博客中遇到的问题">
-<meta name="twitter:description" content="参考网上各位大佬的经验以及官方文档终于把这个博客搭建出来了，现在来记录一下在搭建过程中遇到的问题环境：Ubuntu16.04 阿里云服务器安装前提：Git, Node.jsapt-get install gitapt-get install node.jsHexo安装：npm install -g hexo创建博客文件夹hexo init myblog(博客文件夹的名称)cd myblognpm">
+<meta name="twitter:title" content="阿里云ubuntu服务器搭建Hexo博客中遇到的问题">
+<meta name="twitter:description" content="搭建的环境:阿里云的Ubuntu16.04 服务器 搭建的流程:">
+<meta name="twitter:image" content="http://www.wangxuezhang.xin/images/pasted-4.png">
 
 
 
@@ -128,7 +130,7 @@
 
 
 
-  <title>阿里云ubuntu服务器搭建博客中遇到的问题 | 王学长</title>
+  <title>阿里云ubuntu服务器搭建Hexo博客中遇到的问题 | 王学长</title>
   
 
 
@@ -272,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">阿里云ubuntu服务器搭建博客中遇到的问题</h1>
+          <h1 class="post-title" itemprop="name headline">阿里云ubuntu服务器搭建Hexo博客中遇到的问题</h1>
         
 
         <div class="post-meta">
@@ -363,7 +365,11 @@
       
 
       
-        <p>参考网上各位大佬的经验以及官方文档终于把这个博客搭建出来了，现在来记录一下在搭建过程中遇到的问题<br>环境：Ubuntu16.04 阿里云服务器<br>安装前提：<br>Git, Node.js<br>apt-get install git<br>apt-get install node.js<br>Hexo安装：<br>npm install -g hexo<br>创建博客文件夹<br>hexo init myblog(博客文件夹的名称)<br>cd myblog<br>npm install (安装依赖)<br>Github<br>注册一个github账号，然后在github上新建一个仓库 username.github.io，进行git ssh认证<br>git认证后<br>git config –global user.name “<strong><em>“ (</em></strong>为github名)<br>github config –global user.email “<em>*</em>“ (邮箱)<br>git remote add origin git://github.com…  //关联远程仓库, git.github.com..要根据你在github上建立出来的仓库为准</p>
+        <h2 id="搭建的环境"><a href="#搭建的环境" class="headerlink" title="搭建的环境:"></a>搭建的环境:</h2><p>阿里云的Ubuntu16.04 服务器</p>
+<h2 id="搭建的流程"><a href="#搭建的流程" class="headerlink" title="搭建的流程:"></a>搭建的流程:</h2><a id="more"></a>
+<p>搭建过程中还是蛮顺利的，直接参照百度就能跟着搭建出来。但是搭建后<br>hexo s 运行的时候出现了一个问题卡了蛮久的。hexo s 能正常运行，就是用电脑浏览器一直访问不了，换了各种端口都没用，关闭防火墙也没用。各种百度后找到了问题所在:就是阿里云服务器的安全组规则没有开启4000端口</p>
+<p><img src="/images/pasted-4.png" alt="upload successful"><br>根据要求把4000端口开启就行了<br>然后就能通过IP访问刚刚建好的博客了，哈哈</p>
+<h2 id="搭建后主题方面的设置"><a href="#搭建后主题方面的设置" class="headerlink" title="搭建后主题方面的设置"></a>搭建后主题方面的设置</h2><p>我选择的是next主题，参照hexo中文文档就<br><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">next中文文档</a><br>想进行一些特殊的设置可以参照<br><a href="http://blog.csdn.net/qq_33699981/article/details/72716951" target="_blank" rel="noopener"> hexo的next主题个性化教程：打造炫酷网站</a><br>一切搞好后，炫酷的博客就出炉啦</p>
 
       
     </div>
@@ -454,8 +460,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -470,7 +485,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -544,6 +559,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建的环境"><span class="nav-number">1.</span> <span class="nav-text">搭建的环境:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建的流程"><span class="nav-number">2.</span> <span class="nav-text">搭建的流程:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建后主题方面的设置"><span class="nav-number">3.</span> <span class="nav-text">搭建后主题方面的设置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
