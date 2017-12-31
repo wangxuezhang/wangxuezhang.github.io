@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2017-12-28T08:09:15.308Z</updated>
+  <updated>2017-12-30T06:41:02.924Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -17,13 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo s报错</title>
+    <link href="http://www.wangxuezhang.xin/2017/12/30/hexo-s%E6%8A%A5%E9%94%99/"/>
+    <id>http://www.wangxuezhang.xin/2017/12/30/hexo-s报错/</id>
+    <published>2017-12-30T06:06:00.000Z</published>
+    <updated>2017-12-30T06:41:02.924Z</updated>
+    
+    <content type="html"><![CDATA[<p>想起来就心痛，昨天由于ubuntu上的vim配置出了点问题，于是就想卸载重装，但是插件太多，自己又想偷懒，就一个命令运行下来<br><code>locate vimrc | xargs rm -rf</code><br>删除后发现还是报错，就将错就错,又是一条命令下来<br><code>locate vim | xargs rm -rf</code><br><a id="more"></a><br>就这样，成功的，我的vim重装后连insert都不显示了……</p><p><img src="/images/pasted-12.png" alt="upload successful"><br>费了好大功夫把vim装好后，准备运行hexo博客看一下<br><code>FATAL Cannot find module &#39;./vimeo&#39;Error: Cannot find module &#39;./vimeo&#39;</code></p><p><img src="/images/pasted-11.png" alt="upload successful"><br>结局是这样的,吓得我赶紧<code>npm install</code>重新安装依赖，但是还是没用<br><code>npm install --save vimeo</code>,命令是运行成功了，当然错误也是一样的…<br>去度娘逛了一圈，没有发现有人跟我报错是一样的（应该没有人像我那么傻，那么冲动…）<br>慌的我东西都备份好了，准备重装了，但是！！！重点来了，临死之前我的抢救还是成功了，<br><code>npm install hexo --vimeo</code><br>这样终于成功的安装好了这个模块,命令终于运行成功了，真是一把心酸一把泪啊！<br>以后再也不敢乱用删除命令了！！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;想起来就心痛，昨天由于ubuntu上的vim配置出了点问题，于是就想卸载重装，但是插件太多，自己又想偷懒，就一个命令运行下来&lt;br&gt;&lt;code&gt;locate vimrc | xargs rm -rf&lt;/code&gt;&lt;br&gt;删除后发现还是报错，就将错就错,又是一条命令下来&lt;br&gt;&lt;code&gt;locate vim | xargs rm -rf&lt;/code&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://www.wangxuezhang.xin/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://www.wangxuezhang.xin/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo写博客的基本方法</title>
     <link href="http://www.wangxuezhang.xin/2017/12/28/hexo%E5%86%99%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/"/>
     <id>http://www.wangxuezhang.xin/2017/12/28/hexo写博客的基本方法/</id>
     <published>2017-12-28T07:34:00.000Z</published>
-    <updated>2017-12-28T08:09:15.308Z</updated>
+    <updated>2017-12-30T06:40:19.776Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>  刚刚搭建好hexo博客，准备写第一篇博客的时候意识到了一些问题，可能是因为自己没怎么用过markdown这个编辑器，所以不怎么熟悉，但是通过各种百度后终于知道了该怎么便捷的写自己的博客</p><h4 id="问题1：在哪里写博客？"><a href="#问题1：在哪里写博客？" class="headerlink" title="问题1：在哪里写博客？"></a>问题1：在哪里写博客？</h4><a id="more"></a><p>由于我的博客是搭在云服务器ubuntu上的，所以写博客的时候不可能直接进去用vim编辑吧，后面通过百度找到了解决办法 —安装hexo的admin后台</p><h6 id="安装hexo后端管理插件"><a href="#安装hexo后端管理插件" class="headerlink" title="安装hexo后端管理插件"></a>安装hexo后端管理插件</h6><p>npm install –save hexo-admin  —安装插件<br>hexo s                 —运行hexo服务器<br>本地打开<a href="http://localhost:4000/admin/" target="_blank" rel="noopener">http://localhost:4000/admin/</a> 就可以看到后台啦</p><h5 id="配置hexo后端管理插件"><a href="#配置hexo后端管理插件" class="headerlink" title="配置hexo后端管理插件"></a>配置hexo后端管理插件</h5><p>完成上述配置后，打开后台是不需要密码的，为了安全性起见，需要设置后台账号和密码<br>先进入后台，到setting中点击Setup authentification here<br><img src="/images/pasted-5.png" alt="upload successful"><br>进去之后是这样的</p><p><img src="/images/pasted-6.png" alt="upload successful"><br>在里面输入对应的信息,下面就会生成相应的代码，例如:</p><p><img src="/images/pasted-7.png" alt="upload successful"><br>把代码复制到hexo的_config.yml文件中，然后hexo s运行再进入后台就需要自己设置的账号和密码了</p><h4 id="问题2：markdown的一些语法要求"><a href="#问题2：markdown的一些语法要求" class="headerlink" title="问题2：markdown的一些语法要求"></a>问题2：markdown的一些语法要求</h4><p>准备自己编辑文章的时候发现不知怎么用markdown来写文章，于是去查看<a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown 语法说明</a><br>知道了怎么写小标题，举个例子</p><p><img src="/images/pasted-8.png" alt="upload successful"><br>一个#就是以及标题，两个#就二级标题，也就是说几个#对应几级标题，需要注意的是输入#的时候颜色会变成蓝色，要在#后面空格输入后的内容才是标题</p><h4 id="问题3：文中添加文字链接"><a href="#问题3：文中添加文字链接" class="headerlink" title="问题3：文中添加文字链接"></a>问题3：文中添加文字链接</h4><p>直接上图</p><p><img src="/images/pasted-9.png" alt="upload successful"></p><p><a href="这是url">这是链接的标题</a><br>按照这个格式输入后就是点击链接标题就会跳转到相应的链接了</p><h4 id="问题4：如何设置阅读全文"><a href="#问题4：如何设置阅读全文" class="headerlink" title="问题4：如何设置阅读全文"></a>问题4：如何设置阅读全文</h4><p>next主题是默认展开全文的，文章多了就会显得特别繁琐，所以我们需要设置程这个样子</p><p><img src="/images/pasted-10.png" alt="upload successful"><br>方法很简单，只要在你想断开的地方输入<br><!--more-->就行了</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>  刚刚搭建好hexo博客，准备写第一篇博客的时候意识到了一些问题，可能是因为自己没怎么用过markdown这个编辑器，所以不怎么熟悉，但是通过各种百度后终于知道了该怎么便捷的写自己的博客</p><h4 id="问题1：在哪里写博客？"><a href="#问题1：在哪里写博客？" class="headerlink" title="问题1：在哪里写博客？"></a>问题1：在哪里写博客？</h4><a id="more"></a><p>由于我的博客是搭在云服务器ubuntu上的，所以写博客的时候不可能直接进去用vim编辑吧，后面通过百度找到了解决办法 —安装hexo的admin后台</p><h6 id="安装hexo后端管理插件"><a href="#安装hexo后端管理插件" class="headerlink" title="安装hexo后端管理插件"></a>安装hexo后端管理插件</h6><p>npm install –save hexo-admin  —安装插件<br>hexo s                 —运行hexo服务器<br>本地打开<a href="http://localhost:4000/admin/" target="_blank" rel="noopener">http://localhost:4000/admin/</a> 就可以看到后台啦</p><h5 id="配置hexo后端管理插件"><a href="#配置hexo后端管理插件" class="headerlink" title="配置hexo后端管理插件"></a>配置hexo后端管理插件</h5><p>完成上述配置后，打开后台是不需要密码的，为了安全性起见，需要设置后台账号和密码<br>先进入后台，到setting中点击Setup authentification here<br><img src="/images/pasted-5.png" alt="upload successful"><br>进去之后是这样的</p><p><img src="/images/pasted-6.png" alt="upload successful"><br>在里面输入对应的信息,下面就会生成相应的代码，例如:</p><p><img src="/images/pasted-7.png" alt="upload successful"><br>把代码复制到hexo的_config.yml文件中，然后hexo s运行再进入后台就需要自己设置的账号和密码了</p><h4 id="问题2：markdown的一些语法要求"><a href="#问题2：markdown的一些语法要求" class="headerlink" title="问题2：markdown的一些语法要求"></a>问题2：markdown的一些语法要求</h4><p>准备自己编辑文章的时候发现不知怎么用markdown来写文章，于是去查看<a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown 语法说明</a><br>知道了怎么写小标题，举个例子</p><p><img src="/images/pasted-8.png" alt="upload successful"><br>一个#就是以及标题，两个#就二级标题，也就是说几个#对应几级标题，需要注意的是输入#的时候颜色会变成蓝色，要在#后面空格输入后的内容才是标题</p><h4 id="问题3：文中添加文字链接"><a href="#问题3：文中添加文字链接" class="headerlink" title="问题3：文中添加文字链接"></a>问题3：文中添加文字链接</h4><p>直接上图</p><p><img src="/images/pasted-9.png" alt="upload successful"></p><p><code>[这是链接的标题](这是url)</code><br>按照这个格式输入后就是点击链接标题就会跳转到相应的链接了</p><h4 id="问题4：如何设置阅读全文"><a href="#问题4：如何设置阅读全文" class="headerlink" title="问题4：如何设置阅读全文"></a>问题4：如何设置阅读全文</h4><p>next主题是默认展开全文的，文章多了就会显得特别繁琐，所以我们需要设置程这个样子</p><p><img src="/images/pasted-10.png" alt="upload successful"><br>方法很简单，只要在你想断开的地方输入<br><code>&lt;!--more--&gt;</code>就行了</p>]]></content>
     
     <summary type="html">
     
