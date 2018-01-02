@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python利用requests批量检测URL]]></title>
+    <url>%2F2018%2F01%2F02%2FPython%E5%88%A9%E7%94%A8requests%E6%89%B9%E9%87%8F%E6%A3%80%E6%B5%8BURL%2F</url>
+    <content type="text"><![CDATA[利用python的requests检测单个URL的返回值先安装所需要的requests库pip install requests 打开IDIE123import requestsresponse = requests.get(&quot;http://www.baidu.com&quot;)response.status_code PS: response.status_code=200表示服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。 批量检测URL直接上代码123456789101112131415161718192021import requestsheaders = &#123; &quot;User-Agent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36&quot;&#125;with open(&apos;sort1.txt&apos;,&apos;r&apos;) as file: urls = file.readlines() for url in urls: url = url.strip(&quot;\n&quot;).strip(&quot;\ufeff&quot;) try: response = requests.get(url,headers = headers,timeout = 3) if response.status_code == 200: print(&apos;success open++++&apos;+ url) with open(&apos;success.txt&apos;,&apos;a&apos;) as file1: success = file1.write(url+&apos;\n&apos;) else: print(&apos;--------&apos;) except Exception as e: with open(&apos;failed.txt&apos;,&apos;w&apos;) as file2: error = file2.write(url + &quot;\n&quot;) 这段代码中，把返回状态码为200的保存到了success.txt中，把异常的保存到了failed.txt中但是，它虽然能达到检测的效果，但是有时候运行起来特别慢，还得多学习优化的方法 后续：python还有其它方法也能检测URL的状态，日后会努力补上！]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python 生成不重复字符串组合]]></title>
     <url>%2F2017%2F12%2F31%2FPython-%E7%94%9F%E6%88%90%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E5%90%88%2F</url>
     <content type="text"><![CDATA[给出一个字符串，并利用python生成不重复字符串的所有组合12345import itertools words = &apos;4189t&apos; with open(&apos;sort1.txt&apos;,&apos;w&apos;) as file: for i in itertools.permutations(words,5): file.write(&quot;http://www.&quot;+&quot;&quot;.join(i)+&quot;.com\n&quot;) 我这里是生成字符串’4189t’的所有不重复字符串的组合，并且把所有组合方式导入到文件sort1.txt中，””.join(i)前后加的东西是我需要保存的链接形式.]]></content>

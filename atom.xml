@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2017-12-31T04:20:54.405Z</updated>
+  <updated>2018-01-02T13:00:29.506Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python利用requests批量检测URL</title>
+    <link href="http://www.wangxuezhang.xin/2018/01/02/Python%E5%88%A9%E7%94%A8requests%E6%89%B9%E9%87%8F%E6%A3%80%E6%B5%8BURL/"/>
+    <id>http://www.wangxuezhang.xin/2018/01/02/Python利用requests批量检测URL/</id>
+    <published>2018-01-02T12:33:00.000Z</published>
+    <updated>2018-01-02T13:00:29.506Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="利用python的requests检测单个URL的返回值"><a href="#利用python的requests检测单个URL的返回值" class="headerlink" title="利用python的requests检测单个URL的返回值"></a>利用python的requests检测单个URL的返回值</h5><p>先安装所需要的requests库<br><code>pip install requests</code></p><p><img src="/images/pasted-14.png" alt="upload successful"></p><p>打开IDIE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">response = requests.get(&quot;http://www.baidu.com&quot;)</span><br><span class="line">response.status_code</span><br></pre></td></tr></table></figure></p><p><img src="/images/pasted-16.png" alt="upload successful"><br>PS: response.status_code=200表示服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。<br><a id="more"></a></p><h5 id="批量检测URL"><a href="#批量检测URL" class="headerlink" title="批量检测URL"></a>批量检测URL</h5><p>直接上代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    &quot;User-Agent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">with open(&apos;sort1.txt&apos;,&apos;r&apos;) as file:</span><br><span class="line">    urls = file.readlines()</span><br><span class="line">    for url in urls:</span><br><span class="line">        url = url.strip(&quot;\n&quot;).strip(&quot;\ufeff&quot;)</span><br><span class="line">        try:</span><br><span class="line">            response = requests.get(url,headers = headers,timeout = 3)</span><br><span class="line">            if response.status_code == 200:</span><br><span class="line">                print(&apos;success open++++&apos;+ url)</span><br><span class="line">                with open(&apos;success.txt&apos;,&apos;a&apos;) as file1:</span><br><span class="line">                    success = file1.write(url+&apos;\n&apos;)</span><br><span class="line">            else:</span><br><span class="line">                print(&apos;--------&apos;)</span><br><span class="line">        except Exception as e:</span><br><span class="line">            with open(&apos;failed.txt&apos;,&apos;w&apos;) as file2:</span><br><span class="line">                error = file2.write(url + &quot;\n&quot;)</span><br></pre></td></tr></table></figure></p><p>这段代码中，把返回状态码为200的保存到了success.txt中，把异常的保存到了failed.txt中<br>但是，它虽然能达到检测的效果，但是有时候运行起来特别慢，还得多学习优化的方法</p><p>后续：<br>python还有其它方法也能检测URL的状态，日后会努力补上！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;利用python的requests检测单个URL的返回值&quot;&gt;&lt;a href=&quot;#利用python的requests检测单个URL的返回值&quot; class=&quot;headerlink&quot; title=&quot;利用python的requests检测单个URL的返回值&quot;&gt;&lt;/a&gt;利用python的requests检测单个URL的返回值&lt;/h5&gt;&lt;p&gt;先安装所需要的requests库&lt;br&gt;&lt;code&gt;pip install requests&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pasted-14.png&quot; alt=&quot;upload successful&quot;&gt;&lt;/p&gt;
+&lt;p&gt;打开IDIE&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import requests&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;response = requests.get(&amp;quot;http://www.baidu.com&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;response.status_code&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pasted-16.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;PS: response.status_code=200表示服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="http://www.wangxuezhang.xin/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://www.wangxuezhang.xin/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python 生成不重复字符串组合</title>
