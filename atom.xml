@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2017-12-30T06:41:02.924Z</updated>
+  <updated>2017-12-31T04:20:54.405Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 生成不重复字符串组合</title>
+    <link href="http://www.wangxuezhang.xin/2017/12/31/Python-%E7%94%9F%E6%88%90%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E5%90%88/"/>
+    <id>http://www.wangxuezhang.xin/2017/12/31/Python-生成不重复字符串组合/</id>
+    <published>2017-12-31T03:55:00.000Z</published>
+    <updated>2017-12-31T04:20:54.405Z</updated>
+    
+    <content type="html"><![CDATA[<p>给出一个字符串，并利用python生成不重复字符串的所有组合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import itertools  </span><br><span class="line">words = &apos;4189t&apos;  </span><br><span class="line">with open(&apos;sort1.txt&apos;,&apos;w&apos;) as file:</span><br><span class="line">    for i in itertools.permutations(words,5):</span><br><span class="line">        file.write(&quot;http://www.&quot;+&quot;&quot;.join(i)+&quot;.com\n&quot;)</span><br></pre></td></tr></table></figure></p><p> 我这里是生成字符串’4189t’的所有不重复字符串的组合，并且把所有组合方式导入到文件sort1.txt中，””.join(i)前后加的东西是我需要保存的链接形式.</p><p><img src="/images/pasted-13.png" alt="upload successful"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;给出一个字符串，并利用python生成不重复字符串的所有组合&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://www.wangxuezhang.xin/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://www.wangxuezhang.xin/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo s报错</title>
@@ -43,9 +68,9 @@
     <link href="http://www.wangxuezhang.xin/2017/12/28/hexo%E5%86%99%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/"/>
     <id>http://www.wangxuezhang.xin/2017/12/28/hexo写博客的基本方法/</id>
     <published>2017-12-28T07:34:00.000Z</published>
-    <updated>2017-12-30T06:40:19.776Z</updated>
+    <updated>2017-12-31T04:16:32.539Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>  刚刚搭建好hexo博客，准备写第一篇博客的时候意识到了一些问题，可能是因为自己没怎么用过markdown这个编辑器，所以不怎么熟悉，但是通过各种百度后终于知道了该怎么便捷的写自己的博客</p><h4 id="问题1：在哪里写博客？"><a href="#问题1：在哪里写博客？" class="headerlink" title="问题1：在哪里写博客？"></a>问题1：在哪里写博客？</h4><a id="more"></a><p>由于我的博客是搭在云服务器ubuntu上的，所以写博客的时候不可能直接进去用vim编辑吧，后面通过百度找到了解决办法 —安装hexo的admin后台</p><h6 id="安装hexo后端管理插件"><a href="#安装hexo后端管理插件" class="headerlink" title="安装hexo后端管理插件"></a>安装hexo后端管理插件</h6><p>npm install –save hexo-admin  —安装插件<br>hexo s                 —运行hexo服务器<br>本地打开<a href="http://localhost:4000/admin/" target="_blank" rel="noopener">http://localhost:4000/admin/</a> 就可以看到后台啦</p><h5 id="配置hexo后端管理插件"><a href="#配置hexo后端管理插件" class="headerlink" title="配置hexo后端管理插件"></a>配置hexo后端管理插件</h5><p>完成上述配置后，打开后台是不需要密码的，为了安全性起见，需要设置后台账号和密码<br>先进入后台，到setting中点击Setup authentification here<br><img src="/images/pasted-5.png" alt="upload successful"><br>进去之后是这样的</p><p><img src="/images/pasted-6.png" alt="upload successful"><br>在里面输入对应的信息,下面就会生成相应的代码，例如:</p><p><img src="/images/pasted-7.png" alt="upload successful"><br>把代码复制到hexo的_config.yml文件中，然后hexo s运行再进入后台就需要自己设置的账号和密码了</p><h4 id="问题2：markdown的一些语法要求"><a href="#问题2：markdown的一些语法要求" class="headerlink" title="问题2：markdown的一些语法要求"></a>问题2：markdown的一些语法要求</h4><p>准备自己编辑文章的时候发现不知怎么用markdown来写文章，于是去查看<a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown 语法说明</a><br>知道了怎么写小标题，举个例子</p><p><img src="/images/pasted-8.png" alt="upload successful"><br>一个#就是以及标题，两个#就二级标题，也就是说几个#对应几级标题，需要注意的是输入#的时候颜色会变成蓝色，要在#后面空格输入后的内容才是标题</p><h4 id="问题3：文中添加文字链接"><a href="#问题3：文中添加文字链接" class="headerlink" title="问题3：文中添加文字链接"></a>问题3：文中添加文字链接</h4><p>直接上图</p><p><img src="/images/pasted-9.png" alt="upload successful"></p><p><code>[这是链接的标题](这是url)</code><br>按照这个格式输入后就是点击链接标题就会跳转到相应的链接了</p><h4 id="问题4：如何设置阅读全文"><a href="#问题4：如何设置阅读全文" class="headerlink" title="问题4：如何设置阅读全文"></a>问题4：如何设置阅读全文</h4><p>next主题是默认展开全文的，文章多了就会显得特别繁琐，所以我们需要设置程这个样子</p><p><img src="/images/pasted-10.png" alt="upload successful"><br>方法很简单，只要在你想断开的地方输入<br><code>&lt;!--more--&gt;</code>就行了</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>  刚刚搭建好hexo博客，准备写第一篇博客的时候意识到了一些问题，可能是因为自己没怎么用过markdown这个编辑器，所以不怎么熟悉，但是通过各种百度后终于知道了该怎么便捷的写自己的博客</p><h4 id="问题1：在哪里写博客？"><a href="#问题1：在哪里写博客？" class="headerlink" title="问题1：在哪里写博客？"></a>问题1：在哪里写博客？</h4><a id="more"></a><p>由于我的博客是搭在云服务器ubuntu上的，所以写博客的时候不可能直接进去用vim编辑吧，后面通过百度找到了解决办法 —安装hexo的admin后台</p><h6 id="安装hexo后端管理插件"><a href="#安装hexo后端管理插件" class="headerlink" title="安装hexo后端管理插件"></a>安装hexo后端管理插件</h6><p>npm install –save hexo-admin  —安装插件<br>hexo s                 —运行hexo服务器<br>本地打开<a href="http://localhost:4000/admin/" target="_blank" rel="noopener">http://localhost:4000/admin/</a> 就可以看到后台啦</p><h5 id="配置hexo后端管理插件"><a href="#配置hexo后端管理插件" class="headerlink" title="配置hexo后端管理插件"></a>配置hexo后端管理插件</h5><p>完成上述配置后，打开后台是不需要密码的，为了安全性起见，需要设置后台账号和密码<br>先进入后台，到setting中点击Setup authentification here<br><img src="/images/pasted-5.png" alt="upload successful"><br>进去之后是这样的</p><p><img src="/images/pasted-6.png" alt="upload successful"><br>在里面输入对应的信息,下面就会生成相应的代码，例如:</p><p><img src="/images/pasted-7.png" alt="upload successful"><br>把代码复制到hexo的_config.yml文件中，然后hexo s运行再进入后台就需要自己设置的账号和密码了</p><h4 id="问题2：markdown的一些语法要求"><a href="#问题2：markdown的一些语法要求" class="headerlink" title="问题2：markdown的一些语法要求"></a>问题2：markdown的一些语法要求</h4><p>准备自己编辑文章的时候发现不知怎么用markdown来写文章，于是去查看<a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown 语法说明</a><br>知道了怎么写小标题，举个例子</p><p><img src="/images/pasted-8.png" alt="upload successful"><br>一个#就是以及标题，两个#就二级标题，也就是说几个#对应几级标题，需要注意的是输入#的时候颜色会变成蓝色，要在#后面空格输入后的内容才是标题</p><h4 id="问题3：文中添加文字链接"><a href="#问题3：文中添加文字链接" class="headerlink" title="问题3：文中添加文字链接"></a>问题3：文中添加文字链接</h4><p>直接上图</p><p><img src="/images/pasted-9.png" alt="upload successful"></p><p><code>[这是链接的标题](这是url)</code><br>按照这个格式输入后就是点击链接标题就会跳转到相应的链接了</p><h4 id="问题4：如何设置阅读全文"><a href="#问题4：如何设置阅读全文" class="headerlink" title="问题4：如何设置阅读全文"></a>问题4：如何设置阅读全文</h4><p>next主题是默认展开全文的，文章多了就会显得特别繁琐，所以我们需要设置程这个样子</p><p><img src="/images/pasted-10.png" alt="upload successful"><br>方法很简单，只要在你想断开的地方输入<br><code>&lt;!--more--&gt;</code>就行了</p><h4 id="问题5：文中添加代码块"><a href="#问题5：文中添加代码块" class="headerlink" title="问题5：文中添加代码块"></a>问题5：文中添加代码块</h4><p>单行代码只需在代码前后添加一个`<br>多行代码需要在代码前后添加三个```</p>]]></content>
     
     <summary type="html">
     

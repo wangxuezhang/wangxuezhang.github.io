@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python 生成不重复字符串组合]]></title>
+    <url>%2F2017%2F12%2F31%2FPython-%E7%94%9F%E6%88%90%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E5%90%88%2F</url>
+    <content type="text"><![CDATA[给出一个字符串，并利用python生成不重复字符串的所有组合12345import itertools words = &apos;4189t&apos; with open(&apos;sort1.txt&apos;,&apos;w&apos;) as file: for i in itertools.permutations(words,5): file.write(&quot;http://www.&quot;+&quot;&quot;.join(i)+&quot;.com\n&quot;) 我这里是生成字符串’4189t’的所有不重复字符串的组合，并且把所有组合方式导入到文件sort1.txt中，””.join(i)前后加的东西是我需要保存的链接形式.]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo s报错]]></title>
     <url>%2F2017%2F12%2F30%2Fhexo-s%E6%8A%A5%E9%94%99%2F</url>
     <content type="text"><![CDATA[想起来就心痛，昨天由于ubuntu上的vim配置出了点问题，于是就想卸载重装，但是插件太多，自己又想偷懒，就一个命令运行下来locate vimrc | xargs rm -rf删除后发现还是报错，就将错就错,又是一条命令下来locate vim | xargs rm -rf就这样，成功的，我的vim重装后连insert都不显示了…… 费了好大功夫把vim装好后，准备运行hexo博客看一下FATAL Cannot find module &#39;./vimeo&#39; Error: Cannot find module &#39;./vimeo&#39; 结局是这样的,吓得我赶紧npm install重新安装依赖，但是还是没用npm install --save vimeo,命令是运行成功了，当然错误也是一样的…去度娘逛了一圈，没有发现有人跟我报错是一样的（应该没有人像我那么傻，那么冲动…）慌的我东西都备份好了，准备重装了，但是！！！重点来了，临死之前我的抢救还是成功了，npm install hexo --vimeo这样终于成功的安装好了这个模块,命令终于运行成功了，真是一把心酸一把泪啊！以后再也不敢乱用删除命令了！！！！]]></content>
@@ -14,7 +25,7 @@
   <entry>
     <title><![CDATA[hexo写博客的基本方法]]></title>
     <url>%2F2017%2F12%2F28%2Fhexo%E5%86%99%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[前言: 刚刚搭建好hexo博客，准备写第一篇博客的时候意识到了一些问题，可能是因为自己没怎么用过markdown这个编辑器，所以不怎么熟悉，但是通过各种百度后终于知道了该怎么便捷的写自己的博客 问题1：在哪里写博客？ 由于我的博客是搭在云服务器ubuntu上的，所以写博客的时候不可能直接进去用vim编辑吧，后面通过百度找到了解决办法 —安装hexo的admin后台 安装hexo后端管理插件npm install –save hexo-admin —安装插件hexo s —运行hexo服务器本地打开http://localhost:4000/admin/ 就可以看到后台啦 配置hexo后端管理插件完成上述配置后，打开后台是不需要密码的，为了安全性起见，需要设置后台账号和密码先进入后台，到setting中点击Setup authentification here进去之后是这样的 在里面输入对应的信息,下面就会生成相应的代码，例如: 把代码复制到hexo的_config.yml文件中，然后hexo s运行再进入后台就需要自己设置的账号和密码了 问题2：markdown的一些语法要求准备自己编辑文章的时候发现不知怎么用markdown来写文章，于是去查看Markdown 语法说明知道了怎么写小标题，举个例子 一个#就是以及标题，两个#就二级标题，也就是说几个#对应几级标题，需要注意的是输入#的时候颜色会变成蓝色，要在#后面空格输入后的内容才是标题 问题3：文中添加文字链接直接上图 [这是链接的标题](这是url)按照这个格式输入后就是点击链接标题就会跳转到相应的链接了 问题4：如何设置阅读全文next主题是默认展开全文的，文章多了就会显得特别繁琐，所以我们需要设置程这个样子 方法很简单，只要在你想断开的地方输入&lt;!--more--&gt;就行了]]></content>
+    <content type="text"><![CDATA[前言: 刚刚搭建好hexo博客，准备写第一篇博客的时候意识到了一些问题，可能是因为自己没怎么用过markdown这个编辑器，所以不怎么熟悉，但是通过各种百度后终于知道了该怎么便捷的写自己的博客 问题1：在哪里写博客？ 由于我的博客是搭在云服务器ubuntu上的，所以写博客的时候不可能直接进去用vim编辑吧，后面通过百度找到了解决办法 —安装hexo的admin后台 安装hexo后端管理插件npm install –save hexo-admin —安装插件hexo s —运行hexo服务器本地打开http://localhost:4000/admin/ 就可以看到后台啦 配置hexo后端管理插件完成上述配置后，打开后台是不需要密码的，为了安全性起见，需要设置后台账号和密码先进入后台，到setting中点击Setup authentification here进去之后是这样的 在里面输入对应的信息,下面就会生成相应的代码，例如: 把代码复制到hexo的_config.yml文件中，然后hexo s运行再进入后台就需要自己设置的账号和密码了 问题2：markdown的一些语法要求准备自己编辑文章的时候发现不知怎么用markdown来写文章，于是去查看Markdown 语法说明知道了怎么写小标题，举个例子 一个#就是以及标题，两个#就二级标题，也就是说几个#对应几级标题，需要注意的是输入#的时候颜色会变成蓝色，要在#后面空格输入后的内容才是标题 问题3：文中添加文字链接直接上图 [这是链接的标题](这是url)按照这个格式输入后就是点击链接标题就会跳转到相应的链接了 问题4：如何设置阅读全文next主题是默认展开全文的，文章多了就会显得特别繁琐，所以我们需要设置程这个样子 方法很简单，只要在你想断开的地方输入&lt;!--more--&gt;就行了 问题5：文中添加代码块单行代码只需在代码前后添加一个`多行代码需要在代码前后添加三个```]]></content>
       <categories>
         <category>hexo</category>
       </categories>
