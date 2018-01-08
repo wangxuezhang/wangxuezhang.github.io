@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2018-01-02T13:00:29.506Z</updated>
+  <updated>2018-01-08T07:07:36.371Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>思科CCNA大综合实验</title>
+    <link href="http://www.wangxuezhang.xin/2018/01/08/%E6%80%9D%E7%A7%91CCN%E5%A4%A7%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C/"/>
+    <id>http://www.wangxuezhang.xin/2018/01/08/思科CCN大综合实验/</id>
+    <published>2018-01-08T06:24:00.000Z</published>
+    <updated>2018-01-08T07:07:36.371Z</updated>
+    
+    <content type="html"><![CDATA[<p>拓扑图如下：</p><p><img src="/images/pasted-17.png" alt="upload successful"><br>思科模拟器上的是这样的</p><p><img src="/images/pasted-18.png" alt="upload successful"><br>题目要求太多了，一点一点做起吧<br><a id="more"></a></p><h6 id="Etherchannel"><a href="#Etherchannel" class="headerlink" title="Etherchannel"></a>Etherchannel</h6><p>之前没怎么见过这东西，不怎么熟悉，所以还说上百度百科<br><a href="https://baike.baidu.com/item/EtherChannel/5802896?fr=aladdin" target="_blank" rel="noopener">Etherchannel</a><br>题目要求是：<br>做Etherchannel 捆绑Sw1 与Sw2 的<br>F0/11,F0/12 接口. 要求使用Cisco PAGP 协议中的主动协<br>商模式<br>Sw1的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Sw1(config)#interface range fastEthernet 0/11-12</span><br><span class="line">Sw1(config-if-range)#switchport mode trunk </span><br><span class="line">Sw1(config-if-range)#channel-group 1 mode desirable</span><br></pre></td></tr></table></figure></p><p>Sw2的配置跟Sw1的一样</p><h6 id="管理vlan访问控制"><a href="#管理vlan访问控制" class="headerlink" title="管理vlan访问控制"></a>管理vlan访问控制</h6><p>题目要求：<br>在Sw1 上设置管理vlan 10, 地址为192.168.1.10/24; 管理vlan 20, 地址为192.168.2.10/24.做ACL 访问控制, 要求只有PC1/PC2 可以远程访问Sw1.<br>这需要ACL，也就是访问控制列表，这里用到的是标准ACL<br>配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Sw1(config)#interface vlan 10</span><br><span class="line">Sw1(config-if)#ip address 192.168.1.10 255.255.255.0 //设置vlan10的管理地址</span><br><span class="line">Sw1(config-if)#exit</span><br><span class="line">Sw1(config)#interface vlan 20</span><br><span class="line">Sw1(config-if)#</span><br><span class="line">Sw1(config-if)#ip address 192.168.2.10 255.255.255.0 //设置vlan20的管理地址</span><br><span class="line">Sw1(config-if)#exit</span><br><span class="line">Sw1(config)#access-list 1 permit host 192.168.1.1 //设置ACL</span><br><span class="line">Sw1(config)#access-list 1 permit host 192.168.2.1 //设置ACL</span><br><span class="line">Sw1(config)#line vty 0 15</span><br><span class="line">Sw1(config-line)#access-class 1 in</span><br></pre></td></tr></table></figure></p><h6 id="单臂路由"><a href="#单臂路由" class="headerlink" title="单臂路由"></a>单臂路由</h6><p>用R1上的F1/0.10作为VLAN10的出口网关<br>用R3上的F2/0.20作为VLAN20的出口网关</p><p>先上百度百科充实一下自己的知识：<br>单臂路由（router-on-a-stick）是指在路由器的一个接口上通过配置子接口（或“逻辑接口”，并不存在真正物理接口）的方式，实现原来相互隔离的不同VLAN（虚拟局域网）之间的互联互通。<br>优缺点：<br>VLAN能有效分割局域网，实现各网络区域之间的访问控制。但现实中，往往需要配置某些VLAN之间的互联互通。比如，你的公司划分为领导层、销售部、财务部、人力部、科技部、审计部，并为不同部门配置了不同的VLAN，部门之间不能相互访问，有效保证了各部门的信息安全。但经常出现领导层需要跨越VLAN访问其他各个部门，这个功能就由单臂路由来实现。<br>优点：实现不同vlan之间的通信，有助理解、学习VLAN原理和子接口概念。<br>缺点：容易成为网络单点故障，配置稍有复杂，现实意义不大。</p><p>下面开始配置单臂路由：<br>交换机SW1和SW2上已经在接口1和2上分别设置好了vlan10和vlan20<br>只要配置路由器上的就好了<br>R1上的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">R1#configure terminal</span><br><span class="line">R1(config)#interface f1/0</span><br><span class="line">R1(config-if)#no shutdown //开启端口</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">R1(config)#interface f1/0.10 //进入子接口</span><br><span class="line">R1(config-subif)#encpuslation dotlQ 10 //为子接口封装802.1Q 协议，10是VLAN号</span><br><span class="line">R1(config-subif)#ip address 192.168.1.254 255.255.255.0 //划分网关和子网掩码</span><br></pre></td></tr></table></figure></p><p>R3上的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">R3#configure terminal</span><br><span class="line">R3(config)#interface f1/0</span><br><span class="line">R3(config-if)#no shutdown //开启端口</span><br><span class="line">R3(config-if)#exit</span><br><span class="line">R3(config)#interface f1/0.20 //进入子接口</span><br><span class="line">R3(config-subif)#encpuslation dotlQ 20 //为子接口封装802.1Q 协议，20是VLAN号</span><br><span class="line">R1(config-subif)#ip address 192.168.2.254 255.255.255.0 //划分网关和子网掩码</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;拓扑图如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pasted-17.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;思科模拟器上的是这样的&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pasted-18.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;题目要求太多了，一点一点做起吧&lt;br&gt;
+    
+    </summary>
+    
+      <category term="思科" scheme="http://www.wangxuezhang.xin/categories/%E6%80%9D%E7%A7%91/"/>
+    
+    
+      <category term="思科" scheme="http://www.wangxuezhang.xin/tags/%E6%80%9D%E7%A7%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Python利用requests批量检测URL</title>
