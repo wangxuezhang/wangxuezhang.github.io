@@ -93,7 +93,11 @@
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-21.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-22.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-23.png">
-<meta property="og:updated_time" content="2018-01-11T10:27:36.332Z">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-24.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-25.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-26.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-27.png">
+<meta property="og:updated_time" content="2018-01-13T07:01:23.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="校园网拓扑图">
 <meta name="twitter:description" content="拓扑图如下: 题目要求如下：1.按照图中所示配置校园网内的vlan2.教学楼交换机配置pvst生成树  对于vlan100，阻塞教学楼交换机1的6号端口和教学楼交换机3的5号端口  对于vlan200，阻塞教学楼交换机2的6号端口和教学楼交换机3的7号端口3.校园网内主机通过DHCP获得IP地址4.校园网内互通，通过WiFi连接的校内主机可以通过域名访问www.hhtc.edu.cn5.校内主机不">
@@ -355,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,389
+                  2,022
                 </span>
               
 
@@ -371,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  10
                 </span>
               
             </div>
@@ -406,7 +410,14 @@
 <p>然后让校园网与网络中心互通<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#interface fastEthernet 0/1</span><br><span class="line">Router(config-if)#no shutdown </span><br><span class="line">Router(config-if)#ip address 10.4.4.5 255.255.255.0 //设置端口1的地址</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#ip route 0.0.0.0 0.0.0.0 fastEthernet 0/0</span><br><span class="line">Router(config)#ip route 0.0.0.0 0.0.0.0 fastEthernet 0/1</span><br><span class="line">Router(config)#ip route 0.0.0.0 0.0.0.0 serial 0/0/0</span><br><span class="line">Router(config)#ip route 0.0.0.0 0.0.0.0 serial 0/0/1</span><br><span class="line">PS：为了方便，把所有接口的默认路由都设置了</span><br><span class="line">Router(config)#route eigrp 1 //选择eigrp协议</span><br><span class="line">Router(config-router)#network 10.0.0.0</span><br><span class="line">Router(config-router)#no auto-summary</span><br></pre></td></tr></table></figure></p>
 <p>测试结果如下：</p>
 <p><img src="/images/pasted-23.png" alt="upload successful"><br>宿舍楼的电脑能成功的访问www.hhtc.edu.cn<br>至此，内网全部互通。</p>
-<h4 id="帧中继"><a href="#帧中继" class="headerlink" title="帧中继"></a>帧中继</h4><p>Router0 和 Router1之间配置帧中继点到点网络</p>
+<h4 id="帧中继"><a href="#帧中继" class="headerlink" title="帧中继"></a>帧中继</h4><p>Router0 和 Router1之间配置帧中继点到点网络<br>帧中继（Frame Relay, FR）是面向连接的第二层传输协议，帧中继是典型的包交换技术。相比而言，同样带宽的帧中继通信费用比 DDN 专线要低，而且允许用户在帧中继交换网<br>络比较空闲的时候以高于 ISP 所承诺的速率进行传输。<br>下面进行配置，先配置帧中继云</p>
+<p><img src="/images/pasted-24.png" alt="upload successful"></p>
+<p><img src="/images/pasted-25.png" alt="upload successful"><br>LMI选择cisco，DLCI值可以任意填写。<br>Route0上的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#interface serial 0/0/0</span><br><span class="line">Router(config-if)#no shutdown</span><br><span class="line">Router(config-if)#encapsulation frame-relay //封装帧中继 </span><br><span class="line">Router(config-if)#frame-relay lmi-type cisco //帧中继类型为cisco</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#interface serial 0/0/0.1 point-to-point //配置子接口为点对点模式</span><br><span class="line">Router(config-subif)#ip address 192.168.1.1 255.255.255.0</span><br><span class="line">Router(config-subif)#frame-relay interface-dlci 103 //dlci值填写刚刚设置好的dlci值</span><br><span class="line">启动eigrp路由，添加新的路由</span><br><span class="line">Router(config)#router eigrp 1</span><br><span class="line">Router(config-router)#network 192.168.1.0</span><br></pre></td></tr></table></figure></p>
+<p>Router1上的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#interface serial 0/0/0</span><br><span class="line">Router(config-if)#no shutdown</span><br><span class="line">Router(config-if)#encapsulation frame-relay //封装帧中继 </span><br><span class="line">Router(config-if)#frame-relay lmi-type cisco //帧中继类型为cisco</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#interface serial 0/0/0.1 point-to-point //配置子接口为点对点模式</span><br><span class="line">Router(config-subif)#ip address 192.168.1.2 255.255.255.0</span><br><span class="line">Router(config-subif)#frame-relay interface-dlci 301 //dlci值填写刚刚设置好的dlci值</span><br><span class="line">启动eigrp路由，添加新的路由</span><br><span class="line">Router(config)#router eigrp 1</span><br><span class="line">Router(config-router)#network 192.168.1.0</span><br><span class="line">顺便把taobao服务器的网关设置好吧</span><br><span class="line">Router(config)#interface fastEthernet 0/0</span><br><span class="line">Router(config-if)#ip address 172.16.1.254 255.255.255.0</span><br><span class="line">Router(config-if)#no shutdown</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#router eigrp 1</span><br><span class="line">Router(config-router)#network 172.16.0.0</span><br></pre></td></tr></table></figure></p>
+<p>这样帧中继就配置好了，两个路由器就能互相ping通了</p>
+<p><img src="/images/pasted-26.png" alt="upload successful"><br>并且用show ip route 可以看到路由表</p>
+<p><img src="/images/pasted-27.png" alt="upload successful"></p>
+<h4 id="配置ACL"><a href="#配置ACL" class="headerlink" title="配置ACL"></a>配置ACL</h4><p>整个网络都能互相通信了，接下来就配置ACL了。<br>访问控制列表简称为 ACL，它使用包过滤技术，在路由器上读取第三层及第四层包头中的信息如源地址、目的地址、源端口、目的端口等，根据预先定义好的规则对包进行过滤，从而达到访问控制的目的。ACL 分很多种，不同场合应用不同种类的 ACL。<br>这个场景中是要求:<br>校内主机不能访问财务处的主机，但是财务处主机2除外</p>
 
       
     </div>
@@ -634,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置VLAN"><span class="nav-number">1.</span> <span class="nav-text">设置VLAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置DHCP"><span class="nav-number">2.</span> <span class="nav-text">设置DHCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启三层交换机的路由功能"><span class="nav-number">3.</span> <span class="nav-text">开启三层交换机的路由功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Router0上的设置"><span class="nav-number">4.</span> <span class="nav-text">Router0上的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#帧中继"><span class="nav-number">5.</span> <span class="nav-text">帧中继</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置VLAN"><span class="nav-number">1.</span> <span class="nav-text">设置VLAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置DHCP"><span class="nav-number">2.</span> <span class="nav-text">设置DHCP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启三层交换机的路由功能"><span class="nav-number">3.</span> <span class="nav-text">开启三层交换机的路由功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Router0上的设置"><span class="nav-number">4.</span> <span class="nav-text">Router0上的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#帧中继"><span class="nav-number">5.</span> <span class="nav-text">帧中继</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置ACL"><span class="nav-number">6.</span> <span class="nav-text">配置ACL</span></a></li></ol></div>
             
 
           </div>
@@ -669,7 +680,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.7k</span>
+    <span title="Site words total count">5.3k</span>
   
 </div>
 
@@ -693,7 +704,7 @@
 
 <div class="theme-info">
  <div class="powered-by"></div>
- <span class="post-count">博客全站共4.7k字</span>
+ <span class="post-count">博客全站共5.3k字</span>
  </div>
 
         
