@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2018-01-13T07:01:23.296Z</updated>
+  <updated>2018-03-11T03:41:54.331Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录一次网络克隆的经验</title>
+    <link href="http://www.wangxuezhang.xin/2018/03/08/Liunx-%E4%B8%8B%E6%90%AD%E5%BB%BA%E4%B8%80%E7%B3%BB%E5%88%97%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://www.wangxuezhang.xin/2018/03/08/Liunx-下搭建一系列服务器/</id>
+    <published>2018-03-08T07:19:55.000Z</published>
+    <updated>2018-03-11T03:41:54.331Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h5><p>  学生上课的大机房，其中学生机114台，教师机一台。要求教师机能够控制所有学生机，并且学生机要做还原。显然是不可能一台一台手动去装的，这时就需要用到网络克隆了。</p><h5 id="网络克隆"><a href="#网络克隆" class="headerlink" title="网络克隆"></a>网络克隆</h5><p>下面科普一下网络克隆（都是百度百科上的）<br>网络克隆是一种短时间内在大批量电脑上安装操作系统的一种先进的方法，目前实现的方法主要有两种，一种是在客户机上面使用存放引导文件,这种方法灵活性不太好，另一种方法是使用支持PXE的网卡来从服务器上面下载引导文件，然后装入到客户机中<br>特点：这种快速,大批量安装操作系统的方法越来越受到欢迎,因为,它脱离了以前那种逐台拆开机箱然后安装上光驱或者是用硬盘对拷的麻烦,并且以前的方式稍不注意就有可能因为插拨不当造成设备的损坏<br>具体操作：网络方式所需要做的工作就是准备一台网络服务器,在一台电脑(客户机)上安装系统,然后把这台客户机的系统做成母盘,上传到服务器当中,其他的客户机硬盘分区,系统的安装就很简单了,只需要将客户机从网络引导,即可连接到服务器,轻松的进行系统的安装,其中网络引导指的是从网卡启动,这个需要网卡的支持,如果网卡不支持网络启动的话,那就只能从其他介质进行引导了,可以把引导程序放入到光盘,软盘,移动硬盘,U盘,存储卡等等设备当中,同样可以实现网克的目的。</p><h5 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h5><p>(1):首先需要做一个做好的母机，母机上装好机房上课需要的软件。然后准备好maxdos软件<br>(2):开始制作母机的镜像。打开教师机上的maxdos软件</p><p><img src="/images/pasted-28.png" alt="upload successful"><br>PS：镜像文件路径需要自己选择合适的存放路径</p><p><img src="/images/pasted-29.png" alt="upload successful"><br>保存好后点击网络设置</p><p><img src="/images/pasted-32.png" alt="upload successful"></p><p>启动网卡会默认选择电脑网卡上的IP，所以根据自己喜好随意改，但是要保证启动网卡和起始IP在同一网段下！<br>启动方案后是这样的</p><p><img src="/images/pasted-33.png" alt="upload successful"><br>只要客户端开机选择网卡启动后连接上来以后点击发送就可以了，然后静静等待母盘制作完成<br>(3):开始批量网络克隆(在开始之前，建议把机房的网络断掉，交换机上的DHCP什么的也都关掉，不然克隆的时候可能出现客服端一直在DHCP界面，找不到服务端分配的地址，容易冲突)<br>设置方案</p><p><img src="/images/pasted-34.png" alt="upload successful"></p><p><img src="/images/pasted-35.png" alt="upload successful"><br>网络设置还是一样的，重点也是服务端(也就是这里的教师机)和客服端(学生机)在同一网段。</p><p><img src="/images/pasted-37.png" alt="upload successful"></p><p><img src="/images/pasted-36.png" alt="upload successful"><br>一切设置好之后，启动方案，把机房的电脑设置为网卡启动(不同机器设置方法不同，所以设置方法请自行百度)。机房电脑设置为网卡启动后，开机时会服务端会分配一个地址过去，并且会自动下载引导文件。当教师机上显示机器数目到了需要克隆的机器数目时就可以开始了。<br>…..做的时候只拍下了这两张图片</p><p><img src="/images/pasted-38.png" alt="upload successful"></p><p><img src="/images/pasted-39.png" alt="upload successful"><br>静静等进度条到达百分百就ok了。中间有些部分没有图片，下次做的时候在补上！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h5&gt;&lt;p&gt;  学生上课的大机房，其中学生机114台，教师机一台。要求教师机能够控制所有学生机，并且学生机要做还原。显然是不可能一台一台手动去装的，这时
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>校园网拓扑图</title>
