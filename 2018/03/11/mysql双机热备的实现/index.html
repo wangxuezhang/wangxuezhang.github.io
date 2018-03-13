@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="思科," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,21 +81,17 @@
 
 
 
-<meta name="description" content="拓扑图如下： 思科模拟器上的是这样的 题目要求太多了，一点一点做起吧">
-<meta name="keywords" content="思科">
+<meta name="description" content="双机热备概念日常百度百科双机热备百度百科双机热备包括广义与狭义两种。从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。从狭义上讲，双机热备特指基于active/standby方式的服务器热备。服务器数据包括数据库数据同时往两台或多台服务器写，或者使用一个共享的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="思科CCNA大综合实验">
-<meta property="og:url" content="http://www.wangxuezhang.xin/2018/01/08/思科CCN大综合实验/index.html">
+<meta property="og:title" content="mysql双机热备的实现">
+<meta property="og:url" content="http://www.wangxuezhang.xin/2018/03/11/mysql双机热备的实现/index.html">
 <meta property="og:site_name" content="王学长">
-<meta property="og:description" content="拓扑图如下： 思科模拟器上的是这样的 题目要求太多了，一点一点做起吧">
+<meta property="og:description" content="双机热备概念日常百度百科双机热备百度百科双机热备包括广义与狭义两种。从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。从狭义上讲，双机热备特指基于active/standby方式的服务器热备。服务器数据包括数据库数据同时往两台或多台服务器写，或者使用一个共享的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-17.png">
-<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-18.png">
-<meta property="og:updated_time" content="2018-01-09T11:43:58.861Z">
+<meta property="og:updated_time" content="2018-03-11T08:50:55.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="思科CCNA大综合实验">
-<meta name="twitter:description" content="拓扑图如下： 思科模拟器上的是这样的 题目要求太多了，一点一点做起吧">
-<meta name="twitter:image" content="http://www.wangxuezhang.xin/images/pasted-17.png">
+<meta name="twitter:title" content="mysql双机热备的实现">
+<meta name="twitter:description" content="双机热备概念日常百度百科双机热备百度百科双机热备包括广义与狭义两种。从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。从狭义上讲，双机热备特指基于active/standby方式的服务器热备。服务器数据包括数据库数据同时往两台或多台服务器写，或者使用一个共享的">
 
 
 
@@ -125,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wangxuezhang.xin/2018/01/08/思科CCN大综合实验/"/>
+  <link rel="canonical" href="http://www.wangxuezhang.xin/2018/03/11/mysql双机热备的实现/"/>
 
 
 
 
 
-  <title>思科CCNA大综合实验 | 王学长</title>
+  <title>mysql双机热备的实现 | 王学长</title>
   
 
 
@@ -292,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/01/08/思科CCN大综合实验/">
+    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/03/11/mysql双机热备的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王学长">
@@ -309,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">思科CCNA大综合实验</h1>
+          <h1 class="post-title" itemprop="name headline">mysql双机热备的实现</h1>
         
 
         <div class="post-meta">
@@ -321,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T14:24:00+08:00">
-                2018-01-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-11T16:45:08+08:00">
+                2018-03-11
               </time>
             
 
@@ -331,28 +327,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/思科/" itemprop="url" rel="index">
-                    <span itemprop="name">思科</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -375,7 +349,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,748
+                  553
                 </span>
               
 
@@ -391,7 +365,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  2
                 </span>
               
             </div>
@@ -412,26 +386,7 @@
       
 
       
-        <p>拓扑图如下：</p>
-<p><img src="/images/pasted-17.png" alt="upload successful"><br>思科模拟器上的是这样的</p>
-<p><img src="/images/pasted-18.png" alt="upload successful"><br>题目要求太多了，一点一点做起吧<br><a id="more"></a></p>
-<h6 id="Etherchannel"><a href="#Etherchannel" class="headerlink" title="Etherchannel"></a>Etherchannel</h6><p>之前没怎么见过这东西，不怎么熟悉，所以还说上百度百科<br><a href="https://baike.baidu.com/item/EtherChannel/5802896?fr=aladdin" target="_blank" rel="noopener">Etherchannel</a><br>题目要求是：<br>做Etherchannel 捆绑Sw1 与Sw2 的<br>F0/11,F0/12 接口. 要求使用Cisco PAGP 协议中的主动协<br>商模式<br>Sw1的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Sw1(config)#interface range fastEthernet 0/11-12</span><br><span class="line">Sw1(config-if-range)#switchport mode trunk </span><br><span class="line">Sw1(config-if-range)#channel-group 1 mode desirable</span><br></pre></td></tr></table></figure></p>
-<p>Sw2的配置跟Sw1的一样</p>
-<h6 id="管理vlan访问控制"><a href="#管理vlan访问控制" class="headerlink" title="管理vlan访问控制"></a>管理vlan访问控制</h6><p>题目要求：<br>在Sw1 上设置管理vlan 10, 地址为192.168.1.10/24; 管理vlan 20, 地址为192.168.2.10/24.做ACL 访问控制, 要求只有PC1/PC2 可以远程访问Sw1.<br>这需要ACL，也就是访问控制列表，这里用到的是标准ACL<br>配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Sw1(config)#interface vlan 10</span><br><span class="line">Sw1(config-if)#ip address 192.168.1.10 255.255.255.0 //设置vlan10的管理地址</span><br><span class="line">Sw1(config-if)#exit</span><br><span class="line">Sw1(config)#interface vlan 20</span><br><span class="line">Sw1(config-if)#</span><br><span class="line">Sw1(config-if)#ip address 192.168.2.10 255.255.255.0 //设置vlan20的管理地址</span><br><span class="line">Sw1(config-if)#exit</span><br><span class="line">Sw1(config)#access-list 1 permit host 192.168.1.1 //设置ACL</span><br><span class="line">Sw1(config)#access-list 1 permit host 192.168.2.1 //设置ACL</span><br><span class="line">Sw1(config)#line vty 0 15</span><br><span class="line">Sw1(config-line)#access-class 1 in</span><br></pre></td></tr></table></figure></p>
-<h6 id="单臂路由"><a href="#单臂路由" class="headerlink" title="单臂路由"></a>单臂路由</h6><p>用R1上的F1/0.10作为VLAN10的出口网关<br>用R3上的F2/0.20作为VLAN20的出口网关</p>
-<p>先上百度百科充实一下自己的知识：<br>单臂路由（router-on-a-stick）是指在路由器的一个接口上通过配置子接口（或“逻辑接口”，并不存在真正物理接口）的方式，实现原来相互隔离的不同VLAN（虚拟局域网）之间的互联互通。<br>优缺点：<br>VLAN能有效分割局域网，实现各网络区域之间的访问控制。但现实中，往往需要配置某些VLAN之间的互联互通。比如，你的公司划分为领导层、销售部、财务部、人力部、科技部、审计部，并为不同部门配置了不同的VLAN，部门之间不能相互访问，有效保证了各部门的信息安全。但经常出现领导层需要跨越VLAN访问其他各个部门，这个功能就由单臂路由来实现。<br>优点：实现不同vlan之间的通信，有助理解、学习VLAN原理和子接口概念。<br>缺点：容易成为网络单点故障，配置稍有复杂，现实意义不大。</p>
-<p>下面开始配置单臂路由：<br>交换机SW1和SW2上已经在接口1和2上分别设置好了vlan10和vlan20<br>只要配置路由器上的就好了<br>R1上的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">R1#configure terminal</span><br><span class="line">R1(config)#interface f1/0</span><br><span class="line">R1(config-if)#no shutdown //开启端口</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">R1(config)#interface f1/0.10 //进入子接口</span><br><span class="line">R1(config-subif)#encpuslation dotlQ 10 //为子接口封装802.1Q 协议，10是VLAN号</span><br><span class="line">R1(config-subif)#ip address 192.168.1.254 255.255.255.0 //划分网关和子网掩码</span><br></pre></td></tr></table></figure></p>
-<p>R3上的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">R3#configure terminal</span><br><span class="line">R3(config)#interface f1/0</span><br><span class="line">R3(config-if)#no shutdown //开启端口</span><br><span class="line">R3(config-if)#exit</span><br><span class="line">R3(config)#interface f1/0.20 //进入子接口</span><br><span class="line">R3(config-subif)#encpuslation dotlQ 20 //为子接口封装802.1Q 协议，20是VLAN号</span><br><span class="line">R1(config-subif)#ip address 192.168.2.254 255.255.255.0 //划分网关和子网掩码</span><br></pre></td></tr></table></figure></p>
-<h6 id="RIPv2"><a href="#RIPv2" class="headerlink" title="RIPv2"></a>RIPv2</h6><h6 id="等价负载均衡"><a href="#等价负载均衡" class="headerlink" title="等价负载均衡"></a>等价负载均衡</h6><p>等价负载均衡(Equal-Cost Load Sharing)：是将流量均等地分布到多条度量相同的路径上，RIP的Metric是跳数</p>
-<h6 id="OSPF"><a href="#OSPF" class="headerlink" title="OSPF"></a>OSPF</h6><p>题目要求：<br>在R1/R2/R3/R4 上配置单区域(area 0)OSPF, 使得<br>全网互通（R4与运营商R5的S0/0不宣告）<br>OSPF:<br>OSPF(Open Shortest Path First开放式最短路径优先）是一个内部网关协议(Interior Gateway Protocol，简称IGP），用于在单一自治系统（autonomous system，AS）内决策路由。是对链路状态路由协议的一种实现，隶属内部网关协议（IGP），故运作于自治系统内部。著名的迪克斯加算法(Dijkstra)被用来计算最短路径树。OSPF分为OSPFv2和OSPFv3两个版本,其中OSPFv2用在IPv4网络，OSPFv3用在IPv6网络。OSPFv2是由RFC 2328定义的，OSPFv3是由RFC 5340定义的。与RIP相比，OSPF是链路状态协议，而RIP是距离矢量协议。 不同厂商管理距离不同，思科OSPF的协议管理距离（AD）是110，华为OSPF的协议管理距离是10。更详细的解释可以直接上互动百科(OSPF):[<a href="http://www.baike.com/wiki/OSPF%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">http://www.baike.com/wiki/OSPF%E5%8D%8F%E8%AE%AE</a>]<br>然后是路由器的配置<br>R1的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">R1#configure t</span><br><span class="line">R1(config)#router ospf 1</span><br><span class="line">R1(config-router)#netw</span><br><span class="line">R1(config-router)#network 10.0.0.0 0.255.255.255 area 0</span><br><span class="line">R1(config-router)#network 172.16.0.0 0.255.255.255 area 0</span><br><span class="line">R1(config-router)#network 192.168.1.0 0.255.255.255 area 0</span><br></pre></td></tr></table></figure></p>
-<p>R2的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R2#configure terminal </span><br><span class="line">R2(config)#router ospf 1</span><br><span class="line">R2(config-router)#network 10.0.0.0 0.255.255.255 ar</span><br><span class="line">R2(config-router)#network 10.0.0.0 0.255.255.255 area 0</span><br></pre></td></tr></table></figure></p>
-<p>R3的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R3#configure terminal </span><br><span class="line">R3(config)#router ospf 1</span><br><span class="line">R3(config-router)#network 10.0.0.0 0.255.255.255 area 0</span><br><span class="line">R3(config-router)#network 172.16.0.0 0.255.255.255 area 0</span><br><span class="line">R3(config-router)#network 192.168.2.0 0.255.255.255 area 0</span><br></pre></td></tr></table></figure></p>
-<p>R4的配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R4#configure terminal </span><br><span class="line">R4(config)#router ospf 1</span><br><span class="line">R4(config-router)#network 172.16.0.0 0.255.255.255 area 0</span><br></pre></td></tr></table></figure></p>
-<h6 id="EIGRP"><a href="#EIGRP" class="headerlink" title="EIGRP"></a>EIGRP</h6><p>题目要求:<br>在R1/R2/R3/R4 上配置EIGRP( 关闭自动汇总), 使<br>得全网互通. 要求使用反掩码宣告准确的接口地址[R4<br>与运营商R5 的S0/0 接口不宣告]<br>R1的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">R1(config)#router eigrp 1</span><br><span class="line">R1(config-router)#no auto-summary</span><br><span class="line">R1(config-router)#network 10.1.1.1 0.0.0.0</span><br><span class="line">R1(config-router)#network 10.10.10.11 0.0.0.0</span><br><span class="line">R1(config-router)#network 172.16.1.1 0.0.0.0</span><br><span class="line">R1(config-router)#network 192.168.1.254 0.0.0.0</span><br></pre></td></tr></table></figure></p>
-<p>R2的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R2(config)#router eigrp 1</span><br><span class="line">R2(config-router)#no auto-summary</span><br><span class="line">R2(config-router)#network 10.1.1.2 0.0.0.0</span><br><span class="line">R2(config-router)#network 10.2.2.2 0.0.0.0</span><br></pre></td></tr></table></figure></p>
-<p>R3的配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R3(config)#router eigrp 1</span><br><span class="line">R3(config-router)#no auto-summary</span><br><span class="line">R3(config-router)#network 10.2.2.3 0.0.0.0</span><br><span class="line">R3(config-router)#network 172.16.2.3 0.0.0.0</span><br><span class="line">R3(config-router)#network 192.168.2.254 0.0.0.0</span><br></pre></td></tr></table></figure></p>
-<p>R4的配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R4(config)#router eigrp 1</span><br><span class="line">R4(config-router)#no auto-summary</span><br><span class="line">R4(config-router)#network 172.16.1.4 0.0.0.0</span><br><span class="line">R4(config-router)#network 172.16.2.4 0.0.0.0</span><br></pre></td></tr></table></figure></p>
-<h6 id="EIGRP-非等价负载均衡"><a href="#EIGRP-非等价负载均衡" class="headerlink" title="EIGRP- 非等价负载均衡"></a>EIGRP- 非等价负载均衡</h6><h6 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h6><p>题目要求：<br>在R1上做ACL 访问限制: 所有用户都可以ping 通Server;除PC1 和PC4 以外, 其他用户都可以访问内部网站.<br>R1上的配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R1#configure terminal </span><br><span class="line">R1(config)#access-list 100 deny tcp host 192.168.1.1 host 10.10.10.10 eq www //禁止PC1访问服务器</span><br><span class="line">R1(config)#access-list 100 deny tcp host 192.168.2.2 host 10.10.10.10 eq www //禁止PC4访问服务器</span><br><span class="line">R1(config)#access-list 100 permit ip any any //允许其它的通过</span><br></pre></td></tr></table></figure></p>
+        <h4 id="双机热备概念"><a href="#双机热备概念" class="headerlink" title="双机热备概念"></a>双机热备概念</h4><p>日常百度百科<a href="https://baike.baidu.com/item/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E7%B3%BB%E7%BB%9F/8666995" target="_blank" rel="noopener">双机热备百度百科</a><br>双机热备包括广义与狭义两种。<br>从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。<br>从狭义上讲，双机热备特指基于active/standby方式的服务器热备。服务器数据包括数据库数据同时往两台或多台服务器写，或者使用一个共享的存储设备。在同一时间内只有一台服务器运行。当其中运行着的一台服务器出现故障无法启动时，另一台备份服务器会通过软件诊测（一般是通过心跳诊断）将standby机器激活，保证应用在短时间内完全恢复正常使用。<br>双机热备针对的是服务器的故障。服务器的故障可能由各种原因引起，如设备故障、操作系统故障、软件系统故障等等。一般地讲，在技术人员在现场的情况下，恢复服务器正常可能需要10分钟、几小时甚至几天。从实际经验上看，除非是简单地重启服务器（可能隐患仍然存在），否则往往需要几个小时以上。而如果技术人员不在现场，则恢复服务的时间就更长了。<br>而对于一些重要系统而言，用户是很难忍受这样长时间的服务中断的。因此，就需要通过双机热备，来避免长时间的服务中断，保证系统长期、可靠的服务。<br>决定是否使用双机热备，正确的方法是要分析一下系统的重要性以及对服务中断的容忍程度，以此决定是否使用双机热备。即，你的用户能容忍多长时间恢复服务，如果服务不能恢复会造成多大的影响。</p>
 
       
     </div>
@@ -476,12 +431,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/思科/" rel="tag"># 思科</a>
-          
-        </div>
-      
 
       
       
@@ -491,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/02/Python利用requests批量检测URL/" rel="next" title="Python利用requests批量检测URL">
-                <i class="fa fa-chevron-left"></i> Python利用requests批量检测URL
+              <a href="/2018/03/08/记录一次网络克隆的经验/" rel="next" title="记录一次网络克隆的经验">
+                <i class="fa fa-chevron-left"></i> 记录一次网络克隆的经验
               </a>
             
           </div>
@@ -500,10 +449,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/11/校园网拓扑图/" rel="prev" title="校园网拓扑图">
-                校园网拓扑图 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#Etherchannel"><span class="nav-number">1.</span> <span class="nav-text">Etherchannel</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#管理vlan访问控制"><span class="nav-number">2.</span> <span class="nav-text">管理vlan访问控制</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#单臂路由"><span class="nav-number">3.</span> <span class="nav-text">单臂路由</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RIPv2"><span class="nav-number">4.</span> <span class="nav-text">RIPv2</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#等价负载均衡"><span class="nav-number">5.</span> <span class="nav-text">等价负载均衡</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OSPF"><span class="nav-number">6.</span> <span class="nav-text">OSPF</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#EIGRP"><span class="nav-number">7.</span> <span class="nav-text">EIGRP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#EIGRP-非等价负载均衡"><span class="nav-number">8.</span> <span class="nav-text">EIGRP- 非等价负载均衡</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ACL"><span class="nav-number">9.</span> <span class="nav-text">ACL</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#双机热备概念"><span class="nav-number">1.</span> <span class="nav-text">双机热备概念</span></a></li></ol></div>
             
 
           </div>
