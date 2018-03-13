@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2018-03-11T08:50:55.612Z</updated>
+  <updated>2018-03-13T09:37:58.487Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>centos 7.2 安装mysql5.7</title>
+    <link href="http://www.wangxuezhang.xin/2018/03/13/centos-7-2-%E5%AE%89%E8%A3%85mysql5-7/"/>
+    <id>http://www.wangxuezhang.xin/2018/03/13/centos-7-2-安装mysql5-7/</id>
+    <published>2018-03-13T09:24:26.000Z</published>
+    <updated>2018-03-13T09:37:58.487Z</updated>
+    
+    <content type="html"><![CDATA[<p>1:<code>wget http://repo.mysql.com/mysql57-community-release-el7-10.noarch.rpm</code><br>2:<code>rpm -Uvh mysql57-community-release-el7-10.noarch.rpm</code><br>3:<code>yum install -y mysql-community-server</code><br>4:<code>service mysqld start</code><br>5:修改临时密码，mysql5.7安装后会有个随机的密码。<br>查看临时密码<code>grep &#39;temporary password&#39; /var/log/mysqld.log</code> 这里我的密码是<br><img src="/images/pasted-40.png" alt="upload successful"><br>6:利用临时密码登录并且修改密码</p><p><img src="/images/pasted-41.png" alt="upload successful"><br>因为是为了做测试，所以这里密码设置简单一点，但是由于设置简单会报错，所以修改一下规则。<br><code>set global validate_password_policy=0;</code><br><code>set global validate_password_length=1;</code><br>然后尝试修改密码:<br><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;qweasd&#39;;</code><br>设置好后就可以用设置好的密码登录了！<br>出处：<a href="http://blog.csdn.net/zyw_java/article/details/70949596" target="_blank" rel="noopener">Centos7.3 安装Mysql5.7并修改初始密码</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1:&lt;code&gt;wget http://repo.mysql.com/mysql57-community-release-el7-10.noarch.rpm&lt;/code&gt;&lt;br&gt;2:&lt;code&gt;rpm -Uvh mysql57-community-release-el7-1
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>mysql双机热备的实现</title>
