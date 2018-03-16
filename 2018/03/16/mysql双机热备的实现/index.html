@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="mysql,linux," />
 
 
 
@@ -81,16 +81,24 @@
 
 
 
-<meta name="description" content="欢迎来到王学长的乐园">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王学长">
-<meta property="og:url" content="http://www.wangxuezhang.xin/archives/2018/01/index.html">
+<meta name="description" content="双机热备概念日常百度百科双机热备百度百科双机热备包括广义与狭义两种。从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。">
+<meta name="keywords" content="mysql,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql双机热备的实现">
+<meta property="og:url" content="http://www.wangxuezhang.xin/2018/03/16/mysql双机热备的实现/index.html">
 <meta property="og:site_name" content="王学长">
-<meta property="og:description" content="欢迎来到王学长的乐园">
+<meta property="og:description" content="双机热备概念日常百度百科双机热备百度百科双机热备包括广义与狭义两种。从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-44.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-46.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-49.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-50.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-51.png">
+<meta property="og:updated_time" content="2018-03-16T04:18:07.877Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王学长">
-<meta name="twitter:description" content="欢迎来到王学长的乐园">
+<meta name="twitter:title" content="mysql双机热备的实现">
+<meta name="twitter:description" content="双机热备概念日常百度百科双机热备百度百科双机热备包括广义与狭义两种。从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。">
+<meta name="twitter:image" content="http://www.wangxuezhang.xin/images/pasted-44.png">
 
 
 
@@ -120,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wangxuezhang.xin/archives/2018/01/"/>
+  <link rel="canonical" href="http://www.wangxuezhang.xin/2018/03/16/mysql双机热备的实现/"/>
 
 
 
 
 
-  <title>归档 | 王学长</title>
+  <title>mysql双机热备的实现 | 王学长</title>
   
 
 
@@ -145,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,148 +281,243 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/03/16/mysql双机热备的实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王学长">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王学长">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">mysql双机热备的实现</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T16:45:00+08:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 11 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/11/校园网拓扑图/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">校园网拓扑图</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  988
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-11T13:44:30+08:00"
-              content="2018-01-11" >
-          01-11
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/08/思科CCN大综合实验/" itemprop="url">
-              
-                <span itemprop="name">思科CCNA大综合实验</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-08T14:24:00+08:00"
-              content="2018-01-08" >
-          01-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/02/Python利用requests批量检测URL/" itemprop="url">
-              
-                <span itemprop="name">Python利用requests批量检测URL</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-02T20:33:00+08:00"
-              content="2018-01-02" >
-          01-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="双机热备概念"><a href="#双机热备概念" class="headerlink" title="双机热备概念"></a>双机热备概念</h4><p>日常百度百科<a href="https://baike.baidu.com/item/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E7%B3%BB%E7%BB%9F/8666995" target="_blank" rel="noopener">双机热备百度百科</a><br>双机热备包括广义与狭义两种。<br>从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。<br><a id="more"></a><br>从狭义上讲，双机热备特指基于active/standby方式的服务器热备。服务器数据包括数据库数据同时往两台或多台服务器写，或者使用一个共享的存储设备。在同一时间内只有一台服务器运行。当其中运行着的一台服务器出现故障无法启动时，另一台备份服务器会通过软件诊测（一般是通过心跳诊断）将standby机器激活，保证应用在短时间内完全恢复正常使用。<br>双机热备针对的是服务器的故障。服务器的故障可能由各种原因引起，如设备故障、操作系统故障、软件系统故障等等。一般地讲，在技术人员在现场的情况下，恢复服务器正常可能需要10分钟、几小时甚至几天。从实际经验上看，除非是简单地重启服务器（可能隐患仍然存在），否则往往需要几个小时以上。而如果技术人员不在现场，则恢复服务的时间就更长了。<br>而对于一些重要系统而言，用户是很难忍受这样长时间的服务中断的。因此，就需要通过双机热备，来避免长时间的服务中断，保证系统长期、可靠的服务。<br>决定是否使用双机热备，正确的方法是要分析一下系统的重要性以及对服务中断的容忍程度，以此决定是否使用双机热备。即，你的用户能容忍多长时间恢复服务，如果服务不能恢复会造成多大的影响。</p>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><p>主服务器A：10.22.30.6(centos 7)<br>从服务器B：10.22.30.7(centos 7)<br>mysql:5.6.39(两台服务器都是一样的)<br>这里配置的是主从服务器,其中同步的都是创建的test数据库<br>mysql用户名test，密码123456</p>
+<h4 id="主服务器A上的配置"><a href="#主服务器A上的配置" class="headerlink" title="主服务器A上的配置"></a>主服务器A上的配置</h4><p>1:先创建一个允许从服务器B连接数据库的用户test,密码123456<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grant replication slave on *.* to &apos;test&apos;@&apos;10.22.30.7&apos;  identified by &apos;123456&apos;;</span><br><span class="line">flush privileges; //刷新权限</span><br></pre></td></tr></table></figure></p>
+<p>创建好后在从服务器B上连接测试一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 10.22.30.6 -u root -p 123456</span><br></pre></td></tr></table></figure></p>
+<p>这样表示能连接成功<br><img src="/images/pasted-44.png" alt="upload successful"><br>PS:如果连接不进去可以检查一下A服务器上防火墙是否允许3306端口通过。<br>2:在修改主服务器上A的/etc/my.cnf<br><figure class="highlight plain"><figcaption><span>~]# vim</span><a href="/etc/my.cnf```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![upload successful](/images/pasted-45.png)</span><br><span class="line">3:重启mysql服务,进入mysql查看状态</span><br><span class="line">```[root@localhost ~]# service mysqld restart ##重启mysql服务</span><br></pre></td></tr></table></figure></p>
+<p>查看master状态<br><img src="/images/pasted-46.png" alt="upload successful"><br>其中File和Position参数是配置从服务器需要的。<br>4:把数据库的锁打开<br><code>mysql&gt; unlock tables;</code></p>
+<h4 id="从服务器B上的配置"><a href="#从服务器B上的配置" class="headerlink" title="从服务器B上的配置"></a>从服务器B上的配置</h4><p>1:修改从服务器B上mysql的配置文件<br><figure class="highlight plain"><figcaption><span>~]# vim</span><a href="/etc/my.cnf```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![upload successful](/images/pasted-47.png)</span><br><span class="line">2:重启mysql服务</span><br><span class="line">```[root@root ~]# service mysqld restart</span><br></pre></td></tr></table></figure></p>
+<p>3:指定同步位置<br><figure class="highlight plain"><figcaption><span>slave; #先关闭同步服务```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![upload successful](/images/pasted-48.png)</span><br><span class="line">```mysql&gt;start slave;#开启同步服务</span><br></pre></td></tr></table></figure></p>
+<p>4:查看从服务器状态</p>
+<p><img src="/images/pasted-49.png" alt="upload successful"><br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes<br>代表同步设置成功。<br>5:测试同步<br>主服务器上在test数据库中创建两个表</p>
+<p><img src="/images/pasted-50.png" alt="upload successful"><br>从服务器上同步如下</p>
+<p><img src="/images/pasted-51.png" alt="upload successful"><br>到此mysql主从热备就配置完毕了！主-主热备的话，以后再不上</p>
+<p>参考：<a href="http://yunnick.iteye.com/blog/1845301" target="_blank" rel="noopener"> mysql双机热备的实现</a></p>
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏,来者不拒,哈哈</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexin.png" alt="王学长 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/pay1.jpg" alt="王学长 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/13/centos-7-2-安装mysql5-7/" rel="next" title="centos 7.2 安装mysql5.7">
+                <i class="fa fa-chevron-left"></i> centos 7.2 安装mysql5.7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -422,6 +525,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -442,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -532,6 +653,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#双机热备概念"><span class="nav-number">1.</span> <span class="nav-text">双机热备概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境搭建"><span class="nav-number">2.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主服务器A上的配置"><span class="nav-number">3.</span> <span class="nav-text">主服务器A上的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从服务器B上的配置"><span class="nav-number">4.</span> <span class="nav-text">从服务器B上的配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -691,6 +828,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -716,6 +857,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2152976"></script>
+      <!-- UY END -->
     
   
 
