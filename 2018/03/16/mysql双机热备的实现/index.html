@@ -94,7 +94,12 @@
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-49.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-50.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-51.png">
-<meta property="og:updated_time" content="2018-03-16T04:18:07.877Z">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-52.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-53.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-54.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-55.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-56.png">
+<meta property="og:updated_time" content="2018-03-17T14:59:10.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql双机热备的实现">
 <meta name="twitter:description" content="双机热备概念日常百度百科双机热备百度百科双机热备包括广义与狭义两种。从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。">
@@ -378,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  988
+                  1,230
                 </span>
               
 
@@ -394,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -415,8 +420,8 @@
       
 
       
-        <h4 id="双机热备概念"><a href="#双机热备概念" class="headerlink" title="双机热备概念"></a>双机热备概念</h4><p>日常百度百科<a href="https://baike.baidu.com/item/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E7%B3%BB%E7%BB%9F/8666995" target="_blank" rel="noopener">双机热备百度百科</a><br>双机热备包括广义与狭义两种。<br>从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。<br><a id="more"></a><br>从狭义上讲，双机热备特指基于active/standby方式的服务器热备。服务器数据包括数据库数据同时往两台或多台服务器写，或者使用一个共享的存储设备。在同一时间内只有一台服务器运行。当其中运行着的一台服务器出现故障无法启动时，另一台备份服务器会通过软件诊测（一般是通过心跳诊断）将standby机器激活，保证应用在短时间内完全恢复正常使用。<br>双机热备针对的是服务器的故障。服务器的故障可能由各种原因引起，如设备故障、操作系统故障、软件系统故障等等。一般地讲，在技术人员在现场的情况下，恢复服务器正常可能需要10分钟、几小时甚至几天。从实际经验上看，除非是简单地重启服务器（可能隐患仍然存在），否则往往需要几个小时以上。而如果技术人员不在现场，则恢复服务的时间就更长了。<br>而对于一些重要系统而言，用户是很难忍受这样长时间的服务中断的。因此，就需要通过双机热备，来避免长时间的服务中断，保证系统长期、可靠的服务。<br>决定是否使用双机热备，正确的方法是要分析一下系统的重要性以及对服务中断的容忍程度，以此决定是否使用双机热备。即，你的用户能容忍多长时间恢复服务，如果服务不能恢复会造成多大的影响。</p>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><p>主服务器A：10.22.30.6(centos 7)<br>从服务器B：10.22.30.7(centos 7)<br>mysql:5.6.39(两台服务器都是一样的)<br>这里配置的是主从服务器,其中同步的都是创建的test数据库<br>mysql用户名test，密码123456</p>
+        <h3 id="双机热备概念"><a href="#双机热备概念" class="headerlink" title="双机热备概念"></a>双机热备概念</h3><p>日常百度百科<a href="https://baike.baidu.com/item/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E7%B3%BB%E7%BB%9F/8666995" target="_blank" rel="noopener">双机热备百度百科</a><br>双机热备包括广义与狭义两种。<br>从广义上讲，就是对于重要的服务，使用两台服务器，互相备份，共同执行同一服务。当一台服务器出现故障时，可以由另一台服务器承担服务任务，从而在不需要人工干预的情况下，自动保证系统能持续提供服务。<br><a id="more"></a><br>从狭义上讲，双机热备特指基于active/standby方式的服务器热备。服务器数据包括数据库数据同时往两台或多台服务器写，或者使用一个共享的存储设备。在同一时间内只有一台服务器运行。当其中运行着的一台服务器出现故障无法启动时，另一台备份服务器会通过软件诊测（一般是通过心跳诊断）将standby机器激活，保证应用在短时间内完全恢复正常使用。<br>双机热备针对的是服务器的故障。服务器的故障可能由各种原因引起，如设备故障、操作系统故障、软件系统故障等等。一般地讲，在技术人员在现场的情况下，恢复服务器正常可能需要10分钟、几小时甚至几天。从实际经验上看，除非是简单地重启服务器（可能隐患仍然存在），否则往往需要几个小时以上。而如果技术人员不在现场，则恢复服务的时间就更长了。<br>而对于一些重要系统而言，用户是很难忍受这样长时间的服务中断的。因此，就需要通过双机热备，来避免长时间的服务中断，保证系统长期、可靠的服务。<br>决定是否使用双机热备，正确的方法是要分析一下系统的重要性以及对服务中断的容忍程度，以此决定是否使用双机热备。即，你的用户能容忍多长时间恢复服务，如果服务不能恢复会造成多大的影响。</p>
+<h3 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h3><h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><p>主服务器A：10.22.30.6(centos 7)<br>从服务器B：10.22.30.7(centos 7)<br>mysql:5.6.39(两台服务器都是一样的)<br>这里配置的是主从服务器,其中同步的都是创建的test数据库<br>mysql用户名test，密码123456</p>
 <h4 id="主服务器A上的配置"><a href="#主服务器A上的配置" class="headerlink" title="主服务器A上的配置"></a>主服务器A上的配置</h4><p>1:先创建一个允许从服务器B连接数据库的用户test,密码123456<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grant replication slave on *.* to &apos;test&apos;@&apos;10.22.30.7&apos;  identified by &apos;123456&apos;;</span><br><span class="line">flush privileges; //刷新权限</span><br></pre></td></tr></table></figure></p>
 <p>创建好后在从服务器B上连接测试一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 10.22.30.6 -u root -p 123456</span><br></pre></td></tr></table></figure></p>
 <p>这样表示能连接成功<br><img src="/images/pasted-44.png" alt="upload successful"><br>PS:如果连接不进去可以检查一下A服务器上防火墙是否允许3306端口通过。<br>2:在修改主服务器上A的/etc/my.cnf<br><figure class="highlight plain"><figcaption><span>~]# vim</span><a href="/etc/my.cnf```">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![upload successful](/images/pasted-45.png)</span><br><span class="line">3:重启mysql服务,进入mysql查看状态</span><br><span class="line">```[root@localhost ~]# service mysqld restart ##重启mysql服务</span><br></pre></td></tr></table></figure></p>
@@ -426,8 +431,16 @@
 <p>4:查看从服务器状态</p>
 <p><img src="/images/pasted-49.png" alt="upload successful"><br>Slave_IO_Running: Yes<br>Slave_SQL_Running: Yes<br>代表同步设置成功。<br>5:测试同步<br>主服务器上在test数据库中创建两个表</p>
 <p><img src="/images/pasted-50.png" alt="upload successful"><br>从服务器上同步如下</p>
-<p><img src="/images/pasted-51.png" alt="upload successful"><br>到此mysql主从热备就配置完毕了！主-主热备的话，以后再不上</p>
-<p>参考：<a href="http://yunnick.iteye.com/blog/1845301" target="_blank" rel="noopener"> mysql双机热备的实现</a></p>
+<p><img src="/images/pasted-51.png" alt="upload successful"><br>到此mysql主从热备就配置完毕了！</p>
+<h3 id="主主复制"><a href="#主主复制" class="headerlink" title="主主复制"></a>主主复制</h3><p>主从复制是从服务器同步主服务器，那么主主复制就是两台主机互为主从。下面开始配置</p>
+<h4 id="环境搭建-1"><a href="#环境搭建-1" class="headerlink" title="环境搭建"></a>环境搭建</h4><p>环境还是接着用主从复制时候的环境，不过开始前要先把mysql的同步停止。</p>
+<h4 id="主服务器B上的配置"><a href="#主服务器B上的配置" class="headerlink" title="主服务器B上的配置"></a>主服务器B上的配置</h4><p>1:先创建一个允许服务器A远程登录的用户<br><figure class="highlight plain"><figcaption><span>grant replication slave on *.* to 'test'@'10.22.30.6' identified by '123456'</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;flush privileges;</span><br></pre></td></tr></table></figure></p>
+<p>2:查看二进制名和位置</p>
+<p><img src="/images/pasted-52.png" alt="upload successful"><br>然后在主服务器A上填好相应的信息</p>
+<h4 id="主服务器A上的配置-1"><a href="#主服务器A上的配置-1" class="headerlink" title="主服务器A上的配置"></a>主服务器A上的配置</h4><p>1:进入数据库，配置一下信息<br><img src="/images/pasted-53.png" alt="upload successful"><br>2:开启复制(B服务器上也要开)  <code>mysql&gt; start slave;</code><br>3:查看是否配置成功</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"><br>Slave_IO_Running:Yes<br>Slave_SQL_Runing:Yes<br>代表配置成功</p>
+<h4 id="测试同步"><a href="#测试同步" class="headerlink" title="测试同步"></a>测试同步</h4><p>B服务器上创建stu表并插入数据<br><img src="/images/pasted-55.png" alt="upload successful"><br>查看A服务器上同步状态<br><img src="/images/pasted-56.png" alt="upload successful"></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>看了很多博客，还是觉得这篇博客写的清楚，膜拜大佬<a href="http://www.cnblogs.com/phpstudy2015-6/p/6485819.html#_label7" target="_blank" rel="noopener">那一叶随风</a></p>
 
       
     </div>
@@ -663,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#双机热备概念"><span class="nav-number">1.</span> <span class="nav-text">双机热备概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境搭建"><span class="nav-number">2.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主服务器A上的配置"><span class="nav-number">3.</span> <span class="nav-text">主服务器A上的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从服务器B上的配置"><span class="nav-number">4.</span> <span class="nav-text">从服务器B上的配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#双机热备概念"><span class="nav-number">1.</span> <span class="nav-text">双机热备概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主从复制"><span class="nav-number">2.</span> <span class="nav-text">主从复制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境搭建"><span class="nav-number">2.1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主服务器A上的配置"><span class="nav-number">2.2.</span> <span class="nav-text">主服务器A上的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从服务器B上的配置"><span class="nav-number">2.3.</span> <span class="nav-text">从服务器B上的配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主主复制"><span class="nav-number">3.</span> <span class="nav-text">主主复制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境搭建-1"><span class="nav-number">3.1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主服务器B上的配置"><span class="nav-number">3.2.</span> <span class="nav-text">主服务器B上的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主服务器A上的配置-1"><span class="nav-number">3.3.</span> <span class="nav-text">主服务器A上的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试同步"><span class="nav-number">3.4.</span> <span class="nav-text">测试同步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -698,7 +711,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.5k</span>
+    <span title="Site words total count">7.7k</span>
   
 </div>
 
@@ -722,7 +735,7 @@
 
 <div class="theme-info">
  <div class="powered-by"></div>
- <span class="post-count">博客全站共7.5k字</span>
+ <span class="post-count">博客全站共7.7k字</span>
  </div>
 
         
