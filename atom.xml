@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2018-03-17T14:59:10.774Z</updated>
+  <updated>2018-03-28T08:01:20.871Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu下搭建owncloud私有云平台</title>
+    <link href="http://www.wangxuezhang.xin/2018/03/27/Ubuntu%E4%B8%8B%E6%90%AD%E5%BB%BAowncloud%E7%A7%81%E6%9C%89%E4%BA%91%E5%B9%B3%E5%8F%B0/"/>
+    <id>http://www.wangxuezhang.xin/2018/03/27/Ubuntu下搭建owncloud私有云平台/</id>
+    <published>2018-03-27T10:30:13.000Z</published>
+    <updated>2018-03-28T08:01:20.871Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="owncloud"><a href="#owncloud" class="headerlink" title="owncloud"></a>owncloud</h4><p>ownCloud是一个自由且开源的个人云存储解决方案(类似百度网盘或者Dropbox)，包括两个部分：服务器和客户端。</p><p>ownCloud在客户端可通过网页界面，或者安装专用的客户端软件来使用。网页界面当然就是任何能打开网页的平台都支持，而客户端软件也支持相当多平台，Windows、Linux、iOS、Android皆有。</p><p>除了云存储之外，ownCloud也可用于同步行事历、电子邮件联系人、网页浏览器的书签；此外还有多人在线文件同步协作的功能。</p><h4 id="搭建的目的"><a href="#搭建的目的" class="headerlink" title="搭建的目的"></a>搭建的目的</h4><p>ftp服务器虽然能储存东西，但是不能在线预览。最近下载了一些教学视频，无奈自己笔记本硬盘太小，所以就想搭建一个能在线浏览pdf和视频的云平台。主要用于校园网里面。</p><h4 id="环境搭建过程"><a href="#环境搭建过程" class="headerlink" title="环境搭建过程"></a>环境搭建过程</h4><p>服务器：Ubuntu 16.04 IP:10.22.30.20<br>····························<br>第一步:安装apache2<br><code>apt install apache2 -y</code></p><p>安装完成后，浏览器访问服务器地址出现以下界面代表安装成功</p><p><img src="/images/pasted-57.png" alt="upload successful"><br>PS:注意防火墙开放80端口<br>····························<br>第二步:安装mysql<br><code>apt-get install mysql-server mysql-client -y</code><br>安装过程中会要求设置数据库密码<br>安装完成后 mysql -u root -p<br>出现以下界面代表安装mysql安装成功<br><img src="/images/pasted-58.png" alt="upload successful"><br>····························<br>第三步:安装phpmyadmin<br><code>apt-get install phpmyadmin</code><br>出现下图界面选apache2</p><p><img src="/images/pasted-59.png" alt="upload successful"><br>输入mysql的密码</p><p><img src="/images/pasted-60.png" alt="upload successful"><br>安装完成后在浏览器访问10.22.30.20/phpmyadmin,账号是root，密码是mysql的密码</p><p><img src="/images/pasted-62.png" alt="upload successful"><br>登录后创建数据库</p><p><img src="/images/pasted-63.png" alt="upload successful"><br>····························<br>第四步:安装PHP<br><code>apt-get install php -y</code></p><h3 id="owncloud服务端搭建"><a href="#owncloud服务端搭建" class="headerlink" title="owncloud服务端搭建"></a>owncloud服务端搭建</h3><p>解压下载好的owncloud-9.1.0.zip(可以去owncloud官网下载)<br><code>unzip owncloud-9.1.0.zip</code><br>将owncloud移动到/var/www/html 目录下<br><code>root@wlzx:/home/wlzx# mv owncloud /var/www/html/</code><br>建立数据文件夹，并赋予权限<br>cd /var/www/html/owncloud<br>root@wlzx:/var/www/html/owncloud# mkdir data<br>root@wlzx:/var/www/html/owncloud# chown -R www-data:www-data data<br>root@wlzx:/var/www/html/owncloud# chown -R www-data:www-data config<br>root@wlzx:/var/www/html/owncloud# chown -R www-data:www-data apps<br>····························<br>修改apache2的配置文件<br>vim /etc/apache2/apache2.conf<br><img src="/images/pasted-64.png" alt="upload successful"><br>重新启动模块</p><p> a2enmod rewrite<br> a2enmod headers</p><p>重新启动apache2</p><p>sudo service apache2 restart</p><p>····························<br>访问10.22.30.20/owncloud,发现少了两个模块<br><img src="/images/pasted-65.png" alt="upload successful"><br>安装curl模块<br><code>root@wlzx:/var/www/html/owncloud# apt-get install php-curl -y</code><br>安装zip模块<br><code>root@wlzx:/var/www/html/owncloud/zip-1.13.5# apt-get install php-zip</code><br>重启apache2服务<br><code>root@wlzx:/var/www/html/owncloud/zip-1.13.5# /etc/init.d/apache2 restart</code><br>再次访问10.22.30.20/owncloud，设置好管理员密码，数据库账号、密码、数据库名称</p><p><img src="/images/pasted-66.png" alt="upload successful"><br>至此这个云服务器就能正常访问啦</p><p><img src="/images/pasted-67.png" alt="upload successful"></p><h3 id="修改上传限制"><a href="#修改上传限制" class="headerlink" title="修改上传限制"></a>修改上传限制</h3><p>由于owncloud默认现在最大上传大小为513M，有些大文件上传不了，所以需要修改一下配置文件(owncloud目录下的.htaccess 文件)</p><p><img src="/images/pasted-68.png" alt="upload successful"><br>然后就能上传大文件了</p><p><img src="/images/pasted-69.png" alt="upload successful"><br>owncloud还可以挂载ftp站点，添加一些其它的插件！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;owncloud&quot;&gt;&lt;a href=&quot;#owncloud&quot; class=&quot;headerlink&quot; title=&quot;owncloud&quot;&gt;&lt;/a&gt;owncloud&lt;/h4&gt;&lt;p&gt;ownCloud是一个自由且开源的个人云存储解决方案(类似百度网盘或者Dropbox)，包括
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>shell 编程 备忘录</title>
+    <link href="http://www.wangxuezhang.xin/2018/03/23/shell-%E7%BC%96%E7%A8%8B-%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>http://www.wangxuezhang.xin/2018/03/23/shell-编程-备忘录/</id>
+    <published>2018-03-23T12:09:16.000Z</published>
+    <updated>2018-03-23T12:10:52.827Z</updated>
+    
+    <content type="html"><![CDATA[<p>复习一下shell编程 备忘</p><h3 id="if-条件判断语句"><a href="#if-条件判断语句" class="headerlink" title="if 条件判断语句"></a>if 条件判断语句</h3><h4 id="案例一-测试数字的大小"><a href="#案例一-测试数字的大小" class="headerlink" title="案例一 测试数字的大小"></a>案例一 测试数字的大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">NUM=100</span><br><span class="line">if (($NUM &gt; 4)); then</span><br><span class="line">echo &quot;thi num is $NUM greater 4!&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure><p>[root@localhost shell]# bash 1.sh<br>this num is 100 greater 4!<br><a id="more"></a></p><h4 id="案例二-测速目录是否存在，不存在则新建"><a href="#案例二-测速目录是否存在，不存在则新建" class="headerlink" title="案例二 测速目录是否存在，不存在则新建"></a>案例二 测速目录是否存在，不存在则新建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/bash</span><br><span class="line">if [! -d /root/test/wang]; then</span><br><span class="line">mkdir -p /root/test/wang</span><br><span class="line">else </span><br><span class="line">echo &quot;This dir is exist!!!&quot;</span><br></pre></td></tr></table></figure><p>[root@localhost shell]# bash testfile.sh<br>This dir is exist!!!<br>PS：若该目录不存在则会新建目录</p><p>逻辑运算符解析：<br>-f 判断文件是否存在 eg: if [ -f filename ]<br>-d 判断目录是否存在 eg: if [ -d dir ]<br>-eq 等于 应用于：整型比较<br>-ne 不等于 应用于：整型比较<br>-lt 小于 应用于：整型比较<br>-gt 大于 应用于：整型比较<br>-le 小于或等于 应用于：整型比较<br>-ge 大于或等于 应用于：整型比较<br>-a 双方都成立（and） 逻辑表达式 –a 逻辑表达式<br>-o 单方成立（or） 逻辑表达式 –o 逻辑表达式<br>-z 空字符串</p><h4 id="案例三-多个条件测试判断"><a href="#案例三-多个条件测试判断" class="headerlink" title="案例三 多个条件测试判断"></a>案例三 多个条件测试判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">s=80;</span><br><span class="line">if [[ $s -gt 85 ]] ; then</span><br><span class="line">echo &quot;very good!&quot;;</span><br><span class="line">elif [[ $s -gt 75 ]] ; then</span><br><span class="line">echo &quot;good!&quot;;</span><br><span class="line">elif [[ $s -gt 60 ]] ; then </span><br><span class="line">echo &quot;pass!&quot;;</span><br><span class="line">else</span><br><span class="line">echo &quot;no pass!&quot;;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure><p>[root@localhost shell]# bash many.sh<br>good</p><h3 id="for-循环语句"><a href="#for-循环语句" class="headerlink" title="for 循环语句"></a>for 循环语句</h3><h4 id="案例一-打印seq多个数"><a href="#案例一-打印seq多个数" class="headerlink" title="案例一 打印seq多个数"></a>案例一 打印seq多个数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i in `seq 5`</span><br><span class="line">do </span><br><span class="line">echo &quot;Num is $i&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure><p>[root@localhost shell]# bash seq.sh<br>Num is 1<br>Num is 2<br>Num is 3<br>Num is 4<br>Num is 5</p><h4 id="案例二-找到相关-log，然后批量打包"><a href="#案例二-找到相关-log，然后批量打包" class="headerlink" title="案例二 找到相关 log，然后批量打包"></a>案例二 找到相关 log，然后批量打包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i  in `find /var/log -name &quot;*.log&quot;`</span><br><span class="line">do </span><br><span class="line">tar -czf 2018.tar $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure><p>[root@localhost shell]# ls<br>1.sh  2018log.tar  log.sh  many.sh  seq.sh  testfile.sh  var</p><h3 id="while-循环语句"><a href="#while-循环语句" class="headerlink" title="while 循环语句"></a>while 循环语句</h3><h4 id="案例一-while条件判断数字"><a href="#案例一-while条件判断数字" class="headerlink" title="案例一 while条件判断数字"></a>案例一 while条件判断数字</h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;复习一下shell编程 备忘&lt;/p&gt;
+&lt;h3 id=&quot;if-条件判断语句&quot;&gt;&lt;a href=&quot;#if-条件判断语句&quot; class=&quot;headerlink&quot; title=&quot;if 条件判断语句&quot;&gt;&lt;/a&gt;if 条件判断语句&lt;/h3&gt;&lt;h4 id=&quot;案例一-测试数字的大小&quot;&gt;&lt;a href=&quot;#案例一-测试数字的大小&quot; class=&quot;headerlink&quot; title=&quot;案例一 测试数字的大小&quot;&gt;&lt;/a&gt;案例一 测试数字的大小&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#!/bin/bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NUM=100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if (($NUM &amp;gt; 4)); then&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;echo &amp;quot;thi num is $NUM greater 4!&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fi&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;[root@localhost shell]# bash 1.sh&lt;br&gt;this num is 100 greater 4!&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>mysql双机热备的实现</title>

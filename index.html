@@ -288,6 +288,334 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/03/27/Ubuntu下搭建owncloud私有云平台/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王学长">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王学长">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/27/Ubuntu下搭建owncloud私有云平台/" itemprop="url">Ubuntu下搭建owncloud私有云平台</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T18:30:13+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  762
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="owncloud"><a href="#owncloud" class="headerlink" title="owncloud"></a>owncloud</h4><p>ownCloud是一个自由且开源的个人云存储解决方案(类似百度网盘或者Dropbox)，包括两个部分：服务器和客户端。</p>
+<p>ownCloud在客户端可通过网页界面，或者安装专用的客户端软件来使用。网页界面当然就是任何能打开网页的平台都支持，而客户端软件也支持相当多平台，Windows、Linux、iOS、Android皆有。</p>
+<p>除了云存储之外，ownCloud也可用于同步行事历、电子邮件联系人、网页浏览器的书签；此外还有多人在线文件同步协作的功能。</p>
+<h4 id="搭建的目的"><a href="#搭建的目的" class="headerlink" title="搭建的目的"></a>搭建的目的</h4><p>ftp服务器虽然能储存东西，但是不能在线预览。最近下载了一些教学视频，无奈自己笔记本硬盘太小，所以就想搭建一个能在线浏览pdf和视频的云平台。主要用于校园网里面。</p>
+<h4 id="环境搭建过程"><a href="#环境搭建过程" class="headerlink" title="环境搭建过程"></a>环境搭建过程</h4><p>服务器：Ubuntu 16.04 IP:10.22.30.20<br>····························<br>第一步:安装apache2<br><code>apt install apache2 -y</code></p>
+<p>安装完成后，浏览器访问服务器地址出现以下界面代表安装成功</p>
+<p><img src="/images/pasted-57.png" alt="upload successful"><br>PS:注意防火墙开放80端口<br>····························<br>第二步:安装mysql<br><code>apt-get install mysql-server mysql-client -y</code><br>安装过程中会要求设置数据库密码<br>安装完成后 mysql -u root -p<br>出现以下界面代表安装mysql安装成功<br><img src="/images/pasted-58.png" alt="upload successful"><br>····························<br>第三步:安装phpmyadmin<br><code>apt-get install phpmyadmin</code><br>出现下图界面选apache2</p>
+<p><img src="/images/pasted-59.png" alt="upload successful"><br>输入mysql的密码</p>
+<p><img src="/images/pasted-60.png" alt="upload successful"><br>安装完成后在浏览器访问10.22.30.20/phpmyadmin,账号是root，密码是mysql的密码</p>
+<p><img src="/images/pasted-62.png" alt="upload successful"><br>登录后创建数据库</p>
+<p><img src="/images/pasted-63.png" alt="upload successful"><br>····························<br>第四步:安装PHP<br><code>apt-get install php -y</code></p>
+<h3 id="owncloud服务端搭建"><a href="#owncloud服务端搭建" class="headerlink" title="owncloud服务端搭建"></a>owncloud服务端搭建</h3><p>解压下载好的owncloud-9.1.0.zip(可以去owncloud官网下载)<br><code>unzip owncloud-9.1.0.zip</code><br>将owncloud移动到/var/www/html 目录下<br><code>root@wlzx:/home/wlzx# mv owncloud /var/www/html/</code><br>建立数据文件夹，并赋予权限<br>cd /var/www/html/owncloud<br>root@wlzx:/var/www/html/owncloud# mkdir data<br>root@wlzx:/var/www/html/owncloud# chown -R www-data:www-data data<br>root@wlzx:/var/www/html/owncloud# chown -R www-data:www-data config<br>root@wlzx:/var/www/html/owncloud# chown -R www-data:www-data apps<br>····························<br>修改apache2的配置文件<br>vim /etc/apache2/apache2.conf<br><img src="/images/pasted-64.png" alt="upload successful"><br>重新启动模块</p>
+<p> a2enmod rewrite<br> a2enmod headers</p>
+<p>重新启动apache2</p>
+<p>sudo service apache2 restart</p>
+<p>····························<br>访问10.22.30.20/owncloud,发现少了两个模块<br><img src="/images/pasted-65.png" alt="upload successful"><br>安装curl模块<br><code>root@wlzx:/var/www/html/owncloud# apt-get install php-curl -y</code><br>安装zip模块<br><code>root@wlzx:/var/www/html/owncloud/zip-1.13.5# apt-get install php-zip</code><br>重启apache2服务<br><code>root@wlzx:/var/www/html/owncloud/zip-1.13.5# /etc/init.d/apache2 restart</code><br>再次访问10.22.30.20/owncloud，设置好管理员密码，数据库账号、密码、数据库名称</p>
+<p><img src="/images/pasted-66.png" alt="upload successful"><br>至此这个云服务器就能正常访问啦</p>
+<p><img src="/images/pasted-67.png" alt="upload successful"></p>
+<h3 id="修改上传限制"><a href="#修改上传限制" class="headerlink" title="修改上传限制"></a>修改上传限制</h3><p>由于owncloud默认现在最大上传大小为513M，有些大文件上传不了，所以需要修改一下配置文件(owncloud目录下的.htaccess 文件)</p>
+<p><img src="/images/pasted-68.png" alt="upload successful"><br>然后就能上传大文件了</p>
+<p><img src="/images/pasted-69.png" alt="upload successful"><br>owncloud还可以挂载ftp站点，添加一些其它的插件！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/03/23/shell-编程-备忘录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王学长">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王学长">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/23/shell-编程-备忘录/" itemprop="url">shell 编程 备忘录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-23T20:09:16+08:00">
+                2018-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  445
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>复习一下shell编程 备忘</p>
+<h3 id="if-条件判断语句"><a href="#if-条件判断语句" class="headerlink" title="if 条件判断语句"></a>if 条件判断语句</h3><h4 id="案例一-测试数字的大小"><a href="#案例一-测试数字的大小" class="headerlink" title="案例一 测试数字的大小"></a>案例一 测试数字的大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">NUM=100</span><br><span class="line">if (($NUM &gt; 4)); then</span><br><span class="line">echo &quot;thi num is $NUM greater 4!&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>[root@localhost shell]# bash 1.sh<br>this num is 100 greater 4!<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/23/shell-编程-备忘录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/03/16/mysql双机热备的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1626,358 +1954,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2017/12/28/hexo写博客的基本方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王学长">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王学长">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/28/hexo写博客的基本方法/" itemprop="url">hexo写博客的基本方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T15:34:00+08:00">
-                2017-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  590
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>  刚刚搭建好hexo博客，准备写第一篇博客的时候意识到了一些问题，可能是因为自己没怎么用过markdown这个编辑器，所以不怎么熟悉，但是通过各种百度后终于知道了该怎么便捷的写自己的博客</p>
-<h4 id="问题1：在哪里写博客？"><a href="#问题1：在哪里写博客？" class="headerlink" title="问题1：在哪里写博客？"></a>问题1：在哪里写博客？</h4>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/28/hexo写博客的基本方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2017/12/27/智动大闯关/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王学长">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王学长">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/27/智动大闯关/" itemprop="url">智动大闯关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T23:25:12+08:00">
-                2017-12-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/智动大闯关/" itemprop="url" rel="index">
-                    <span itemprop="name">智动大闯关</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  34
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="智动大闯关第22关"><a href="#智动大闯关第22关" class="headerlink" title="智动大闯关第22关"></a>智动大闯关第22关</h2><p><img src="/images/pasted-1.png" alt="upload successful"><br>firebug 查看源码发现</p>
-<p><img src="/images/pasted-3.png" alt="upload successful"><br>其中content里面的就是密码，直接提交进入第23关</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2028,7 +2004,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2131,7 +2107,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.7k</span>
+    <span title="Site words total count">8.9k</span>
   
 </div>
 
@@ -2155,7 +2131,7 @@
 
 <div class="theme-info">
  <div class="powered-by"></div>
- <span class="post-count">博客全站共7.7k字</span>
+ <span class="post-count">博客全站共8.9k字</span>
  </div>
 
         
