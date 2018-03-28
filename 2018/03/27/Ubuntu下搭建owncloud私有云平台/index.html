@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-67.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-68.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-69.png">
-<meta property="og:updated_time" content="2018-03-28T08:07:33.586Z">
+<meta property="og:updated_time" content="2018-03-28T08:10:43.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下搭建owncloud私有云平台">
 <meta name="twitter:description" content="owncloudownCloud是一个自由且开源的个人云存储解决方案(类似百度网盘或者Dropbox)，包括两个部分：服务器和客户端。 ownCloud在客户端可通过网页界面，或者安装专用的客户端软件来使用。网页界面当然就是任何能打开网页的平台都支持，而客户端软件也支持相当多平台，Windows、Linux、iOS、Android皆有。 除了云存储之外，ownCloud也可用于同步行事历、电子邮件">
@@ -399,11 +399,11 @@
       
 
       
-        <h4 id="owncloud"><a href="#owncloud" class="headerlink" title="owncloud"></a>owncloud</h4><p>ownCloud是一个自由且开源的个人云存储解决方案(类似百度网盘或者Dropbox)，包括两个部分：服务器和客户端。</p>
+        <h3 id="owncloud"><a href="#owncloud" class="headerlink" title="owncloud"></a>owncloud</h3><p>ownCloud是一个自由且开源的个人云存储解决方案(类似百度网盘或者Dropbox)，包括两个部分：服务器和客户端。</p>
 <p>ownCloud在客户端可通过网页界面，或者安装专用的客户端软件来使用。网页界面当然就是任何能打开网页的平台都支持，而客户端软件也支持相当多平台，Windows、Linux、iOS、Android皆有。</p>
 <p>除了云存储之外，ownCloud也可用于同步行事历、电子邮件联系人、网页浏览器的书签；此外还有多人在线文件同步协作的功能。</p>
-<h4 id="搭建的目的"><a href="#搭建的目的" class="headerlink" title="搭建的目的"></a>搭建的目的</h4><p>ftp服务器虽然能储存东西，但是不能在线预览。最近下载了一些教学视频，无奈自己笔记本硬盘太小，所以就想搭建一个能在线浏览pdf和视频的云平台。主要用于校园网里面。<br><a id="more"></a></p>
-<h4 id="环境搭建过程"><a href="#环境搭建过程" class="headerlink" title="环境搭建过程"></a>环境搭建过程</h4><p>服务器：Ubuntu 16.04 IP:10.22.30.20<br>····························<br>第一步:安装apache2<br><code>apt install apache2 -y</code></p>
+<h3 id="搭建的目的"><a href="#搭建的目的" class="headerlink" title="搭建的目的"></a>搭建的目的</h3><p>ftp服务器虽然能储存东西，但是不能在线预览。最近下载了一些教学视频，无奈自己笔记本硬盘太小，所以就想搭建一个能在线浏览pdf和视频的云平台。主要用于校园网里面。<br><a id="more"></a></p>
+<h3 id="环境搭建过程"><a href="#环境搭建过程" class="headerlink" title="环境搭建过程"></a>环境搭建过程</h3><p>服务器：Ubuntu 16.04 IP:10.22.30.20<br>····························<br>第一步:安装apache2<br><code>apt install apache2 -y</code></p>
 <p>安装完成后，浏览器访问服务器地址出现以下界面代表安装成功</p>
 <p><img src="/images/pasted-57.png" alt="upload successful"><br>PS:注意防火墙开放80端口<br>····························<br>第二步:安装mysql<br><code>apt-get install mysql-server mysql-client -y</code><br>安装过程中会要求设置数据库密码<br>安装完成后 mysql -u root -p<br>出现以下界面代表安装mysql安装成功<br><img src="/images/pasted-58.png" alt="upload successful"><br>····························<br>第三步:安装phpmyadmin<br><code>apt-get install phpmyadmin</code><br>出现下图界面选apache2</p>
 <p><img src="/images/pasted-59.png" alt="upload successful"><br>输入mysql的密码</p>
@@ -647,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#owncloud"><span class="nav-number">1.</span> <span class="nav-text">owncloud</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搭建的目的"><span class="nav-number">2.</span> <span class="nav-text">搭建的目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境搭建过程"><span class="nav-number">3.</span> <span class="nav-text">环境搭建过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#owncloud服务端搭建"><span class="nav-number"></span> <span class="nav-text">owncloud服务端搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改上传限制"><span class="nav-number"></span> <span class="nav-text">修改上传限制</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#owncloud"><span class="nav-number">1.</span> <span class="nav-text">owncloud</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建的目的"><span class="nav-number">2.</span> <span class="nav-text">搭建的目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境搭建过程"><span class="nav-number">3.</span> <span class="nav-text">环境搭建过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#owncloud服务端搭建"><span class="nav-number">4.</span> <span class="nav-text">owncloud服务端搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改上传限制"><span class="nav-number">5.</span> <span class="nav-text">修改上传限制</span></a></li></ol></div>
             
 
           </div>
