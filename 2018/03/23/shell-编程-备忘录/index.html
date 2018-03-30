@@ -88,10 +88,14 @@
 <meta property="og:site_name" content="王学长">
 <meta property="og:description" content="复习一下shell编程 备忘 if 条件判断语句案例一 测试数字的大小12345#!/bin/bashNUM=100if (($NUM &amp;gt; 4)); thenecho &amp;quot;thi num is $NUM greater 4!&amp;quot;fi [root@localhost shell]# bash 1.shthis num is 100 greater 4!">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-23T12:10:52.827Z">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-71.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-72.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-73.png">
+<meta property="og:updated_time" content="2018-03-30T10:50:38.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 编程 备忘录">
 <meta name="twitter:description" content="复习一下shell编程 备忘 if 条件判断语句案例一 测试数字的大小12345#!/bin/bashNUM=100if (($NUM &amp;gt; 4)); thenecho &amp;quot;thi num is $NUM greater 4!&amp;quot;fi [root@localhost shell]# bash 1.shthis num is 100 greater 4!">
+<meta name="twitter:image" content="http://www.wangxuezhang.xin/images/pasted-71.png">
 
 
 
@@ -349,7 +353,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  445
+                  609
                 </span>
               
 
@@ -365,7 +369,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -389,7 +393,7 @@
         <p>复习一下shell编程 备忘</p>
 <h3 id="if-条件判断语句"><a href="#if-条件判断语句" class="headerlink" title="if 条件判断语句"></a>if 条件判断语句</h3><h4 id="案例一-测试数字的大小"><a href="#案例一-测试数字的大小" class="headerlink" title="案例一 测试数字的大小"></a>案例一 测试数字的大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">NUM=100</span><br><span class="line">if (($NUM &gt; 4)); then</span><br><span class="line">echo &quot;thi num is $NUM greater 4!&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <p>[root@localhost shell]# bash 1.sh<br>this num is 100 greater 4!<br><a id="more"></a></p>
-<h4 id="案例二-测速目录是否存在，不存在则新建"><a href="#案例二-测速目录是否存在，不存在则新建" class="headerlink" title="案例二 测速目录是否存在，不存在则新建"></a>案例二 测速目录是否存在，不存在则新建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/bash</span><br><span class="line">if [! -d /root/test/wang]; then</span><br><span class="line">mkdir -p /root/test/wang</span><br><span class="line">else </span><br><span class="line">echo &quot;This dir is exist!!!&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="案例二-测试目录是否存在，不存在则新建"><a href="#案例二-测试目录是否存在，不存在则新建" class="headerlink" title="案例二 测试目录是否存在，不存在则新建"></a>案例二 测试目录是否存在，不存在则新建</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/bash</span><br><span class="line">if [! -d /root/test/wang]; then</span><br><span class="line">mkdir -p /root/test/wang</span><br><span class="line">else </span><br><span class="line">echo &quot;This dir is exist!!!&quot;</span><br></pre></td></tr></table></figure>
 <p>[root@localhost shell]# bash testfile.sh<br>This dir is exist!!!<br>PS：若该目录不存在则会新建目录</p>
 <p>逻辑运算符解析：<br>-f 判断文件是否存在 eg: if [ -f filename ]<br>-d 判断目录是否存在 eg: if [ -d dir ]<br>-eq 等于 应用于：整型比较<br>-ne 不等于 应用于：整型比较<br>-lt 小于 应用于：整型比较<br>-gt 大于 应用于：整型比较<br>-le 小于或等于 应用于：整型比较<br>-ge 大于或等于 应用于：整型比较<br>-a 双方都成立（and） 逻辑表达式 –a 逻辑表达式<br>-o 单方成立（or） 逻辑表达式 –o 逻辑表达式<br>-z 空字符串</p>
 <h4 id="案例三-多个条件测试判断"><a href="#案例三-多个条件测试判断" class="headerlink" title="案例三 多个条件测试判断"></a>案例三 多个条件测试判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">s=80;</span><br><span class="line">if [[ $s -gt 85 ]] ; then</span><br><span class="line">echo &quot;very good!&quot;;</span><br><span class="line">elif [[ $s -gt 75 ]] ; then</span><br><span class="line">echo &quot;good!&quot;;</span><br><span class="line">elif [[ $s -gt 60 ]] ; then </span><br><span class="line">echo &quot;pass!&quot;;</span><br><span class="line">else</span><br><span class="line">echo &quot;no pass!&quot;;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
@@ -398,7 +402,15 @@
 <p>[root@localhost shell]# bash seq.sh<br>Num is 1<br>Num is 2<br>Num is 3<br>Num is 4<br>Num is 5</p>
 <h4 id="案例二-找到相关-log，然后批量打包"><a href="#案例二-找到相关-log，然后批量打包" class="headerlink" title="案例二 找到相关 log，然后批量打包"></a>案例二 找到相关 log，然后批量打包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for i  in `find /var/log -name &quot;*.log&quot;`</span><br><span class="line">do </span><br><span class="line">tar -czf 2018.tar $i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <p>[root@localhost shell]# ls<br>1.sh  2018log.tar  log.sh  many.sh  seq.sh  testfile.sh  var</p>
-<h3 id="while-循环语句"><a href="#while-循环语句" class="headerlink" title="while 循环语句"></a>while 循环语句</h3><h4 id="案例一-while条件判断数字"><a href="#案例一-while条件判断数字" class="headerlink" title="案例一 while条件判断数字"></a>案例一 while条件判断数字</h4>
+<h3 id="while-循环语句"><a href="#while-循环语句" class="headerlink" title="while 循环语句"></a>while 循环语句</h3><h4 id="案例一-批量添加20个用户"><a href="#案例一-批量添加20个用户" class="headerlink" title="案例一 批量添加20个用户"></a>案例一 批量添加20个用户</h4><p>用户名称为userN，N为1-20的数字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">U_NUM=1</span><br><span class="line">while [ $U_NUM -le 20 ]  #只要U_NUM小于或等于20，循环一直执行</span><br><span class="line">do</span><br><span class="line">useradd user$&#123;U_NUM&#125;</span><br><span class="line">U_NUM=$((U_NUM+1))</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>运行脚本:bash newuser.sh<br>lastlog验证结果</p>
+<p><img src="/images/pasted-71.png" alt="upload successful"></p>
+<h4 id="案例二-打印网卡配置文件的每一行"><a href="#案例二-打印网卡配置文件的每一行" class="headerlink" title="案例二 打印网卡配置文件的每一行"></a>案例二 打印网卡配置文件的每一行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">FILE=/etc/sysconfig/network-scripts/ifcfg-ens160</span><br><span class="line">while read -r line</span><br><span class="line">do</span><br><span class="line">echo $line</span><br><span class="line">done &lt; $FILE</span><br></pre></td></tr></table></figure>
+<p>运行脚本:bash printnetwork.sh</p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<h3 id="until-语句"><a href="#until-语句" class="headerlink" title="until 语句"></a>until 语句</h3><p>批量删除用户，用户名称为userN,n(1&lt;=n&lt;=20)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">U_NUM=20</span><br><span class="line">until [ $U_NUM -eq 0 ]</span><br><span class="line">do</span><br><span class="line">userdel user$&#123;U_NUM&#125;</span><br><span class="line">U_NUM=$((U_NUM-1))</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>执行脚本，验证结果<br><img src="/images/pasted-73.png" alt="upload successful"></p>
+<h3 id="备份Mysql数据库"><a href="#备份Mysql数据库" class="headerlink" title="备份Mysql数据库"></a>备份Mysql数据库</h3>
       
     </div>
     
@@ -629,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-条件判断语句"><span class="nav-number">1.</span> <span class="nav-text">if 条件判断语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例一-测试数字的大小"><span class="nav-number">1.1.</span> <span class="nav-text">案例一 测试数字的大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例二-测速目录是否存在，不存在则新建"><span class="nav-number">1.2.</span> <span class="nav-text">案例二 测速目录是否存在，不存在则新建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例三-多个条件测试判断"><span class="nav-number">1.3.</span> <span class="nav-text">案例三 多个条件测试判断</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环语句"><span class="nav-number">2.</span> <span class="nav-text">for 循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例一-打印seq多个数"><span class="nav-number">2.1.</span> <span class="nav-text">案例一 打印seq多个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例二-找到相关-log，然后批量打包"><span class="nav-number">2.2.</span> <span class="nav-text">案例二 找到相关 log，然后批量打包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-循环语句"><span class="nav-number">3.</span> <span class="nav-text">while 循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例一-while条件判断数字"><span class="nav-number">3.1.</span> <span class="nav-text">案例一 while条件判断数字</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-条件判断语句"><span class="nav-number">1.</span> <span class="nav-text">if 条件判断语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例一-测试数字的大小"><span class="nav-number">1.1.</span> <span class="nav-text">案例一 测试数字的大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例二-测试目录是否存在，不存在则新建"><span class="nav-number">1.2.</span> <span class="nav-text">案例二 测试目录是否存在，不存在则新建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例三-多个条件测试判断"><span class="nav-number">1.3.</span> <span class="nav-text">案例三 多个条件测试判断</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环语句"><span class="nav-number">2.</span> <span class="nav-text">for 循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例一-打印seq多个数"><span class="nav-number">2.1.</span> <span class="nav-text">案例一 打印seq多个数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例二-找到相关-log，然后批量打包"><span class="nav-number">2.2.</span> <span class="nav-text">案例二 找到相关 log，然后批量打包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-循环语句"><span class="nav-number">3.</span> <span class="nav-text">while 循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例一-批量添加20个用户"><span class="nav-number">3.1.</span> <span class="nav-text">案例一 批量添加20个用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例二-打印网卡配置文件的每一行"><span class="nav-number">3.2.</span> <span class="nav-text">案例二 打印网卡配置文件的每一行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#until-语句"><span class="nav-number">4.</span> <span class="nav-text">until 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份Mysql数据库"><span class="nav-number">5.</span> <span class="nav-text">备份Mysql数据库</span></a></li></ol></div>
             
 
           </div>
@@ -664,7 +676,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.9k</span>
+    <span title="Site words total count">9.1k</span>
   
 </div>
 
@@ -688,7 +700,7 @@
 
 <div class="theme-info">
  <div class="powered-by"></div>
- <span class="post-count">博客全站共8.9k字</span>
+ <span class="post-count">博客全站共9.1k字</span>
  </div>
 
         
