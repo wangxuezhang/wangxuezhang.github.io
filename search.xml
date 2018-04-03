@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Centos 下安装DHCP服务器]]></title>
     <url>%2F2018%2F04%2F03%2FRedHat-%E4%B8%8B%E5%AE%89%E8%A3%85DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
-    <content type="text"><![CDATA[1:安装DHCP服务器# yum install -y dhcp* DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf 2:配置DHCP服务器# vim /etc/dhcpd/dhcpd.conf发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example将默认的配置样例复制到dhcpd.conf下cp /usr/share/doc/dhcp-4.2.5/dhcpd.example /etc/dhcp/dhcpd.conf询问是否覆盖的时候选yes # vim /etc/dhcpd/dhcpd.conf 保存后重启dhcp服务systemctl restart dhcpdPS:配置文件中语法错误的话，dhco服务会重启失败的 验证DHCP服务客户机设置为dhcp获取地址,这里用了两台客户机，一台linux，一台server 2008.Linux的dhcp情况 Server 2008的dhcp情况 在DHCP服务器上可以查看客户端获取dhcp的过程tail -f /var/log/message 总结配置dhcp的过程中犯了几个低级错误，导致dhcp服务器启动失败。例如设置的dhcp ip范围与子网掩码不在一个网段，配置文件中的格式错误等等。但是日志里面会告诉你哪个地方出错了 可以通过分析日志文件来快速找出问题所在！现在充分了解了日志文件的重要性！！！]]></content>
+    <content type="text"><![CDATA[1:安装DHCP服务器# yum install -y dhcp* DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf 2:简单配置DHCP服务器# vim /etc/dhcpd/dhcpd.conf发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example将默认的配置样例复制到dhcpd.conf下cp /usr/share/doc/dhcp-4.2.5/dhcpd.example /etc/dhcp/dhcpd.conf询问是否覆盖的时候选yes # vim /etc/dhcpd/dhcpd.conf 保存后重启dhcp服务systemctl restart dhcpdPS:配置文件中语法错误的话，dhco服务会重启失败的 验证DHCP服务客户机设置为dhcp获取地址,这里用了两台客户机，一台linux，一台server 2008.Linux的dhcp情况 Server 2008的dhcp情况 在DHCP服务器上可以查看客户端获取dhcp的过程tail -f /var/log/message 总结配置dhcp的过程中犯了几个低级错误，导致dhcp服务器启动失败。例如设置的dhcp ip范围与子网掩码不在一个网段，配置文件中的格式错误等等。但是日志里面会告诉你哪个地方出错了 可以通过分析日志文件来快速找出问题所在！现在充分了解了日志文件的重要性！！！]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -26,8 +26,8 @@
         <category>mysql</category>
       </categories>
       <tags>
-        <tag>mysql</tag>
         <tag>linux</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>

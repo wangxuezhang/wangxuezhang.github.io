@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wangxuezhang.xin/"/>
-  <updated>2018-04-03T05:03:10.039Z</updated>
+  <updated>2018-04-03T05:06:27.433Z</updated>
   <id>http://www.wangxuezhang.xin/</id>
   
   <author>
@@ -21,16 +21,14 @@
     <link href="http://www.wangxuezhang.xin/2018/04/03/RedHat-%E4%B8%8B%E5%AE%89%E8%A3%85DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://www.wangxuezhang.xin/2018/04/03/RedHat-下安装DHCP服务器/</id>
     <published>2018-04-03T02:53:00.000Z</published>
-    <updated>2018-04-03T05:03:10.039Z</updated>
+    <updated>2018-04-03T05:06:27.433Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="1-安装DHCP服务器"><a href="#1-安装DHCP服务器" class="headerlink" title="1:安装DHCP服务器"></a>1:安装DHCP服务器</h4><p><code># yum install -y dhcp*</code></p><p><img src="/images/pasted-75.png" alt="upload successful"><br>DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf</p><h4 id="2-配置DHCP服务器"><a href="#2-配置DHCP服务器" class="headerlink" title="2:配置DHCP服务器"></a>2:配置DHCP服务器</h4><p><code># vim /etc/dhcpd/dhcpd.conf</code><br><img src="/images/pasted-76.png" alt="upload successful"><br>发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example<br>将默认的配置样例复制到dhcpd.conf下<br><code>cp /usr/share/doc/dhcp-4.2.5/dhcpd.example /etc/dhcp/dhcpd.conf</code>询问是否覆盖的时候选yes</p><p><img src="/images/pasted-77.png" alt="upload successful"><br><code># vim /etc/dhcpd/dhcpd.conf</code></p><p><img src="/images/pasted-78.png" alt="upload successful"><br>保存后重启dhcp服务<br><code>systemctl restart dhcpd</code><br>PS:配置文件中语法错误的话，dhco服务会重启失败的</p><h4 id="验证DHCP服务"><a href="#验证DHCP服务" class="headerlink" title="验证DHCP服务"></a>验证DHCP服务</h4><p>客户机设置为dhcp获取地址,这里用了两台客户机，一台linux，一台server 2008.<br>Linux的dhcp情况</p><p><img src="/images/pasted-79.png" alt="upload successful"><br>Server 2008的dhcp情况</p><p><img src="/images/pasted-80.png" alt="upload successful"><br>在DHCP服务器上可以查看客户端获取dhcp的过程<br><code>tail -f /var/log/message</code></p><p><img src="/images/pasted-81.png" alt="upload successful"></p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>配置dhcp的过程中犯了几个低级错误，导致dhcp服务器启动失败。例如设置的dhcp ip范围与子网掩码不在一个网段，配置文件中的格式错误等等。但是日志里面会告诉你哪个地方出错了</p><p><img src="/images/pasted-82.png" alt="upload successful"><br>可以通过分析日志文件来快速找出问题所在！<br>现在充分了解了日志文件的重要性！！！</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="1-安装DHCP服务器"><a href="#1-安装DHCP服务器" class="headerlink" title="1:安装DHCP服务器"></a>1:安装DHCP服务器</h4><p><code># yum install -y dhcp*</code></p><p><img src="/images/pasted-75.png" alt="upload successful"><br><a id="more"></a><br>DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf</p><h4 id="2-简单配置DHCP服务器"><a href="#2-简单配置DHCP服务器" class="headerlink" title="2:简单配置DHCP服务器"></a>2:简单配置DHCP服务器</h4><p><code># vim /etc/dhcpd/dhcpd.conf</code><br><img src="/images/pasted-76.png" alt="upload successful"><br>发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example<br>将默认的配置样例复制到dhcpd.conf下<br><code>cp /usr/share/doc/dhcp-4.2.5/dhcpd.example /etc/dhcp/dhcpd.conf</code>询问是否覆盖的时候选yes</p><p><img src="/images/pasted-77.png" alt="upload successful"><br><code># vim /etc/dhcpd/dhcpd.conf</code></p><p><img src="/images/pasted-78.png" alt="upload successful"><br>保存后重启dhcp服务<br><code>systemctl restart dhcpd</code><br>PS:配置文件中语法错误的话，dhco服务会重启失败的</p><h4 id="验证DHCP服务"><a href="#验证DHCP服务" class="headerlink" title="验证DHCP服务"></a>验证DHCP服务</h4><p>客户机设置为dhcp获取地址,这里用了两台客户机，一台linux，一台server 2008.<br>Linux的dhcp情况</p><p><img src="/images/pasted-79.png" alt="upload successful"><br>Server 2008的dhcp情况</p><p><img src="/images/pasted-80.png" alt="upload successful"><br>在DHCP服务器上可以查看客户端获取dhcp的过程<br><code>tail -f /var/log/message</code></p><p><img src="/images/pasted-81.png" alt="upload successful"></p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>配置dhcp的过程中犯了几个低级错误，导致dhcp服务器启动失败。例如设置的dhcp ip范围与子网掩码不在一个网段，配置文件中的格式错误等等。但是日志里面会告诉你哪个地方出错了</p><p><img src="/images/pasted-82.png" alt="upload successful"><br>可以通过分析日志文件来快速找出问题所在！<br>现在充分了解了日志文件的重要性！！！</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h4 id=&quot;1-安装DHCP服务器&quot;&gt;&lt;a href=&quot;#1-安装DHCP服务器&quot; class=&quot;headerlink&quot; title=&quot;1:安装DHCP服务器&quot;&gt;&lt;/a&gt;1:安装DHCP服务器&lt;/h4&gt;&lt;p&gt;&lt;code&gt;# yum install -y dhcp*&lt;/code
-      
+      &lt;h4 id=&quot;1-安装DHCP服务器&quot;&gt;&lt;a href=&quot;#1-安装DHCP服务器&quot; class=&quot;headerlink&quot; title=&quot;1:安装DHCP服务器&quot;&gt;&lt;/a&gt;1:安装DHCP服务器&lt;/h4&gt;&lt;p&gt;&lt;code&gt;# yum install -y dhcp*&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pasted-75.png&quot; alt=&quot;upload successful&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -98,9 +96,9 @@
       <category term="mysql" scheme="http://www.wangxuezhang.xin/categories/mysql/"/>
     
     
-      <category term="mysql" scheme="http://www.wangxuezhang.xin/tags/mysql/"/>
-    
       <category term="linux" scheme="http://www.wangxuezhang.xin/tags/linux/"/>
+    
+      <category term="mysql" scheme="http://www.wangxuezhang.xin/tags/mysql/"/>
     
   </entry>
   

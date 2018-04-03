@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="1:安装DHCP服务器# yum install -y dhcp* DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf 2:配置DHCP服务器# vim /etc/dhcpd/dhcpd.conf发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example将默认的配置样例复制到dhcpd.conf下cp">
+<meta name="description" content="1:安装DHCP服务器# yum install -y dhcp*">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos 下安装DHCP服务器">
 <meta property="og:url" content="http://www.wangxuezhang.xin/2018/04/03/RedHat-下安装DHCP服务器/index.html">
 <meta property="og:site_name" content="王学长">
-<meta property="og:description" content="1:安装DHCP服务器# yum install -y dhcp* DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf 2:配置DHCP服务器# vim /etc/dhcpd/dhcpd.conf发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example将默认的配置样例复制到dhcpd.conf下cp">
+<meta property="og:description" content="1:安装DHCP服务器# yum install -y dhcp*">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-75.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-76.png">
@@ -97,10 +97,10 @@
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-80.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-81.png">
 <meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-82.png">
-<meta property="og:updated_time" content="2018-04-03T05:03:10.039Z">
+<meta property="og:updated_time" content="2018-04-03T05:06:27.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos 下安装DHCP服务器">
-<meta name="twitter:description" content="1:安装DHCP服务器# yum install -y dhcp* DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf 2:配置DHCP服务器# vim /etc/dhcpd/dhcpd.conf发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example将默认的配置样例复制到dhcpd.conf下cp">
+<meta name="twitter:description" content="1:安装DHCP服务器# yum install -y dhcp*">
 <meta name="twitter:image" content="http://www.wangxuezhang.xin/images/pasted-75.png">
 
 
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  322
+                  324
                 </span>
               
 
@@ -397,8 +397,8 @@
 
       
         <h4 id="1-安装DHCP服务器"><a href="#1-安装DHCP服务器" class="headerlink" title="1:安装DHCP服务器"></a>1:安装DHCP服务器</h4><p><code># yum install -y dhcp*</code></p>
-<p><img src="/images/pasted-75.png" alt="upload successful"><br>DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf</p>
-<h4 id="2-配置DHCP服务器"><a href="#2-配置DHCP服务器" class="headerlink" title="2:配置DHCP服务器"></a>2:配置DHCP服务器</h4><p><code># vim /etc/dhcpd/dhcpd.conf</code><br><img src="/images/pasted-76.png" alt="upload successful"><br>发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example<br>将默认的配置样例复制到dhcpd.conf下<br><code>cp /usr/share/doc/dhcp-4.2.5/dhcpd.example /etc/dhcp/dhcpd.conf</code>询问是否覆盖的时候选yes</p>
+<p><img src="/images/pasted-75.png" alt="upload successful"><br><a id="more"></a><br>DHCP的默认配置文件路径/etc/dhcp/dhcpd.conf</p>
+<h4 id="2-简单配置DHCP服务器"><a href="#2-简单配置DHCP服务器" class="headerlink" title="2:简单配置DHCP服务器"></a>2:简单配置DHCP服务器</h4><p><code># vim /etc/dhcpd/dhcpd.conf</code><br><img src="/images/pasted-76.png" alt="upload successful"><br>发现安装了DHCP服务默认是有一个配置样例的,配置样例的路径为/usr/share/doc/dhcp-4.2.5/dhcpd.example<br>将默认的配置样例复制到dhcpd.conf下<br><code>cp /usr/share/doc/dhcp-4.2.5/dhcpd.example /etc/dhcp/dhcpd.conf</code>询问是否覆盖的时候选yes</p>
 <p><img src="/images/pasted-77.png" alt="upload successful"><br><code># vim /etc/dhcpd/dhcpd.conf</code></p>
 <p><img src="/images/pasted-78.png" alt="upload successful"><br>保存后重启dhcp服务<br><code>systemctl restart dhcpd</code><br>PS:配置文件中语法错误的话，dhco服务会重启失败的</p>
 <h4 id="验证DHCP服务"><a href="#验证DHCP服务" class="headerlink" title="验证DHCP服务"></a>验证DHCP服务</h4><p>客户机设置为dhcp获取地址,这里用了两台客户机，一台linux，一台server 2008.<br>Linux的dhcp情况</p>
@@ -640,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装DHCP服务器"><span class="nav-number">1.</span> <span class="nav-text">1:安装DHCP服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置DHCP服务器"><span class="nav-number">2.</span> <span class="nav-text">2:配置DHCP服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证DHCP服务"><span class="nav-number">3.</span> <span class="nav-text">验证DHCP服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装DHCP服务器"><span class="nav-number">1.</span> <span class="nav-text">1:安装DHCP服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-简单配置DHCP服务器"><span class="nav-number">2.</span> <span class="nav-text">2:简单配置DHCP服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证DHCP服务"><span class="nav-number">3.</span> <span class="nav-text">验证DHCP服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
