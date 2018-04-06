@@ -307,7 +307,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/06/构建高性能的Mysql集群系统/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/04/06/构建高性能的Mysql集群系统/" itemprop="url">构建高性能的MYSQL集群系统</a></h1>
         
 
         <div class="post-meta">
@@ -319,7 +319,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T11:59:07+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T13:43:00+08:00">
                 2018-04-06
               </time>
             
@@ -329,6 +329,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -351,7 +373,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,118
+                  2,107
                 </span>
               
 
@@ -390,8 +412,13 @@
       
         
           
-            <h2 id="常见的高可用MYSQL解决方案"><a href="#常见的高可用MYSQL解决方案" class="headerlink" title="常见的高可用MYSQL解决方案"></a>常见的高可用MYSQL解决方案</h2><h3 id="主从复制解决方案"><a href="#主从复制解决方案" class="headerlink" title="主从复制解决方案"></a>主从复制解决方案</h3><p>  这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务器的操作，从而保证数据的一致性。<br>  MYSQL replication 技术仅仅提供了日志的同步执行功能，而从服务器只能提供读操作，并且当主服务器发生故障时，必须手动处理failover，通常的做法是将一台从服务器更改为主服务器。这种解决方案在一定程度上实现了MYSQL的高可用性，可以实现90.000%的SLA。<br>  为了达到更高的可用性，在实际的应用环境中，一般都采用MYSQL replication技术配合高可用集群软件来实现自动failover，这种方式可以实现95.000%的SLA。</p>
-<hr>
+            <h3 id="主从复制解决方案"><a href="#主从复制解决方案" class="headerlink" title="主从复制解决方案"></a>主从复制解决方案</h3><pre><code>这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL
+replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务器的操作，从而保证数据的一致性。
+MYSQL replication
+技术仅仅提供了日志的同步执行功能，而从服务器只能提供读操作，并且当主服务器发生故障时，必须手动处理failover，通常的做法是将一台从服务器更改为主服务器。这种解决方案在一定程度上实现了MYSQL的高可用性，可以实现90.000%的SLA。
+为了达到更高的可用性，在实际的应用环境中，一般都采用MYSQL
+replication技术配合高可用集群软件来实现自动failover，这种方式可以实现95.000%的SLA。
+</code></pre><hr>
 <h3 id="MMM高可用解决方案"><a href="#MMM高可用解决方案" class="headerlink" title="MMM高可用解决方案"></a>MMM高可用解决方案</h3><p>  MMM(Master-Master Replication Manager for MYSQL)MYSQL主主复制管理器，提供了MYSQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用解决方案中，典型的应用是双主多从架构，通过MYSQL reqlication技术可以实现两台服务器互为主从，且在任何时候只有一个节点可以写入，避免多点写入的数据冲突。同时，当可写的主节点故障时，MMM套件可以立即监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MYSQL的高可用。MMM方案是目前比较成熟的MYSQL高可用解决方案，可以实现99.000%的SLA。</p>
 <hr>
 <h3 id="Heartbeat-SAN高可用解决方案"><a href="#Heartbeat-SAN高可用解决方案" class="headerlink" title="Heartbeat/SAN高可用解决方案"></a>Heartbeat/SAN高可用解决方案</h3><p>  Heartbeat/SAN高可用解决方案是借助第三方软件硬件实现的，在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其它节点启动集群服务。<br>  在数据共享方面，通过SAN存储来共享网络，在正常状态下，集群主节点将挂载存储进行数据读写，当集群发生故障时，Heartbeat会首先通过一个仲裁设备将主节点挂载的存储设备释放。然后在备用节点下挂载存储，接着启动服务。通过这种方式实现数据的共享和同步。这种数据共享方式实现简单，但是成本较高，并且存在脑裂的问题，需要根据实际环境来选择。这种方案可以实现99.990%的SLA</p>
