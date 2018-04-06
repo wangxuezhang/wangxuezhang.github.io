@@ -81,16 +81,22 @@
 
 
 
-<meta name="description" content="欢迎来到王学长的乐园">
-<meta property="og:type" content="website">
+<meta name="description" content="常见的高可用MYSQL解决方案主从复制解决方案  这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务">
+<meta property="og:type" content="article">
 <meta property="og:title" content="王学长">
-<meta property="og:url" content="http://www.wangxuezhang.xin/archives/index.html">
+<meta property="og:url" content="http://www.wangxuezhang.xin/2018/04/06/构建高性能的Mysql集群系统/index.html">
 <meta property="og:site_name" content="王学长">
-<meta property="og:description" content="欢迎来到王学长的乐园">
+<meta property="og:description" content="常见的高可用MYSQL解决方案主从复制解决方案  这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/vUqT8Ew.png">
+<meta property="og:image" content="https://i.imgur.com/2c4TN1c.png">
+<meta property="og:image" content="https://i.imgur.com/uHSHCAI.png">
+<meta property="og:image" content="https://i.imgur.com/kNuiOY9.png">
+<meta property="og:updated_time" content="2018-04-06T03:59:07.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="王学长">
-<meta name="twitter:description" content="欢迎来到王学长的乐园">
+<meta name="twitter:description" content="常见的高可用MYSQL解决方案主从复制解决方案  这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务">
+<meta name="twitter:image" content="https://i.imgur.com/vUqT8Ew.png">
 
 
 
@@ -120,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wangxuezhang.xin/archives/"/>
+  <link rel="canonical" href="http://www.wangxuezhang.xin/2018/04/06/构建高性能的Mysql集群系统/"/>
 
 
 
 
 
-  <title>归档 | 王学长</title>
+  <title> | 王学长</title>
   
 
 
@@ -145,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,411 +279,226 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/04/06/构建高性能的Mysql集群系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王学长">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王学长">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline"></h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T11:59:07+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 15 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/06/构建高性能的Mysql集群系统/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">未命名</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,118
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-06T11:59:07+08:00"
-              content="2018-04-06" >
-          04-06
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/03/RedHat-下安装DHCP服务器/" itemprop="url">
-              
-                <span itemprop="name">Centos 下安装DHCP服务器</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-03T10:53:00+08:00"
-              content="2018-04-03" >
-          04-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/27/Ubuntu下搭建owncloud私有云平台/" itemprop="url">
-              
-                <span itemprop="name">Ubuntu下搭建owncloud私有云平台</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-27T18:30:13+08:00"
-              content="2018-03-27" >
-          03-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="常见的高可用MYSQL解决方案"><a href="#常见的高可用MYSQL解决方案" class="headerlink" title="常见的高可用MYSQL解决方案"></a>常见的高可用MYSQL解决方案</h2><h3 id="主从复制解决方案"><a href="#主从复制解决方案" class="headerlink" title="主从复制解决方案"></a>主从复制解决方案</h3><p>  这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务器的操作，从而保证数据的一致性。<br>  MYSQL replication 技术仅仅提供了日志的同步执行功能，而从服务器只能提供读操作，并且当主服务器发生故障时，必须手动处理failover，通常的做法是将一台从服务器更改为主服务器。这种解决方案在一定程度上实现了MYSQL的高可用性，可以实现90.000%的SLA。<br>  为了达到更高的可用性，在实际的应用环境中，一般都采用MYSQL replication技术配合高可用集群软件来实现自动failover，这种方式可以实现95.000%的SLA。</p>
+<hr>
+<h3 id="MMM高可用解决方案"><a href="#MMM高可用解决方案" class="headerlink" title="MMM高可用解决方案"></a>MMM高可用解决方案</h3><p>  MMM(Master-Master Replication Manager for MYSQL)MYSQL主主复制管理器，提供了MYSQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用解决方案中，典型的应用是双主多从架构，通过MYSQL reqlication技术可以实现两台服务器互为主从，且在任何时候只有一个节点可以写入，避免多点写入的数据冲突。同时，当可写的主节点故障时，MMM套件可以立即监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MYSQL的高可用。MMM方案是目前比较成熟的MYSQL高可用解决方案，可以实现99.000%的SLA。</p>
+<hr>
+<h3 id="Heartbeat-SAN高可用解决方案"><a href="#Heartbeat-SAN高可用解决方案" class="headerlink" title="Heartbeat/SAN高可用解决方案"></a>Heartbeat/SAN高可用解决方案</h3><p>  Heartbeat/SAN高可用解决方案是借助第三方软件硬件实现的，在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其它节点启动集群服务。<br>  在数据共享方面，通过SAN存储来共享网络，在正常状态下，集群主节点将挂载存储进行数据读写，当集群发生故障时，Heartbeat会首先通过一个仲裁设备将主节点挂载的存储设备释放。然后在备用节点下挂载存储，接着启动服务。通过这种方式实现数据的共享和同步。这种数据共享方式实现简单，但是成本较高，并且存在脑裂的问题，需要根据实际环境来选择。这种方案可以实现99.990%的SLA</p>
+<hr>
+<h3 id="Heartbeat-DRBD高可用解决方案"><a href="#Heartbeat-DRBD高可用解决方案" class="headerlink" title="Heartbeat/DRBD高可用解决方案"></a>Heartbeat/DRBD高可用解决方案</h3><p>  Heartbeat/DRBD高可用解决方案也是借助第三方软硬件实现的，在处理failover的方式上依旧采用Heartbeat，不同的是，在数据共享方面，采用了基于块级别的数据同步软件DRBD来实现。<br>  DRBD是一个用软件是实现的、无共享的、服务器之间镜像块设备内容的存储复制解决方案。和SAN网络不同，它并不共享存储，而是通过服务器之间的网络复制数据。这种方案实现起来稍微复杂，同时也存在脑裂问题，可以实现99.900%的SAL。</p>
+<hr>
+<h3 id="MYSQL-Cluster高可用解决方案"><a href="#MYSQL-Cluster高可用解决方案" class="headerlink" title="MYSQL Cluster高可用解决方案"></a>MYSQL Cluster高可用解决方案</h3><p>  MYSQL Cluster由一组服务节点构成，每个服务器节点上均运行着多种进程，包括MYSQL服务器、NDB Cluster的数据节点、管理服务器，以及专门的数据访问程序。此解决方案是MYSQL官方主推的技术方案，功能强大，但是由于实现较为繁琐，配置麻烦，企业实际应用并不多。MYSQL Cluster的标准版和电信版可以达到99.999%的SLA。</p>
+<hr>
+<h2 id="通过Keepalived搭建MYSQL双主模式的高可用集群系统"><a href="#通过Keepalived搭建MYSQL双主模式的高可用集群系统" class="headerlink" title="通过Keepalived搭建MYSQL双主模式的高可用集群系统"></a>通过Keepalived搭建MYSQL双主模式的高可用集群系统</h2><h3 id="MYSQL-Replication介绍"><a href="#MYSQL-Replication介绍" class="headerlink" title="MYSQL Replication介绍"></a>MYSQL Replication介绍</h3><p>  MYSQL Replication 是MYSQL自身提供的一个主从复制功能，其实也就是一台MYSQL服务器（称为Slave）从另外一台MYSQL服务器（成为Master）上复制日志，然后解析日志应用到自身的过程。MYSQL Replication是单向、异步复制，基本复制过程为：Master服务器首先将更新写进二进制文件，并维护文件的一个索引以跟踪日志的循环。这些日志文件可以发送到Slave文件进行更新。当一台服务器连接Master服务器时，他从Master服务器日志中读取上一次成功更新的位置。然后Slave服务器开始接收从上一次完成更新后发生的所有更新，所有更新完成，将等待主服务器通知新的更新<br>  MYSQL Replication 支持链式复制，也就是说Slave服务器下还可以再链接Slave服务器，同时Slave服务器也可以充当Master的角色。但是，在MYSQL主从复制钟，所有表的更新必须在Master服务器上进行，Slave服务器仅能提供查询操作。</p>
+<hr>
+<h3 id="MYSQL-Replication-实现原理"><a href="#MYSQL-Replication-实现原理" class="headerlink" title="MYSQL Replication 实现原理"></a>MYSQL Replication 实现原理</h3><p>  MYSQL Replication 是一个从Master复制到一台或者多台Slave的异步过程，在Master与Slave之间实现整个复制过程主要是由三个线程来完成，其中一个IO线程在Master端，另两个线程（SQL线程和IO端）在Slave端</p>
+<h2 id="要实现MYSQL-Replication，首先在Master服务器上打开MYSQL的Binary-Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。"><a href="#要实现MYSQL-Replication，首先在Master服务器上打开MYSQL的Binary-Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。" class="headerlink" title="  要实现MYSQL Replication，首先在Master服务器上打开MYSQL的Binary Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。"></a>  要实现MYSQL Replication，首先在Master服务器上打开MYSQL的Binary Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。</h2><h3 id="MYSQL-Replication-常用架构"><a href="#MYSQL-Replication-常用架构" class="headerlink" title="MYSQL Replication 常用架构"></a>MYSQL Replication 常用架构</h3><p>MYSQL Replication 技术在实际应用中有多种实现架构，常见的有：</p>
+<ol>
+<li>一主一丛：即一台Master服务器和一台Slave服务器。这是最常见的架构。</li>
+<li>一主多从：即一台Master服务器和两台或以上Slave服务器。经常用在写操作不频繁、查询量比较大的业务环境中。</li>
+<li>主主互备：又称双主互备，即两台MYSQL Server互相将对方作为自己的Master，自己同时又作为对方的Slave来进行复制。主要用于对MYSQL 写操作要求比较高的环境中，避免了MYSQL单点故障。</li>
+<li>双主多从：其实就是双主互备，然后再加上多台Slave服务器。主要用于写操作比较高，同时查询量比较大的环境中。<h3 id="MYSQL-主主互备模式配置"><a href="#MYSQL-主主互备模式配置" class="headerlink" title="MYSQL 主主互备模式配置"></a>MYSQL 主主互备模式配置</h3><h4 id="拓扑图"><a href="#拓扑图" class="headerlink" title="拓扑图"></a>拓扑图</h4><img src="https://i.imgur.com/vUqT8Ew.png" alt=""><br>上图中，DB1和DB2互为主从，这样保证了两台服务器MYSQL的数据始终是同步的，同时在DB1和DB2上还要安装高可用软件Keepalived。在正常情况下，Web Server主机仅对DB1进行读写，DB2只负责同步DB1的数据。而Keepalived维护着一个VIP，此IP用来对外提供连接服务，同时keepalived还负责监控DB1和DB2上的MYSQL数据库的运行状态，当DB1主机出现故障或者MYSQL运行异常时，自动将VIP地址和MYSQL服务切换到DB2上，此时Web Server主机继续从DB2上进行数据的读写操作。通过Keepalived保持了数据库服务的连续性，整个切换过程非常快，并且对前端Web Server主机是透明的。下面开始配置MYSQL主主互备。</li>
+</ol>
+<hr>
+<h4 id="修改MYSQL-配置文件"><a href="#修改MYSQL-配置文件" class="headerlink" title="修改MYSQL 配置文件."></a>修改MYSQL 配置文件.</h4><p><img src="https://i.imgur.com/2c4TN1c.png" alt=""><br>server-id是节点标识，主、从节点不能相同，必须全局唯一。<br>log-bin表示开启MYSQL的binlog日志功能。”mysql-bin”表示日志文件的命名格式。<br>relay-log用来定义relay-log日志文件的命名格式<br>replicate-wild-ignore-table是个复制过滤选项，可以过滤不需要同步的数据库或表</p>
+<hr>
+<h4 id="创建复制用户并授权"><a href="#创建复制用户并授权" class="headerlink" title="创建复制用户并授权"></a>创建复制用户并授权</h4><p><img src="https://i.imgur.com/uHSHCAI.png" alt=""><br>先在DB1上创建复制用户db2，密码qwerasdf。DB1上show master stutus中的mysql-bin.000011和Postion的数据326就是对应DB2设置主服务器时的master_log_file和master_log_pos。<br>接着启动slave：mysql&gt;start salve;<br>查看DB2上slave运行的状态<br><img src="https://i.imgur.com/kNuiOY9.png" alt=""></p>
+<hr>
+<p>2018/4/6 11:58:46 </p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/23/shell-编程-备忘录/" itemprop="url">
-              
-                <span itemprop="name">shell 编程 备忘录</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-23T20:09:16+08:00"
-              content="2018-03-23" >
-          03-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/16/mysql双机热备的实现/" itemprop="url">
-              
-                <span itemprop="name">mysql双机热备的实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-16T16:45:00+08:00"
-              content="2018-03-16" >
-          03-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/13/centos-7-2-安装mysql5-7/" itemprop="url">
-              
-                <span itemprop="name">centos 7.2 安装mysql5.7</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-13T17:24:00+08:00"
-              content="2018-03-13" >
-          03-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/08/记录一次网络克隆的经验/" itemprop="url">
-              
-                <span itemprop="name">记录一次网络克隆的经验</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-08T15:19:00+08:00"
-              content="2018-03-08" >
-          03-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/11/校园网拓扑图/" itemprop="url">
-              
-                <span itemprop="name">校园网拓扑图</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-11T13:44:30+08:00"
-              content="2018-01-11" >
-          01-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/08/思科CCN大综合实验/" itemprop="url">
-              
-                <span itemprop="name">思科CCNA大综合实验</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-08T14:24:00+08:00"
-              content="2018-01-08" >
-          01-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/02/Python利用requests批量检测URL/" itemprop="url">
-              
-                <span itemprop="name">Python利用requests批量检测URL</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-02T20:33:00+08:00"
-              content="2018-01-02" >
-          01-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>欢迎打赏,来者不拒,哈哈</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wexin.png" alt="王学长 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/pay1.jpg" alt="王学长 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/03/RedHat-下安装DHCP服务器/" rel="next" title="Centos 下安装DHCP服务器">
+                <i class="fa fa-chevron-left"></i> Centos 下安装DHCP服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -685,6 +506,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -705,8 +535,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -795,6 +634,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的高可用MYSQL解决方案"><span class="nav-number">1.</span> <span class="nav-text">常见的高可用MYSQL解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主从复制解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">主从复制解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MMM高可用解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">MMM高可用解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heartbeat-SAN高可用解决方案"><span class="nav-number">1.3.</span> <span class="nav-text">Heartbeat/SAN高可用解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heartbeat-DRBD高可用解决方案"><span class="nav-number">1.4.</span> <span class="nav-text">Heartbeat/DRBD高可用解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL-Cluster高可用解决方案"><span class="nav-number">1.5.</span> <span class="nav-text">MYSQL Cluster高可用解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过Keepalived搭建MYSQL双主模式的高可用集群系统"><span class="nav-number">2.</span> <span class="nav-text">通过Keepalived搭建MYSQL双主模式的高可用集群系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL-Replication介绍"><span class="nav-number">2.1.</span> <span class="nav-text">MYSQL Replication介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL-Replication-实现原理"><span class="nav-number">2.2.</span> <span class="nav-text">MYSQL Replication 实现原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#要实现MYSQL-Replication，首先在Master服务器上打开MYSQL的Binary-Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。"><span class="nav-number">3.</span> <span class="nav-text">  要实现MYSQL Replication，首先在Master服务器上打开MYSQL的Binary Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL-Replication-常用架构"><span class="nav-number">3.1.</span> <span class="nav-text">MYSQL Replication 常用架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL-主主互备模式配置"><span class="nav-number">3.2.</span> <span class="nav-text">MYSQL 主主互备模式配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拓扑图"><span class="nav-number">3.2.1.</span> <span class="nav-text">拓扑图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改MYSQL-配置文件"><span class="nav-number">3.2.2.</span> <span class="nav-text">修改MYSQL 配置文件.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建复制用户并授权"><span class="nav-number">3.2.3.</span> <span class="nav-text">创建复制用户并授权</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -954,6 +809,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -979,6 +838,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2152976"></script>
+      <!-- UY END -->
     
   
 
