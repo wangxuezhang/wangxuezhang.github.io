@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,859
+                  2,869
                 </span>
               
 
@@ -411,47 +411,14 @@
 
       
         
-          
-            <h3 id="主从复制解决方案"><a href="#主从复制解决方案" class="headerlink" title="主从复制解决方案"></a>主从复制解决方案</h3><pre><code>这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL
-replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务器的操作，从而保证数据的一致性。
-MYSQL replication
-技术仅仅提供了日志的同步执行功能，而从服务器只能提供读操作，并且当主服务器发生故障时，必须手动处理failover，通常的做法是将一台从服务器更改为主服务器。这种解决方案在一定程度上实现了MYSQL的高可用性，可以实现90.000%的SLA。
-为了达到更高的可用性，在实际的应用环境中，一般都采用MYSQL
-replication技术配合高可用集群软件来实现自动failover，这种方式可以实现95.000%的SLA。
-</code></pre><hr>
-<h3 id="MMM高可用解决方案"><a href="#MMM高可用解决方案" class="headerlink" title="MMM高可用解决方案"></a>MMM高可用解决方案</h3><p>  MMM(Master-Master Replication Manager for MYSQL)MYSQL主主复制管理器，提供了MYSQL主主复制配置的监控、故障转移和管理的一套可伸缩的脚本套件。在MMM高可用解决方案中，典型的应用是双主多从架构，通过MYSQL reqlication技术可以实现两台服务器互为主从，且在任何时候只有一个节点可以写入，避免多点写入的数据冲突。同时，当可写的主节点故障时，MMM套件可以立即监控到，然后将服务自动切换到另一个主节点，继续提供服务，从而实现MYSQL的高可用。MMM方案是目前比较成熟的MYSQL高可用解决方案，可以实现99.000%的SLA。</p>
-<hr>
-<h3 id="Heartbeat-SAN高可用解决方案"><a href="#Heartbeat-SAN高可用解决方案" class="headerlink" title="Heartbeat/SAN高可用解决方案"></a>Heartbeat/SAN高可用解决方案</h3><p>  Heartbeat/SAN高可用解决方案是借助第三方软件硬件实现的，在这个方案中，处理failover的方式是高可用集群软件Heartbeat，它监控和管理各个节点间连接的网络，并监控集群服务，当节点出现故障或者服务不可用时，自动在其它节点启动集群服务。<br>  在数据共享方面，通过SAN存储来共享网络，在正常状态下，集群主节点将挂载存储进行数据读写，当集群发生故障时，Heartbeat会首先通过一个仲裁设备将主节点挂载的存储设备释放。然后在备用节点下挂载存储，接着启动服务。通过这种方式实现数据的共享和同步。这种数据共享方式实现简单，但是成本较高，并且存在脑裂的问题，需要根据实际环境来选择。这种方案可以实现99.990%的SLA</p>
-<hr>
-<h3 id="Heartbeat-DRBD高可用解决方案"><a href="#Heartbeat-DRBD高可用解决方案" class="headerlink" title="Heartbeat/DRBD高可用解决方案"></a>Heartbeat/DRBD高可用解决方案</h3><p>  Heartbeat/DRBD高可用解决方案也是借助第三方软硬件实现的，在处理failover的方式上依旧采用Heartbeat，不同的是，在数据共享方面，采用了基于块级别的数据同步软件DRBD来实现。<br>  DRBD是一个用软件是实现的、无共享的、服务器之间镜像块设备内容的存储复制解决方案。和SAN网络不同，它并不共享存储，而是通过服务器之间的网络复制数据。这种方案实现起来稍微复杂，同时也存在脑裂问题，可以实现99.900%的SAL。</p>
-<hr>
-<h3 id="MYSQL-Cluster高可用解决方案"><a href="#MYSQL-Cluster高可用解决方案" class="headerlink" title="MYSQL Cluster高可用解决方案"></a>MYSQL Cluster高可用解决方案</h3><p>  MYSQL Cluster由一组服务节点构成，每个服务器节点上均运行着多种进程，包括MYSQL服务器、NDB Cluster的数据节点、管理服务器，以及专门的数据访问程序。此解决方案是MYSQL官方主推的技术方案，功能强大，但是由于实现较为繁琐，配置麻烦，企业实际应用并不多。MYSQL Cluster的标准版和电信版可以达到99.999%的SLA。</p>
-<hr>
-<h2 id="通过Keepalived搭建MYSQL双主模式的高可用集群系统"><a href="#通过Keepalived搭建MYSQL双主模式的高可用集群系统" class="headerlink" title="通过Keepalived搭建MYSQL双主模式的高可用集群系统"></a>通过Keepalived搭建MYSQL双主模式的高可用集群系统</h2><h3 id="MYSQL-Replication介绍"><a href="#MYSQL-Replication介绍" class="headerlink" title="MYSQL Replication介绍"></a>MYSQL Replication介绍</h3><p>  MYSQL Replication 是MYSQL自身提供的一个主从复制功能，其实也就是一台MYSQL服务器（称为Slave）从另外一台MYSQL服务器（成为Master）上复制日志，然后解析日志应用到自身的过程。MYSQL Replication是单向、异步复制，基本复制过程为：Master服务器首先将更新写进二进制文件，并维护文件的一个索引以跟踪日志的循环。这些日志文件可以发送到Slave文件进行更新。当一台服务器连接Master服务器时，他从Master服务器日志中读取上一次成功更新的位置。然后Slave服务器开始接收从上一次完成更新后发生的所有更新，所有更新完成，将等待主服务器通知新的更新<br>  MYSQL Replication 支持链式复制，也就是说Slave服务器下还可以再链接Slave服务器，同时Slave服务器也可以充当Master的角色。但是，在MYSQL主从复制钟，所有表的更新必须在Master服务器上进行，Slave服务器仅能提供查询操作。</p>
-<hr>
-<h3 id="MYSQL-Replication-实现原理"><a href="#MYSQL-Replication-实现原理" class="headerlink" title="MYSQL Replication 实现原理"></a>MYSQL Replication 实现原理</h3><p>  MYSQL Replication 是一个从Master复制到一台或者多台Slave的异步过程，在Master与Slave之间实现整个复制过程主要是由三个线程来完成，其中一个IO线程在Master端，另两个线程（SQL线程和IO端）在Slave端</p>
-<h2 id="要实现MYSQL-Replication，首先在Master服务器上打开MYSQL的Binary-Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。"><a href="#要实现MYSQL-Replication，首先在Master服务器上打开MYSQL的Binary-Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。" class="headerlink" title="  要实现MYSQL Replication，首先在Master服务器上打开MYSQL的Binary Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。"></a>  要实现MYSQL Replication，首先在Master服务器上打开MYSQL的Binary Log（产生二进制文件）功能，因为整个复制过程实际上就是Slave从Master端获取该日志，然后自身将二进制文件解析为SQL语句并完全顺序的执行SQL语句所记录的所有操作。</h2><h3 id="MYSQL-Replication-常用架构"><a href="#MYSQL-Replication-常用架构" class="headerlink" title="MYSQL Replication 常用架构"></a>MYSQL Replication 常用架构</h3><p>MYSQL Replication 技术在实际应用中有多种实现架构，常见的有：</p>
-<ol>
-<li>一主一丛：即一台Master服务器和一台Slave服务器。这是最常见的架构。</li>
-<li>一主多从：即一台Master服务器和两台或以上Slave服务器。经常用在写操作不频繁、查询量比较大的业务环境中。</li>
-<li>主主互备：又称双主互备，即两台MYSQL Server互相将对方作为自己的Master，自己同时又作为对方的Slave来进行复制。主要用于对MYSQL 写操作要求比较高的环境中，避免了MYSQL单点故障。</li>
-<li>双主多从：其实就是双主互备，然后再加上多台Slave服务器。主要用于写操作比较高，同时查询量比较大的环境中。<h3 id="MYSQL-主主互备模式配置"><a href="#MYSQL-主主互备模式配置" class="headerlink" title="MYSQL 主主互备模式配置"></a>MYSQL 主主互备模式配置</h3><h4 id="拓扑图"><a href="#拓扑图" class="headerlink" title="拓扑图"></a>拓扑图</h4><img src="https://i.imgur.com/vUqT8Ew.png" alt=""><br>上图中，DB1和DB2互为主从，这样保证了两台服务器MYSQL的数据始终是同步的，同时在DB1和DB2上还要安装高可用软件Keepalived。在正常情况下，Web Server主机仅对DB1进行读写，DB2只负责同步DB1的数据。而Keepalived维护着一个VIP，此IP用来对外提供连接服务，同时keepalived还负责监控DB1和DB2上的MYSQL数据库的运行状态，当DB1主机出现故障或者MYSQL运行异常时，自动将VIP地址和MYSQL服务切换到DB2上，此时Web Server主机继续从DB2上进行数据的读写操作。通过Keepalived保持了数据库服务的连续性，整个切换过程非常快，并且对前端Web Server主机是透明的。下面开始配置MYSQL主主互备。</li>
-</ol>
-<hr>
-<h4 id="修改MYSQL-配置文件"><a href="#修改MYSQL-配置文件" class="headerlink" title="修改MYSQL 配置文件."></a>修改MYSQL 配置文件.</h4><p><img src="https://i.imgur.com/2c4TN1c.png" alt=""><br>server-id是节点标识，主、从节点不能相同，必须全局唯一。<br>log-bin表示开启MYSQL的binlog日志功能。”mysql-bin”表示日志文件的命名格式。<br>relay-log用来定义relay-log日志文件的命名格式<br>replicate-wild-ignore-table是个复制过滤选项，可以过滤不需要同步的数据库或表</p>
-<hr>
-<h4 id="创建复制用户并授权"><a href="#创建复制用户并授权" class="headerlink" title="创建复制用户并授权"></a>创建复制用户并授权</h4><p><img src="https://i.imgur.com/uHSHCAI.png" alt=""><br>先在DB1上创建复制用户db2，密码qwerasdf。DB1上show master stutus中的mysql-bin.000011和Postion的数据326就是对应DB2设置主服务器时的master_log_file和master_log_pos。<br>接着启动slave：mysql&gt;start salve;<br>查看DB2上slave运行的状态<br><img src="https://i.imgur.com/kNuiOY9.png" alt=""><br>通过查看slave的运行状态可以发现一切运行正常，这里需要关注的重点是Slave_IO_Runing和Slave_SQL_Runing，这两个就是在Slave节点上运行的主从复制线程，正常情况下这两个值都应该为Yes。<br>到这里，从DB1到DB2的MYSQL主从复制已经完成。接下来开始配置从DB2到DB1的MYSQL主从复制，配置过程与上面的过程完全一样，首先在DB2上创建复制用户 db1 密码qwerasdf。然后在DB1中将DB2设为自己的主服务器。<br><img src="https://i.imgur.com/lojAzj4.png" alt=""><br>最后启动slave服务，mysql&gt;start slave;<br>可以看到Slave_IO_Running和Slave_SQL_Runing都是Yes状态，表明DB1上复制服务器运行正常。至此,MYSQL双主模式的主从配置完毕。<br><img src="https://i.imgur.com/vv4mb9g.png" alt=""></p>
-<hr>
-<h3 id="配置Keepalived实现MYSQL双主高可用"><a href="#配置Keepalived实现MYSQL双主高可用" class="headerlink" title="配置Keepalived实现MYSQL双主高可用"></a>配置Keepalived实现MYSQL双主高可用</h3><h4 id="安装keepalived"><a href="#安装keepalived" class="headerlink" title="安装keepalived"></a>安装keepalived</h4><p>1.官网下载keepalived最新版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.keepalived.org/software/keepalived-1.4.2.tar.gz`</span><br><span class="line">/configure --prefix=/usr/local/keepalived</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
-<p>将配置文件拷贝到系统对应的目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/keepalived</span><br><span class="line">cp keepalived-1.4.2/keepalived/etc/init.d/keepalived /etc/init.d/</span><br><span class="line">cp /usr/local/keepalived/etc/keepalived/keepalived.conf /etc/keepalived/</span><br><span class="line">cp /usr/local/keepalived/etc/sysconfig/keepalived /etc/sysconfig/keepalived</span><br></pre></td></tr></table></figure></p>
-<h4 id="配置keepalived"><a href="#配置keepalived" class="headerlink" title="配置keepalived"></a>配置keepalived</h4><p>vim /etc/keepalived/keepalived.conf<br><img src="https://i.imgur.com/z3Qh8dF.png" alt=""><br>编写检测服务down后所要执行的脚本<br>vim /etc/keepalived/checkmysql.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">pkill keepalived</span><br></pre></td></tr></table></figure></p>
-<p>完成所有配置后启动keepalived，正常情况下VIP地址应该是在DB1服务器<br><img src="https://i.imgur.com/C2fksaw.png" alt=""></p>
-<h4 id="测试MYSQL主从同步功能"><a href="#测试MYSQL主从同步功能" class="headerlink" title="测试MYSQL主从同步功能"></a>测试MYSQL主从同步功能</h4><h4 id="1：在远程客户端上通过VIP登录测试"><a href="#1：在远程客户端上通过VIP登录测试" class="headerlink" title="1：在远程客户端上通过VIP登录测试"></a>1：在远程客户端上通过VIP登录测试</h4><p>客户端的地址是10.22.30.20，用CRT新开了一个窗口进行连接。<br>由于采用远程登录测试，DB1和DB2服务器都要事先进行授权<br><img src="https://i.imgur.com/plKwQT5.png" alt=""><br>从SQL输出结果来看，可以通过VIP登录，并登录了DB1服务器。</p>
-<h4 id="2：数据复制功能测试"><a href="#2：数据复制功能测试" class="headerlink" title="2：数据复制功能测试"></a>2：数据复制功能测试</h4><p>刚刚已经远程登录了VIP，现在进行读写操作测试<br><img src="https://i.imgur.com/1ggoIbI.png" alt=""><br>创建了一个数据库wang,建了一个test表，并且在表中插入了数据，现在登录DB2主机，查询是否同步。<br><img src="https://i.imgur.com/bKjNCTG.png" alt=""><br>截图中可以看出，刚刚创建的东西都同步到了DB2上。</p>
-<h4 id="测试keepaliced实现MYSQL故障转移"><a href="#测试keepaliced实现MYSQL故障转移" class="headerlink" title="测试keepaliced实现MYSQL故障转移"></a>测试keepaliced实现MYSQL故障转移</h4><p>1：keepalived故障转移测试<br>VIP机器默认是在优先级搞的服务器上，也就是DB1上，现在把DB1上的keepalived服务器stop掉，观察VIP是否会自动切换到DB2上。<br><img src="https://i.imgur.com/2PS03ra.png" alt=""><br>输出结果可以看出，DB1上的keepalived服务停止后，VIP自动切换到了DB2上去了。（查看日志的变化可以更好的观察VIP切换的过程 tail -f /var/log/messages）<br>2:MySQL故障转移测试<br>关闭DB1上的mysql服务器,查看VIP是否会切换到DB2上<br><img src="https://i.imgur.com/xYHno5l.png" alt=""><br>这是DB1上的日志，一旦keepalived检测到mysql服务停止后，keepalived也停止了，这时VIP就切换到了DB2上去了，并且切换的速度非常快。<br><img src="https://i.imgur.com/7vPDflf.png" alt=""></p>
-<h3 id="多看书…"><a href="#多看书…" class="headerlink" title="多看书….."></a>多看书…..</h3><p>中途esxi服务器由于断电导致我的服务器全部GG,导致这个实验做了几天,但是运气好自己整好了。还是得多看书…..</p>
-
-          
+          <h2 id="常见的高可用MYSQL解决方案"><a href="#常见的高可用MYSQL解决方案" class="headerlink" title="常见的高可用MYSQL解决方案"></a>常见的高可用MYSQL解决方案</h2><h3 id="主从复制解决方案"><a href="#主从复制解决方案" class="headerlink" title="主从复制解决方案"></a>主从复制解决方案</h3><p>   这是MYSQL自身提供的一种高可用解决方案，数据同步方法采用的是MYSQL replication技术。MYSQL<br>   replication技术就是一个日志的复制过程，在复制过程钟一台服务器充当主服务器，而一台服务器或多台服务器充当从服务器，简单说就是，从服务器到主服务器拉取二进制日志文件，然后再将日志文件解析成相应的SQL在从服务器上执行一遍主服务器的操作，从而保证数据的一致性。<br>   MYSQL replication技术仅仅提供了日志的同步执行功能，而从服务器只能提供读操作，并且当主服务器发生故障时，必须手动处理failover，通常的做法是将一台从服务器更改为主服务器。这种解决方案在一定程度上实现了MYSQL的高可用性，可以实现90.000%的SLA。<br>   为了达到更高的可用性，在实际的应用环境中，一般都采用MYSQL<br>    replication技术配合高可用集群软件来实现自动failover，这种方式可以实现95.000%的SLA。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/06/构建高性能的Mysql集群系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
