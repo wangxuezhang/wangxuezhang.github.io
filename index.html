@@ -288,6 +288,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/04/11/Centos7下搭建DNS服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王学长">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王学长">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/11/Centos7下搭建DNS服务器/" itemprop="url">Centos下搭建DNS服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T12:15:00+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  785
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="部署主域名服务器"><a href="#部署主域名服务器" class="headerlink" title="部署主域名服务器"></a>部署主域名服务器</h3><h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><p>Centos7     IP:10.22.30.10   （DNS服务器）<br>Ubuntu16.04 IP:10.22.30.20      (Web服务器)<br>Server2008  IP:10.22.30.3     (ftp服务器)</p>
+<h4 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h4><p>  在部署DNS服务器时需要安装bind、bind-chroot、bind-util软件包<br><code>[root@DNS ~]# yum -y install bind bind-chroot bind-utils</code></p>
+<h4 id="修改主配置文件"><a href="#修改主配置文件" class="headerlink" title="修改主配置文件"></a>修改主配置文件</h4><p>  配置文件/etc/named.conf<br> <code>[root@DNS ~]# vim /etc/named.conf</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"># options选项用来定义一些影响D整个DNS服务器的环境</span><br><span class="line">options &#123;</span><br><span class="line">        directory       &quot;/var/named&quot;;  #表示设置工作目录</span><br><span class="line">        allow-query     &#123; any; &#125;; #允许任何主机查询</span><br><span class="line"></span><br><span class="line">        /* </span><br><span class="line">           reduce such attack surface </span><br><span class="line">        */</span><br><span class="line">        recursion yes; #允许递归查询</span><br><span class="line"></span><br><span class="line">        dnssec-enable no; #是否支持dnssec开关</span><br><span class="line">        dnssec-validation no; #是否支持dnssec确认开关</span><br><span class="line"></span><br><span class="line">        /* Path to ISC DLV key */</span><br><span class="line"></span><br><span class="line">        managed-keys-directory &quot;/var/named/dynamic&quot;; # 管理</span><br><span class="line">的密钥路径</span><br><span class="line"></span><br><span class="line">        pid-file &quot;/run/named/named.pid&quot;; # 服务器记录进程ID的文件路径</span><br><span class="line">        session-keyfile &quot;/run/named/session.key&quot;; #会话密钥</span><br><span class="line">文件</span><br><span class="line">&#125;;</span><br><span class="line"># logging 定义了bind服务的日志</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">        channel default_debug #定义通道</span><br><span class="line">        &#123;</span><br><span class="line">                file &quot;data/named.run&quot;;  #写入“data/named.run”文件</span><br><span class="line">                severity dynamic; #消息的严重性等级匹配服务</span><br><span class="line">器当前的调试级别</span><br><span class="line">        &#125;;</span><br><span class="line">&#125;;</span><br><span class="line">#zone用来定义每个具体的解析区域</span><br><span class="line">zone &quot;.&quot; IN &#123;</span><br><span class="line">        type hint; #区域类型</span><br><span class="line">        file &quot;named.ca&quot;; #区域文件名</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;wangxuezhang.com&quot; &#123; #增加正向解析区域 &quot;wangxuezhang.xin&quot;</span><br><span class="line">        type master; #类型为master</span><br><span class="line">        file &quot;wangxuezhang.com.zone&quot;; #区域解析文件</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;30.22.10.in-addr.arpa&quot;&#123; #增加反向解析区域</span><br><span class="line">        type master;</span><br><span class="line">        file &quot;30.22.10.in-addr.arpa.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">include &quot;/etc/named.rfc1912.zones&quot;;</span><br><span class="line">include &quot;/etc/named.root.key&quot;;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="配置服务器的正向区域文件"><a href="#配置服务器的正向区域文件" class="headerlink" title="配置服务器的正向区域文件"></a>配置服务器的正向区域文件</h4><p><code>[root@DNS ~]# vim /var/named/wangxuezhang.com.zone</code><br>PS:要与主配置文件中的正向解析区域中的file一致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$TTL 1D #缓存时间</span><br><span class="line">@       IN SOA  wangxuezhang.com. root.wangxuezhang.com. (</span><br><span class="line">                                        2080410      ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">@                       IN      NS      dns.wangxuezhang.com.  #DNS服务器的域名地址</span><br><span class="line">dns                     IN      A       10.22.30.10  #DNS服务器的IP地址         </span><br><span class="line">www                     IN      A       10.22.30.20  #Web服务器的IP地址</span><br><span class="line">ftp                     IN      A       10.22.30.3   #Ftp服务器的IP地址</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/Y9p39GC.png" alt=""></p>
+<hr>
+<h4 id="配置服务器的反向解析文件"><a href="#配置服务器的反向解析文件" class="headerlink" title="配置服务器的反向解析文件"></a>配置服务器的反向解析文件</h4><p><code>[root@DNS ~]# vim /var/named/30.22.10.in-addr.arpa.zone</code><br>PS:要与主配置文件中的反向解析区域中的file一致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$TTL 86400</span><br><span class="line">@       IN      SOA     30.22.10.in-add.arpa.   root.wangxuezhang.com (</span><br><span class="line">                        20180410; serial</span><br><span class="line">                        28800;    refresh</span><br><span class="line">                        14400;    retry</span><br><span class="line">                        3600000;  expire</span><br><span class="line">                        86400);   minimum</span><br><span class="line">@       IN      NS      dns.wangxuezhang.com.</span><br><span class="line">#PTR记录</span><br><span class="line">#IP地址         Internet类      PTR标识         FQDN</span><br><span class="line">10              IN              PTR             dns.wangxuezhang.com</span><br><span class="line">20              IN              PTR             www.wangxuezhang.com</span><br><span class="line">3               IN              PTR             ftp.wangxuezhang.com</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/LYNURLn.png" alt=""></p>
+<hr>
+<h4 id="重启DNS服务并测试"><a href="#重启DNS服务并测试" class="headerlink" title="重启DNS服务并测试"></a>重启DNS服务并测试</h4><p><code>[root@DNS ~]# systemctl restart named</code> 重启dns服务<br>1.Linux环境下的测试<br>客户机用的是Centos7,IP:10.22.30.9<br><code>[root@Client ~]# vim /etc/sysconfig/network-scripts/ifcfg-ens32</code><br><img src="https://i.imgur.com/lamMnc2.png" alt=""><br>用nslookup来测试域名解析情况<br><img src="https://i.imgur.com/IwhjVMN.png" alt=""><br>2.Windows环境下的测试<br>先填上dns服务器的地址<br><img src="https://i.imgur.com/cD3cnCq.png" alt=""><br>从测试结果来看,正反解析结果都是OK的</p>
+<hr>
+<h4 id="搭建DNS服务中出现的问题"><a href="#搭建DNS服务中出现的问题" class="headerlink" title="搭建DNS服务中出现的问题"></a>搭建DNS服务中出现的问题</h4><p>搭建过程中出了不少问题,但是都是小问题,例如这种:</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/04/06/构建高性能的Mysql集群系统/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1742,186 +1927,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/01/02/Python利用requests批量检测URL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王学长">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王学长">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/02/Python利用requests批量检测URL/" itemprop="url">Python利用requests批量检测URL</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T20:33:00+08:00">
-                2018-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  288
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h5 id="利用python的requests检测单个URL的返回值"><a href="#利用python的requests检测单个URL的返回值" class="headerlink" title="利用python的requests检测单个URL的返回值"></a>利用python的requests检测单个URL的返回值</h5><p>先安装所需要的requests库<br><code>pip install requests</code></p>
-<p><img src="/images/pasted-14.png" alt="upload successful"></p>
-<p>打开IDIE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">response = requests.get(&quot;http://www.baidu.com&quot;)</span><br><span class="line">response.status_code</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/pasted-16.png" alt="upload successful"><br>PS: response.status_code=200表示服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/02/Python利用requests批量检测URL/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1972,7 +1977,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1983,7 +1988,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2075,7 +2080,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">12.3k</span>
+    <span title="Site words total count">13.1k</span>
   
 </div>
 
@@ -2099,7 +2104,7 @@
 
 <div class="theme-info">
  <div class="powered-by"></div>
- <span class="post-count">博客全站共12.3k字</span>
+ <span class="post-count">博客全站共13.1k字</span>
  </div>
 
         
