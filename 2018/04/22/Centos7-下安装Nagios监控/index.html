@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,21 +81,25 @@
 
 
 
-<meta name="description" content="想起来就心痛，昨天由于ubuntu上的vim配置出了点问题，于是就想卸载重装，但是插件太多，自己又想偷懒，就一个命令运行下来locate vimrc | xargs rm -rf删除后发现还是报错，就将错就错,又是一条命令下来locate vim | xargs rm -rf">
-<meta name="keywords" content="hexo">
+<meta name="description" content="Nagios简介Nagios是一款企业级开源免费的监控工具,该工具可以监控应用服务器,交换机路由器等网络设备,并且在服务或设备发送异常时发出报警信息.部署Nagios除了需要安装主程序,还需要安装相关插件,Nagios是整个监控平台的主程序,Nagios-plugins是必选的插件程序.官方还提供了其它的附加插件.其中,NRPE插件用来监控远程Linux服务器的主机资源,NSClient++插件用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo s报错">
-<meta property="og:url" content="http://www.wangxuezhang.xin/2017/12/30/hexo-s报错/index.html">
+<meta property="og:title" content="Centos7 下安装Nagios监控">
+<meta property="og:url" content="http://www.wangxuezhang.xin/2018/04/22/Centos7-下安装Nagios监控/index.html">
 <meta property="og:site_name" content="王学长">
-<meta property="og:description" content="想起来就心痛，昨天由于ubuntu上的vim配置出了点问题，于是就想卸载重装，但是插件太多，自己又想偷懒，就一个命令运行下来locate vimrc | xargs rm -rf删除后发现还是报错，就将错就错,又是一条命令下来locate vim | xargs rm -rf">
+<meta property="og:description" content="Nagios简介Nagios是一款企业级开源免费的监控工具,该工具可以监控应用服务器,交换机路由器等网络设备,并且在服务或设备发送异常时发出报警信息.部署Nagios除了需要安装主程序,还需要安装相关插件,Nagios是整个监控平台的主程序,Nagios-plugins是必选的插件程序.官方还提供了其它的附加插件.其中,NRPE插件用来监控远程Linux服务器的主机资源,NSClient++插件用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-12.png">
-<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-11.png">
-<meta property="og:updated_time" content="2017-12-30T06:41:02.924Z">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-87.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-88.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-89.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-90.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-91.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-92.png">
+<meta property="og:image" content="http://www.wangxuezhang.xin/images/pasted-93.png">
+<meta property="og:updated_time" content="2018-04-24T06:18:47.662Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo s报错">
-<meta name="twitter:description" content="想起来就心痛，昨天由于ubuntu上的vim配置出了点问题，于是就想卸载重装，但是插件太多，自己又想偷懒，就一个命令运行下来locate vimrc | xargs rm -rf删除后发现还是报错，就将错就错,又是一条命令下来locate vim | xargs rm -rf">
-<meta name="twitter:image" content="http://www.wangxuezhang.xin/images/pasted-12.png">
+<meta name="twitter:title" content="Centos7 下安装Nagios监控">
+<meta name="twitter:description" content="Nagios简介Nagios是一款企业级开源免费的监控工具,该工具可以监控应用服务器,交换机路由器等网络设备,并且在服务或设备发送异常时发出报警信息.部署Nagios除了需要安装主程序,还需要安装相关插件,Nagios是整个监控平台的主程序,Nagios-plugins是必选的插件程序.官方还提供了其它的附加插件.其中,NRPE插件用来监控远程Linux服务器的主机资源,NSClient++插件用">
+<meta name="twitter:image" content="http://www.wangxuezhang.xin/images/pasted-87.png">
 
 
 
@@ -125,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://www.wangxuezhang.xin/2017/12/30/hexo-s报错/"/>
+  <link rel="canonical" href="http://www.wangxuezhang.xin/2018/04/22/Centos7-下安装Nagios监控/"/>
 
 
 
 
 
-  <title>hexo s报错 | 王学长</title>
+  <title>Centos7 下安装Nagios监控 | 王学长</title>
   
 
 
@@ -292,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2017/12/30/hexo-s报错/">
+    <link itemprop="mainEntityOfPage" href="http://www.wangxuezhang.xin/2018/04/22/Centos7-下安装Nagios监控/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王学长">
@@ -309,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo s报错</h1>
+          <h1 class="post-title" itemprop="name headline">Centos7 下安装Nagios监控</h1>
         
 
         <div class="post-meta">
@@ -321,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-30T14:06:00+08:00">
-                2017-12-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T12:28:15+08:00">
+                2018-04-22
               </time>
             
 
@@ -331,28 +335,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -375,7 +357,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  296
+                  1,792
                 </span>
               
 
@@ -391,7 +373,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -412,10 +394,126 @@
       
 
       
-        <p>想起来就心痛，昨天由于ubuntu上的vim配置出了点问题，于是就想卸载重装，但是插件太多，自己又想偷懒，就一个命令运行下来<br><code>locate vimrc | xargs rm -rf</code><br>删除后发现还是报错，就将错就错,又是一条命令下来<br><code>locate vim | xargs rm -rf</code><br><a id="more"></a><br>就这样，成功的，我的vim重装后连insert都不显示了……</p>
-<p><img src="/images/pasted-12.png" alt="upload successful"><br>费了好大功夫把vim装好后，准备运行hexo博客看一下<br><code>FATAL Cannot find module &#39;./vimeo&#39;
-Error: Cannot find module &#39;./vimeo&#39;</code></p>
-<p><img src="/images/pasted-11.png" alt="upload successful"><br>结局是这样的,吓得我赶紧<code>npm install</code>重新安装依赖，但是还是没用<br><code>npm install --save vimeo</code>,命令是运行成功了，当然错误也是一样的…<br>去度娘逛了一圈，没有发现有人跟我报错是一样的（应该没有人像我那么傻，那么冲动…）<br>慌的我东西都备份好了，准备重装了，但是！！！重点来了，临死之前我的抢救还是成功了，<br><code>npm install hexo --vimeo</code><br>这样终于成功的安装好了这个模块,命令终于运行成功了，真是一把心酸一把泪啊！<br>以后再也不敢乱用删除命令了！！！！</p>
+        <h3 id="Nagios简介"><a href="#Nagios简介" class="headerlink" title="Nagios简介"></a>Nagios简介</h3><p>Nagios是一款企业级开源免费的监控工具,该工具可以监控应用服务器,交换机路由器等网络设备,并且在服务或设备发送异常时发出报警信息.部署Nagios除了需要安装主程序,还需要安装相关插件,Nagios是整个监控平台的主程序,Nagios-plugins是必选的插件程序.官方还提供了其它的附加插件.其中,NRPE插件用来监控远程Linux服务器的主机资源,NSClient++插件用来监控Linux主机,NDOUtils插件需要结合数据库系统将Nagios进程的当前数据和历史数据写进数据库.Nagios可以监控的常见的HTTP,POP3,SMTP,FTP,SSH,PING等服务器,也可以监控主机的CPU和磁盘等主机资源.</p>
+<h3 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h3><table>
+<thead>
+<tr>
+<th>IP</th>
+<th style="text-align:center">系统</th>
+<th style="text-align:right">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.22.30.7</td>
+<td style="text-align:center">Centos7</td>
+<td style="text-align:right">Nagios服务端</td>
+</tr>
+<tr>
+<td>10.22.30.8</td>
+<td style="text-align:center">Centos7</td>
+<td style="text-align:right">web1</td>
+</tr>
+<tr>
+<td>10.22.30.20</td>
+<td style="text-align:center">Ubuntu16.04</td>
+<td style="text-align:right">web2</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<a id="more"></a>
+<h3 id="Nagios服务端安装"><a href="#Nagios服务端安装" class="headerlink" title="Nagios服务端安装"></a>Nagios服务端安装</h3><h4 id="部署监控服务器软件"><a href="#部署监控服务器软件" class="headerlink" title="部署监控服务器软件"></a>部署监控服务器软件</h4><p>监控服务器需要安装HTTP,PHP,Nagios,Nagios-Plugins以及NRPE软件包.<br>首先安装Nagios所依赖的软件包<br><code>[root@nagios ~]# yum -y install gd gd-devel openssl openssl-devel httpd php gcc glibc glibc-common make net-nmap wget</code><br>安装Nagios主程序时,源码包可以从sourceforge.net网站下载.安装前需要为nagios创建账户和组.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@nagios soft]# /usr/sbin/useradd nagios</span><br><span class="line">[root@nagios soft]# /usr/sbin/groupadd nagcmd</span><br><span class="line">[root@nagios soft]# /usr/sbin/usermod  -a -G nagcmd nagios</span><br><span class="line">[root@nagios soft]# /usr/sbin/usermod  -a -G nagcmd apache</span><br></pre></td></tr></table></figure></p>
+<p>软件包我都已经下载好了,可以直接解压安装.<br><img src="/images/pasted-87.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@nagios soft]# tar -zxvf nagios-4.3.1.tar.gz</span><br><span class="line">[root@nagios soft]#./configure --with-nagios-user=nagios --with-nagios-group=nagcmd</span><br><span class="line">[root@nagios nagios-4.3.1]#make all</span><br><span class="line">[root@nagios nagios-4.3.1]#make insall</span><br><span class="line">[root@nagios nagios-4.3.1]#make install-init</span><br><span class="line">[root@nagios nagios-4.3.1]#make install-commandmode</span><br><span class="line">[root@nagios nagios-4.3.1]#make install-config</span><br></pre></td></tr></table></figure>
+<p>由于nagios需要以Web界面进行管理与监控,安装过程中使用make install-webconf命令生成一个Web配置文件.该文件可以使管理员通过访问web界面管理与维护Nagios监控系统<br><code>[root@nagios nagios-4.3.1]#make install-webconf</code></p>
+<hr>
+<p>Nagios的特色就是许多强大的插件,可以根据自己的需求选择相应的插件.这里只安装nagios-plugins和nrpe两个插件</p>
+<p>安装nagios-pluins<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@nagios ~]# tar -zxvf nagios-plugins-2.2.1.tar.gz</span><br><span class="line">[root@nagios ~]# cd nagios-plugins-2.2.1/</span><br><span class="line">[root@nagios nagios-plugins-2.2.1]# ./configure --prefix=/usr/local/nagios</span><br><span class="line">[root@nagios nagios-plugins-2.2.1]#make</span><br><span class="line">[root@nagios nagios-plugins-2.2.1]#make install</span><br></pre></td></tr></table></figure></p>
+<p>安装nrpe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@nagios ~]# tar -zxvf nrpe-2.14.tar.gz</span><br><span class="line">[root@nagios ~]# cd nrpe-2.14/</span><br><span class="line">[root@nagios nrpe-2.14]#./configure</span><br><span class="line">[root@nagios nrpe-2.14]#make all</span><br><span class="line">[root@nagios nrpe-2.14]#make install-plugin</span><br><span class="line">[root@nagios nrpe-2.14]#make install-daemon</span><br><span class="line">[root@nagios nrpe-2.14]#make install-daemon-config</span><br></pre></td></tr></table></figure></p>
+<p>安装Nagios时,已经复制了一份nagios.conf文件到Apache的配置文件下.下面根据实际需求创建账户信息文件,系统会提示输入密码<br><code>[root@nagios ~]# htpasswd -c /usr/local/nagios/etc/htpasswd.users nagios</code><br>开放iptables的80端口<br><code>[root@nagios ~]# iptables -I INPUT -p tcp --dport 80 -j ACCEPT</code><br>启动服务:<br><code>[root@nagios ~]# systemctl restart httpd</code><br><code>[root@nagios ~]# systemctl restart nagios</code></p>
+<h4 id="修改Nagios配置文件"><a href="#修改Nagios配置文件" class="headerlink" title="修改Nagios配置文件"></a>修改Nagios配置文件</h4><p>Nagios配置文件比较多,下面是主要的配置文件的名称与简要描述</p>
+<table>
+<thead>
+<tr>
+<th>配置文件名称</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nagios.conf</td>
+<td style="text-align:center">Nagios主配置文件</td>
+</tr>
+<tr>
+<td>nrpe.cfg</td>
+<td style="text-align:center">NRPE远程监控配置文件</td>
+</tr>
+<tr>
+<td>cgi.conf</td>
+<td style="text-align:center">CGI程序配置文件</td>
+</tr>
+<tr>
+<td>commands.cfg</td>
+<td style="text-align:center">命令定义文件</td>
+</tr>
+<tr>
+<td>contacts.cfg</td>
+<td style="text-align:center">联系人与联系定义文件</td>
+</tr>
+<tr>
+<td>timeperiods.cfg</td>
+<td style="text-align:center">CGI程序配置文件</td>
+</tr>
+<tr>
+<td>templates.cfg</td>
+<td style="text-align:center">对象定义参考模版</td>
+</tr>
+<tr>
+<td>localhost.cfg</td>
+<td style="text-align:center">监控本机的配置文件模版</td>
+</tr>
+<tr>
+<td>printer.cfg</td>
+<td style="text-align:center">对象定义参考模版</td>
+</tr>
+<tr>
+<td>switch.cfg</td>
+<td style="text-align:center">监控交换机的配置文件模版</td>
+</tr>
+<tr>
+<td>windows.cfg</td>
+<td style="text-align:center">监控windows的配置文件模版</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>修改主配置文件,因为需要监控两台web主机,所以需要加载web1.cfg和web2.cfg<br><code>[root@nagios ~]# vim /usr/local/nagios/etc/nagios.cfg</code><br><img src="/images/pasted-88.png" alt="upload successful"></li>
+<li>修改CGI配置文件,添加nagios账户允许使用CGI程序<br>由于配置文件太长,所以过滤显示一下<br><img src="/images/pasted-89.png" alt="upload successful"></li>
+<li>修改命令配置文件,该文件定义具体的命令实现方式.<br><code>[root@nagios ~]# vim /usr/local/nagios/etc/objects/commands.cfg</code></li>
+</ol>
+<p><img src="/images/pasted-90.png" alt="upload successful"></p>
+<ol>
+<li>创建远程监控配置文件web1.cfg和web2.cfg.这个可以手动创建,我是直接copy localhost.cfg为模版,然后修改数据的.web2.cfg也跟web1.cfg差不多,修改主机名称,IP地址就可以了.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">define host&#123;</span><br><span class="line">        use                     linux-server</span><br><span class="line">        host_name               wlzx</span><br><span class="line">        alias                   wlzx</span><br><span class="line">        address                 10.22.30.9</span><br><span class="line">        &#125;</span><br><span class="line">define hostgroup&#123;</span><br><span class="line">        hostgroup_name  10.22.30.9 ; The name of the hostgroup</span><br><span class="line">        alias           Linux Servers ; Long name of the group</span><br><span class="line">        members         wlzx     ; Comma separated list of hosts that belong to this group</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             PING</span><br><span class="line">        check_command                   check_ping!100.0,20%!500.0,60%</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             Root Partition</span><br><span class="line">        check_command                   check_local_disk!20%!10%!/</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             Current Users</span><br><span class="line">        check_command                   check_local_users!20!50</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             Total Processes</span><br><span class="line">        check_command                   check_local_procs!250!400!RSZDT</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             Current Load</span><br><span class="line">        check_command                   check_local_load!5.0,4.0,3.0!10.0,6.0,4.0</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             Swap Usage</span><br><span class="line">        check_command                   check_local_swap!20!10</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             SSH</span><br><span class="line">        check_command                   check_ssh</span><br><span class="line">        notifications_enabled           0</span><br><span class="line">        &#125;</span><br><span class="line">define service&#123;</span><br><span class="line">        use                             local-service         ; Name of service template to use</span><br><span class="line">        host_name                       wlzx</span><br><span class="line">        service_description             HTTP</span><br><span class="line">        check_command                   check_http</span><br><span class="line">        notifications_enabled           0</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>修改配置文件的时候容易出错.导致服务无法启动.可以使用/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg定位问题所在</p>
+<ol>
+<li>重启nagios服务<br><code>[root@nagios objects]# /etc/init.d/nagios restart</code></li>
+</ol>
+<hr>
+<h3 id="Nagios客户端安装"><a href="#Nagios客户端安装" class="headerlink" title="Nagios客户端安装"></a>Nagios客户端安装</h3><p>Nagios客户端需要安装nagios-plugin和nrpe软件包.下面以web1为例.(软件都已经下载好了)<br>安装nagios-plugin<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@web1 ~]# yum -y install openssl openssl-devel</span><br><span class="line">[root@web1 ~]# groupadd nagios</span><br><span class="line">[root@web1 ~]# useradd -g nagios -s /sbin/nologin nagios</span><br><span class="line">[root@web1 soft]# tar -zxvf nagios-plugins-2.2.1.tar.gz</span><br><span class="line">[root@web1 soft]# cd nagios-plugins-2.2.1</span><br><span class="line">[root@web1 nagios-plugins-2.2.1]# ./configure --with-nagios-user=nagios --with-nagios-group=nagios --prefix=/usr/local/nagios</span><br><span class="line">[root@web1 nagios-plugins-2.2.1]# make</span><br><span class="line">[root@web1 nagios-plugins-2.2.1]# make install</span><br><span class="line">[root@web1 nagios-plugins-2.2.1]# chown -R nagios.nagios /usr/local/nagios/</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>安装nrpe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@web1 soft]# tar -zxvf nrpe-2.14.tar.gz</span><br><span class="line">[root@web1 soft]# cd nrpe-2.14</span><br><span class="line">[root@web1 nrpe-2.14]# ./configure</span><br><span class="line">[root@web1 nrpe-2.14]# make all</span><br><span class="line">[root@web1 nrpe-2.14]# make install-plugin</span><br><span class="line">[root@web1 nrpe-2.14]# make install-daemon</span><br><span class="line">[root@web1 nrpe-2.14]# make install-daemon-config</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>修改客户端配置文件,添加可以监控的主机<br><code>[root@web1 ~]# vim /usr/local/nagios/etc/nrpe.cfg</code></p>
+<p><img src="/images/pasted-91.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@web1 ~]# /usr/local/nagios/bin/nrpe -c /usr/local/nagios/etc/nrpe.cfg -d</span><br><span class="line">[root@web1 ~]# echo &quot;[root@web1 ~]# /usr/local/nagios/bin/nrpe -c /usr/local/nagios/etc/nrpe.cfg -d&quot; &gt;&gt; /etc/rc.local</span><br><span class="line">[root@web1 ~]# iptables -I INPUT -p tcp --dport 5666 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>可以用check_nrpe检测被监控端的版本号<br><figure class="highlight plain"><figcaption><span>objects]#</span><a href="/usr/local/nagios/libexec/check_nrpe">-H 10.22.30.9</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NRPE v2.14</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>两台主机都设置好了之后,浏览器访问nagios的地址,就可以访问web监控界面了</p>
+<p><img src="/images/pasted-92.png" alt="upload successful"></p>
+<p><img src="/images/pasted-93.png" alt="upload successful"><br>如果想监控windows主机的话,需要在windows主机上安装NSClient++,nagios创建windows主机的.cfg文件即可</p>
 
       
     </div>
@@ -460,12 +558,6 @@ Error: Cannot find module &#39;./vimeo&#39;</code></p>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-        </div>
-      
 
       
       
@@ -475,8 +567,8 @@ Error: Cannot find module &#39;./vimeo&#39;</code></p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/28/hexo写博客的基本方法/" rel="next" title="hexo写博客的基本方法">
-                <i class="fa fa-chevron-left"></i> hexo写博客的基本方法
+              <a href="/2018/04/11/Centos7下搭建DNS服务器/" rel="next" title="Centos下搭建DNS服务器">
+                <i class="fa fa-chevron-left"></i> Centos下搭建DNS服务器
               </a>
             
           </div>
@@ -484,10 +576,6 @@ Error: Cannot find module &#39;./vimeo&#39;</code></p>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/31/Python-生成不重复字符串组合/" rel="prev" title="Python 生成不重复字符串组合">
-                Python 生成不重复字符串组合 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -544,8 +632,17 @@ Error: Cannot find module &#39;./vimeo&#39;</code></p>
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -634,6 +731,22 @@ Error: Cannot find module &#39;./vimeo&#39;</code></p>
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nagios简介"><span class="nav-number">1.</span> <span class="nav-text">Nagios简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验环境"><span class="nav-number">2.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nagios服务端安装"><span class="nav-number">3.</span> <span class="nav-text">Nagios服务端安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#部署监控服务器软件"><span class="nav-number">3.1.</span> <span class="nav-text">部署监控服务器软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改Nagios配置文件"><span class="nav-number">3.2.</span> <span class="nav-text">修改Nagios配置文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nagios客户端安装"><span class="nav-number">4.</span> <span class="nav-text">Nagios客户端安装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
